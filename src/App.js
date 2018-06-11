@@ -9,52 +9,42 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Platform
 } from 'react-native';
+import {
+  Scene,
+  Router,
+  Actions,
+  Reducer,
+  ActionConst,
+  Overlay,
+  Tabs,
+  Modal,
+  Drawer,
+  Stack,
+  Lightbox,
+} from 'react-native-router-flux';
+import Home from './scene/Home';
+import Login from './scene/Login';
 import {Container, Footer, FooterTab, Header, Body} from 'native-base';
 
 export default class App extends Component {
   render() {
+    // const prefix = Platform.OS === 'android' ? 'mychat://mychat/' : 'mychat://';
     return (
-      <Container style={styles.container}>
-        <Header>
-          <Text style={styles.welcome}>
-          Welcome to React  Native!
-        </Text>
-      </Header>
-      <Body>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-      </Body>
-      <Footer>
-        <FooterTab>
-          <Text style={styles.instructions}>
-              Press Cmd+R to reload,{'\n'}
-              Cmd+D or shake for dev menu
-          </Text>
-        </FooterTab>
-      </Footer>
-      </Container>
+        <Router
+          // uriPrefix={prefix}
+        >
+          <Stack
+            hideNavBar
+            // key="root"
+            // titleStyle={{ alignSelf: 'center' }}
+          >
+            <Scene key="home" component={Home} initial />
+            <Scene key="login" component={Login} />
+          </Stack>
+        </Router>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   backgroundColor: '#F5FCFF',
-  // },
-  // welcome: {
-  //   fontSize: 20,
-  //   textAlign: 'center',
-  //   margin: 10,
-  // },
-  // instructions: {
-  //   textAlign: 'center',
-  //   color: '#333333',
-  //   marginBottom: 5,
-  // },
-});
