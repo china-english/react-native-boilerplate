@@ -28,11 +28,16 @@ import {
 import Home from './scene/Home';
 import Login from './scene/Login';
 import {Container, Footer, FooterTab, Header, Body} from 'native-base';
+import {Provider} from 'react-redux';
+import configureStore from './store.js'
 
 export default class App extends Component {
   render() {
     // const prefix = Platform.OS === 'android' ? 'mychat://mychat/' : 'mychat://';
+    const preloadedState = window.__PRELOADED_STATE__
+    const store = configureStore(preloadedState)
     return (
+      <Provider store={store}>
         <Router
           // uriPrefix={prefix}
         >
@@ -45,6 +50,7 @@ export default class App extends Component {
             <Scene key="login" component={Login} />
           </Stack>
         </Router>
+      </Provider>
     );
   }
 }

@@ -11,11 +11,19 @@ import {
   Text,
   View
 } from 'react-native';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import {Actions} from 'react-native-router-flux';
-
+import {addToCounter} from "../../actions";
 import {Container, Footer, FooterTab, Header, Button, Body, Content} from 'native-base';
 
-export default class Home extends Component {
+class Home extends Component {
+  state = {
+    count: this.props.counter,
+  }
+  componentDidMount(){
+    this.props.addToCounter();
+  }
   render() {
     return (
       <Container>
@@ -51,7 +59,11 @@ export default class Home extends Component {
           </Text>
           <View>
             <Button
-              onPress={()=> Actions.push('login')}
+              onPress={()=> {
+                Actions.push('login');
+                this.props.addToCounter();
+                console.log(this.props.counter)
+              }}
             >
               <Text>
                 Go to Login!
@@ -76,6 +88,19 @@ export default class Home extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    counter: state.reducer.counter
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCounter: bindActionCreators(addToCounter, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
 
 var styles = StyleSheet.create({
     container: {
