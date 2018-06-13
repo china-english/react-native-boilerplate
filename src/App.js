@@ -4,7 +4,9 @@
  * @flow
  */
 
+ // react && redux module
 import React, { Component } from 'react';
+import {Provider} from 'react-redux';
 import {
   AppRegistry,
   StyleSheet,
@@ -12,44 +14,23 @@ import {
   View,
   Platform
 } from 'react-native';
-import {
-  Scene,
-  Router,
-  Actions,
-  Reducer,
-  ActionConst,
-  Overlay,
-  Tabs,
-  Modal,
-  Drawer,
-  Stack,
-  Lightbox,
-} from 'react-native-router-flux';
+
+// Third party plug-in
+import {Container, Footer, FooterTab, Header, Body} from 'native-base';
+
 import Home from './container/Home';
 import Login from './container/Login';
-import {Container, Footer, FooterTab, Header, Body} from 'native-base';
-import {Provider} from 'react-redux';
+
+import Router from './Router'
 import configureStore from './store'
 
 export default class App extends Component {
   render() {
-    // const prefix = Platform.OS === 'android' ? 'mychat://mychat/' : 'mychat://';
     const preloadedState = window.__PRELOADED_STATE__
     const store = configureStore(preloadedState)
     return (
       <Provider store={store}>
-        <Router
-          // uriPrefix={prefix}
-        >
-          <Stack
-            hideNavBar
-            // key="root"
-            // titleStyle={{ alignSelf: 'center' }}
-          >
-            <Scene key="home" component={Home} initial />
-            <Scene key="login" component={Login} />
-          </Stack>
-        </Router>
+        <Router />
       </Provider>
     );
   }
