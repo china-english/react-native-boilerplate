@@ -25,11 +25,11 @@ import {
   Stack,
   Lightbox,
 } from 'react-native-router-flux';
-import Home from './scene/Home';
-import Login from './scene/Login';
+import Home from './container/Home';
+import Login from './container/Login';
 import {Container, Footer, FooterTab, Header, Body} from 'native-base';
 import {Provider} from 'react-redux';
-import configureStore from './store.js'
+import configureStore from './store'
 
 export default class App extends Component {
   render() {
