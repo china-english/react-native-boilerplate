@@ -14,16 +14,13 @@ import {
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {Actions} from 'react-native-router-flux';
-import {addToCounter} from "../../actions";
+import {
+  addToCounter,
+  minusToCounter,
+} from "../../actions";
 import {Container, Footer, FooterTab, Header, Button, Body, Content} from 'native-base';
 
 class Home extends Component {
-  state = {
-    count: this.props.counter,
-  }
-  componentDidMount(){
-    this.props.addToCounter();
-  }
   render() {
     return (
       <Container>
@@ -61,15 +58,32 @@ class Home extends Component {
             <Button
               onPress={()=> {
                 Actions.push('login');
-                this.props.addToCounter();
-                console.log(this.props.counter)
               }}
             >
               <Text>
                 Go to Login!
               </Text>
             </Button>
+            <Button
+              onPress={()=> {
+                this.props.addToCounter();
+              }}
+            >
+              <Text>
+                Add counter
+              </Text>
+            </Button>
+            <Button
+              onPress={()=> {
+                this.props.minusToCounter();
+              }}
+            >
+              <Text>
+                Minus counter
+              </Text>
+            </Button>
           </View>
+          <Text>{this.props.counter}</Text>
         </View>
         </Content>
         <Footer>
@@ -96,7 +110,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCounter: bindActionCreators(addToCounter, dispatch)
+    addToCounter: bindActionCreators(addToCounter, dispatch),
+    minusToCounter: bindActionCreators(minusToCounter, dispatch)
   }
 }
 

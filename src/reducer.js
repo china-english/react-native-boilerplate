@@ -1,4 +1,4 @@
-import {ADD_TO_COUNTER} from './actions'
+import {ADD_TO_COUNTER, MINUS_TO_COUNTER} from './actions'
 
 import { combineReducers } from 'redux'
 // This is the default state of the app i.e. when the app starts for the first time
@@ -15,6 +15,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         counter: state.counter + 1
+      }
+    case MINUS_TO_COUNTER:
+      return {
+        ...state,
+        counter: state.counter - 1
       }
     default:
       return state;
