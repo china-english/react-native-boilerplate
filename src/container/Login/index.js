@@ -17,7 +17,7 @@ import {
   Content,
 } from 'native-base';
 
-export default class Login extends Component {// eslint-disable-line
+export default class Login extends Component { // eslint-disable-line
   render() {
     return (
       <Container>
