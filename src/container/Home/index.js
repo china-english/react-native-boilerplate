@@ -6,19 +6,38 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import {Actions} from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
+import {
+  Container, Footer, FooterTab, Header, Button, Content,
+} from 'native-base';
 import {
   addToCounter,
   minusToCounter,
-} from "../../actions";
-import {Container, Footer, FooterTab, Header, Button, Body, Content} from 'native-base';
+} from '../../actions';
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
 
 class Home extends Component {
   render() {
@@ -26,71 +45,76 @@ class Home extends Component {
       <Container>
         <Header
           style={{
-            backgroundColor: "#F5FCFF",
-            justifyContent: "center",
-            alignItems: "center",
+            backgroundColor: '#F5FCFF',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <Text>home</Text>
+          <Text>
+            home
+          </Text>
         </Header>
         <Content
-          contentContainerStyle ={{
-            flex:1,
-            justifyContent: "center",
-            alignItems: "center",
+          contentContainerStyle={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
           style={{
-            backgroundColor: "#F5FCFF",
+            backgroundColor: '#F5FCFF',
           }}
         >
           <View style={styles.container}>
-          <Text>
+            <Text>
             Welcome to React  Native!
-          </Text>
-          <Text>
+            </Text>
+            <Text>
             To get started, edit index.ios.js
-          </Text>
-          <Text>
-            Press Cmd+R to reload,{'\n'}
+            </Text>
+            <Text>
+            Press Cmd+R to reload,
+              {'\n'}
             Cmd+D or shake for dev menu
-          </Text>
-          <View>
-            <Button
-              onPress={()=> {
-                Actions.push('login');
-              }}
-            >
-              <Text>
+            </Text>
+            <View>
+              <Button
+                onPress={() => {
+                  Actions.push('login');
+                }}
+              >
+                <Text>
                 Go to Login!
-              </Text>
-            </Button>
-            <Button
-              onPress={()=> {
-                this.props.addToCounter();
-              }}
-            >
-              <Text>
+                </Text>
+              </Button>
+              <Button
+                onPress={() => {
+                  this.props.addToCounter();
+                }}
+              >
+                <Text>
                 Add counter
-              </Text>
-            </Button>
-            <Button
-              onPress={()=> {
-                this.props.minusToCounter();
-              }}
-            >
-              <Text>
+                </Text>
+              </Button>
+              <Button
+                onPress={() => {
+                  this.props.minusToCounter();
+                }}
+              >
+                <Text>
                 Minus counter
-              </Text>
-            </Button>
+                </Text>
+              </Button>
+            </View>
+            <Text>
+              {this.props.counter}
+            </Text>
           </View>
-          <Text>{this.props.counter}</Text>
-        </View>
         </Content>
         <Footer>
           <FooterTab
             style={{
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
             <Text>
@@ -102,35 +126,13 @@ class Home extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    counter: state.reducer.counter
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addToCounter: bindActionCreators(addToCounter, dispatch),
-    minusToCounter: bindActionCreators(minusToCounter, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
-
-var styles = StyleSheet.create({
-    container: {
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#F5FCFF",
-    },
-    welcome: {
-      fontSize: 20,
-      textAlign: "center",
-      margin: 10,
-    },
-    instructions: {
-      textAlign: "center",
-      color: "#333333",
-      marginBottom: 5,
-    },
+const mapStateToProps = state => ({
+  counter: state.reducer.counter,
 });
+
+const mapDispatchToProps = dispatch => ({
+  addToCounter: bindActionCreators(addToCounter, dispatch),
+  minusToCounter: bindActionCreators(minusToCounter, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -14,14 +14,16 @@ import {
   Stack,
   Scene,
 } from 'react-native-router-flux';
-import { Container, Footer, FooterTab, Header, Body } from 'native-base';
+import {
+  Container, Footer, FooterTab, Header, Body,
+} from 'native-base';
 
 // import page container
 import Home from './container/Home';
 import Login from './container/Login';
 
 // import other file
-import configureStore from './store'
+import configureStore from './store';
 
 export default class App extends Component {
   render() {

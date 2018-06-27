@@ -1,10 +1,10 @@
-import {ADD_TO_COUNTER, MINUS_TO_COUNTER} from './actions'
+import { combineReducers } from 'redux';
+import { ADD_TO_COUNTER, MINUS_TO_COUNTER } from './actions';
 
-import { combineReducers } from 'redux'
 // This is the default state of the app i.e. when the app starts for the first time
 const initialState = {
-  counter: 0
-}
+  counter: 0,
+};
 
 // This is a reducer which listens to actions and modifies the state
 const reducer = (state = initialState, action) => {
@@ -14,20 +14,20 @@ const reducer = (state = initialState, action) => {
     case ADD_TO_COUNTER:
       return {
         ...state,
-        counter: state.counter + 1
-      }
+        counter: state.counter + 1,
+      };
     case MINUS_TO_COUNTER:
       return {
         ...state,
-        counter: state.counter - 1
-      }
+        counter: state.counter - 1,
+      };
     default:
       return state;
-    }
-}
+  }
+};
 
 const rootReducer = combineReducers({
-  reducer
-})
+  reducer,
+});
 
 export default rootReducer;

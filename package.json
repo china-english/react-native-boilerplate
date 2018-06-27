@@ -5,7 +5,16 @@
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
-		"postinstall": "rndebugger-open"
+		"postinstall": "rndebugger-open",
+		"lint": "eslint --ext .js ./src --fix",
+		"precommit": "lint-staged"
+	},
+	"lint-staged": {
+		"app/**/*.{js,jsx}": [
+			"prettier --tab-width 4 --write",
+			"eslint --fix",
+			"git add"
+		]
 	},
 	"dependencies": {
 		"native-base": "^2.4.5",
@@ -19,9 +28,18 @@
 		"redux-thunk": "^2.3.0"
 	},
 	"devDependencies": {
+		"babel-eslint": "^8.2.5",
 		"babel-jest": "23.0.1",
 		"babel-preset-react-native": "4.0.0",
+		"eslint": "^4.19.1",
+		"eslint-config-airbnb": "^17.0.0",
+		"eslint-plugin-import": "^2.13.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-react": "^7.10.0",
+		"husky": "^0.14.3",
 		"jest": "23.1.0",
+		"lint-staged": "^7.2.0",
+		"prettier": "1.13.6",
 		"react-native-debugger-open": "^0.3.17",
 		"react-test-renderer": "16.0.0-alpha.6",
 		"redux-devtools-extension": "^2.13.2"

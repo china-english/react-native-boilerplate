@@ -9,11 +9,13 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
-import {Actions} from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 
-import {Container, Footer, FooterTab, Header, Button, Body, Content} from 'native-base';
+import {
+  Container, Footer, FooterTab, Header, Button, Body, Content,
+} from 'native-base';
 
 export default class Login extends Component {
   render() {
@@ -21,26 +23,28 @@ export default class Login extends Component {
       <Container>
         <Header
           style={{
-            backgroundColor: "#F5FCFF",
-            justifyContent: "center",
-            alignItems: "center",
+            backgroundColor: '#F5FCFF',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <Text>Login</Text>
+          <Text>
+Login
+          </Text>
         </Header>
         <Content
-          contentContainerStyle ={{
-            flex:1,
-            justifyContent: "center",
-            alignItems: "center",
+          contentContainerStyle={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
           style={{
-            backgroundColor: "#F5FCFF",
+            backgroundColor: '#F5FCFF',
           }}
         >
           <View>
             <Button
-              onPress={()=> Actions.pop()}
+              onPress={() => Actions.pop()}
             >
               <Text>
                 Back Home
@@ -51,8 +55,8 @@ export default class Login extends Component {
         <Footer>
           <FooterTab
             style={{
-              justifyContent: "center",
-              alignItems: "center",
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
             <Text>
@@ -65,20 +69,20 @@ export default class Login extends Component {
   }
 }
 
-var styles = StyleSheet.create({
-    container: {
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#F5FCFF",
-    },
-    welcome: {
-      fontSize: 20,
-      textAlign: "center",
-      margin: 10,
-    },
-    instructions: {
-      textAlign: "center",
-      color: "#333333",
-      marginBottom: 5,
-    },
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
