@@ -12,9 +12,13 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import { Actions } from 'react-native-router-flux';
+import PropTypes from 'prop-types';
 import {
-  Container, Footer, FooterTab, Header, Button, Content,
+  Container,
+  Footer,
+  FooterTab, Header, Button, Content,
 } from 'native-base';
 import {
   addToCounter,
@@ -39,8 +43,9 @@ const styles = StyleSheet.create({
   },
 });
 
-class Home extends Component {
+class Home extends Component { //eslint-disable-line
   render() {
+    const { addCounter, minusCounter, counter } = this.props;
     return (
       <Container>
         <Header
@@ -88,25 +93,25 @@ class Home extends Component {
               </Button>
               <Button
                 onPress={() => {
-                  this.props.addToCounter();
+                  addCounter();
                 }}
               >
                 <Text>
-                Add counter
+                  Add counter
                 </Text>
               </Button>
               <Button
                 onPress={() => {
-                  this.props.minusToCounter();
+                  minusCounter();
                 }}
               >
                 <Text>
-                Minus counter
+                  Minus counter
                 </Text>
               </Button>
             </View>
             <Text>
-              {this.props.counter}
+              {counter}
             </Text>
           </View>
         </Content>
@@ -126,13 +131,26 @@ class Home extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
+
+Home.propTypes = {
+  counter: PropTypes.number,
+  minusCounter: PropTypes.func,
+  addCounter: PropTypes.func,
+};
+
+Home.defaultProps = {
+  counter: 0,
+  minusCounter: null,
+  addCounter: null,
+};
+
+const mapStateToProps = (state) => ({
   counter: state.reducer.counter,
 });
 
-const mapDispatchToProps = dispatch => ({
-  addToCounter: bindActionCreators(addToCounter, dispatch),
-  minusToCounter: bindActionCreators(minusToCounter, dispatch),
+const mapDispatchToProps = (dispatch) => ({
+  addCounter: bindActionCreators(addToCounter, dispatch),
+  minusCounter: bindActionCreators(minusToCounter, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
