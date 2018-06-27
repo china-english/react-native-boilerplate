@@ -10,7 +10,7 @@
 		"precommit": "lint-staged"
 	},
 	"lint-staged": {
-		"app/**/*.{js,jsx}": [
+		"src/**/*.{js,jsx}": [
 			"prettier --tab-width 4 --write",
 			"eslint --fix",
 			"git add"
