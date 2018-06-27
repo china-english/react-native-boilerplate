@@ -13,10 +13,9 @@ module.exports = {
   "rules": {
     // "max-len": ["error", 120],
     "no-console": 0,
-    "newline-per-chained-call": 1,
     // "react/forbid-prop-types": [0, { "forbid": ["any", "array", "object"] }],
     "class-methods-use-this": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]，
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "arrow-parens": [
       "error",
       "always"
@@ -58,7 +57,7 @@ module.exports = {
     "jsx-a11y/role-supports-aria-props": 2,
     "jsx-a11y/no-static-element-interactions": 0,
     "max-len": 0,
-    "newline-per-chained-call": 0,
+    "newline-per-chained-call": 1,
     "prefer-template": 2,
     "class-methods-use-this": 0,
     "react/forbid-prop-types": 0,
@@ -83,6 +82,9 @@ module.exports = {
     "semi": [
       2,
       "always"
-    ]
+    ],
+    "react/jsx-one-expression-per-line": 0,
+    "block-spacing": 2,
+    "allow-single-line": true
   }
 };
