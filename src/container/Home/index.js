@@ -11,10 +11,12 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
 import { Actions } from 'react-native-router-flux';
-import PropTypes from 'prop-types';
+import { createPropsSelector } from 'reselect-immutable-helpers';
+
 import {
   Container,
   Footer,
@@ -24,6 +26,7 @@ import {
   addToCounter,
   minusToCounter,
 } from '../../actions';
+import { selectCounter } from '../../selectors';
 
 const styles = StyleSheet.create({
   container: {
@@ -46,6 +49,7 @@ const styles = StyleSheet.create({
 class Home extends Component { //eslint-disable-line
   render() {
     const { addCounter, minusCounter, counter } = this.props;
+    console.log(this.props);
     return (
       <Container>
         <Header
@@ -144,13 +148,13 @@ Home.defaultProps = {
   addCounter: null,
 };
 
-const mapStateToProps = (state) => ({
-  counter: state.reducer.counter,
+const mapStateToProps = createPropsSelector({
+  counter: selectCounter,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addCounter: bindActionCreators(addToCounter, dispatch),
-  minusCounter: bindActionCreators(minusToCounter, dispatch),
+  addCounter: () => dispatch(addToCounter()),
+  minusCounter: () => dispatch(minusToCounter()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

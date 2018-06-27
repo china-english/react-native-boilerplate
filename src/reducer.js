@@ -1,10 +1,12 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
+import { fromJS } from 'immutable';
+
 import { ADD_TO_COUNTER, MINUS_TO_COUNTER } from './actions';
 
 // This is the default state of the app i.e. when the app starts for the first time
-const initialState = {
+const initialState = fromJS({
   counter: 0,
-};
+});
 
 // This is a reducer which listens to actions and modifies the state
 const reducer = (state = initialState, action) => {
@@ -12,15 +14,9 @@ const reducer = (state = initialState, action) => {
   // to be able to handle this in the reducer since we just add another 'case'.
   switch (action.type) {
     case ADD_TO_COUNTER:
-      return {
-        ...state,
-        counter: state.counter + 1,
-      };
+      return state.update('counter', (counter) => counter + 1);
     case MINUS_TO_COUNTER:
-      return {
-        ...state,
-        counter: state.counter - 1,
-      };
+      return state.update('counter', (counter) => counter - 1);
     default:
       return state;
   }
