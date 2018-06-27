@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
 class Home extends Component { //eslint-disable-line
   render() {
     const { addCounter, minusCounter, counter } = this.props;
-    console.log(this.props);
     return (
       <Container>
         <Header
