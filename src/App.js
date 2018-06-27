@@ -24,10 +24,11 @@ import Login from './container/Login';
 import Router from './Router'
 import configureStore from './store'
 
+const preloadedState = window.__PRELOADED_STATE__
+const store = configureStore(preloadedState)
+
 export default class App extends Component {
   render() {
-    const preloadedState = window.__PRELOADED_STATE__
-    const store = configureStore(preloadedState)
     return (
       <Provider store={store}>
         <Router />
