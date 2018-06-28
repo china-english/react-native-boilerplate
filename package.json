@@ -17,7 +17,10 @@
 		]
 	},
 	"dependencies": {
+		"hoist-non-react-statics": "^2.5.5",
 		"immutable": "^3.8.2",
+		"invariant": "^2.2.4",
+		"lodash": "^4.17.10",
 		"native-base": "^2.4.5",
 		"plop": "^2.0.0",
 		"prop-types": "^15.6.2",

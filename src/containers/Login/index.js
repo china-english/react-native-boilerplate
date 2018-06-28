@@ -5,8 +5,11 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
-
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { createPropsSelector } from 'reselect-immutable-helpers';
 import {
   Container,
   Footer,
@@ -17,11 +20,17 @@ import {
 } from 'native-base';
 
 import Header from '../../components/Header';
+import injectReducer from '../../utils/injectReducer';
+import injectSaga from '../../utils/injectSaga';
 
+import sagas from './sagas';
+import reducer from './reducer';
+import { selectDisplay } from './selectors';
 import styles from './styles';
 
-export default class Login extends Component { // eslint-disable-line
+class Login extends Component { // eslint-disable-line
   render() {
+    const { display } = this.props;
     return (
       <Container>
         <Header />
@@ -36,6 +45,9 @@ export default class Login extends Component { // eslint-disable-line
           >
             <Text>Back Home</Text>
           </Button>
+          {display
+            && <Text>Now, display is true</Text>
+          }
         </Content>
         <Footer>
           <FooterTab style={styles.footerTble}>
@@ -46,3 +58,31 @@ export default class Login extends Component { // eslint-disable-line
     );
   }
 }
+
+Login.propTypes = {
+  display: PropTypes.bool,
+};
+
+Login.defaultProps = {
+  display: false,
+};
+
+const mapStateToProps = createPropsSelector({
+  display: selectDisplay,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  dispatch,
+});
+
+const withSagas = sagas.map((saga) => injectSaga(saga));
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'login', reducer });
+
+export default compose(
+  withReducer,
+  ...withSagas,
+  withConnect,
+)(Login);

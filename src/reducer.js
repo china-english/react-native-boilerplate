@@ -18,8 +18,11 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-const rootReducer = combineReducers({
-  reducer,
-});
-
-export default rootReducer;
+export default function createReducer(injectedReducers) {
+  const allReducer = combineReducers({
+    nativeBoilerplate: reducer,
+    ...injectedReducers,
+  });
+  const rootReducer = (state = fromJS({}), action) => allReducer(state, action);
+  return rootReducer;
+}
