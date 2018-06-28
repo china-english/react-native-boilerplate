@@ -5,54 +5,40 @@
  */
 
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 import {
   Container,
   Footer,
   FooterTab,
-  Header,
   Button,
   Content,
+  Text,
 } from 'native-base';
+
+import Header from '../../components/Header';
+
+import styles from './styles';
 
 export default class Login extends Component { // eslint-disable-line
   render() {
     return (
       <Container>
-        <Header
-          style={{
-            backgroundColor: '#F5FCFF',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Text>Login</Text>
-        </Header>
+        <Header />
+
         <Content
-          contentContainerStyle={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          style={{
-            backgroundColor: '#F5FCFF',
-          }}
+          contentContainerStyle={styles.contentContainer}
+          style={styles.content}
         >
-          <View>
-            <Button onPress={() => Actions.pop()}>
-              <Text>Back Home</Text>
-            </Button>
-          </View>
+          <Button
+            onPress={() => Actions.pop()}
+            style={styles.button}
+          >
+            <Text>Back Home</Text>
+          </Button>
         </Content>
         <Footer>
-          <FooterTab
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
+          <FooterTab style={styles.footerTble}>
             <Text>Login footer</Text>
           </FooterTab>
         </Footer>

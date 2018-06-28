@@ -5,129 +5,81 @@
  */
 
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { Actions } from 'react-native-router-flux';
 import { createPropsSelector } from 'reselect-immutable-helpers';
-
 import {
   Container,
   Footer,
-  FooterTab, Header, Button, Content,
+  FooterTab,
+  Button,
+  Content,
+  Text,
 } from 'native-base';
+
+import Header from '../../components/Header';
 import {
   addToCounter,
   minusToCounter,
 } from '../../actions';
 import { selectCounter } from '../../selectors';
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+import styles from './styles';
 
 class Home extends Component { //eslint-disable-line
   render() {
     const { addCounter, minusCounter, counter } = this.props;
     return (
       <Container>
-        <Header
-          style={{
-            backgroundColor: '#F5FCFF',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+        <Header />
+        <Content
+          contentContainerStyle={styles.contentContainer}
+          style={styles.content}
         >
           <Text>
-            home
-          </Text>
-        </Header>
-        <Content
-          contentContainerStyle={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-          style={{
-            backgroundColor: '#F5FCFF',
-          }}
-        >
-          <View style={styles.container}>
-            <Text>
             Welcome to React  Native!
-            </Text>
-            <Text>
+          </Text>
+          <Text>
             To get started, edit index.ios.js
-            </Text>
-            <Text>
+          </Text>
+          <Text>
             Press Cmd+R to reload,
-              {'\n'}
+            {'\n'}
             Cmd+D or shake for dev menu
-            </Text>
-            <View>
-              <Button
-                onPress={() => {
-                  Actions.push('login');
-                }}
-              >
-                <Text>
-                Go to Login!
-                </Text>
-              </Button>
-              <Button
-                onPress={() => {
-                  addCounter();
-                }}
-              >
-                <Text>
-                  Add counter
-                </Text>
-              </Button>
-              <Button
-                onPress={() => {
-                  minusCounter();
-                }}
-              >
-                <Text>
-                  Minus counter
-                </Text>
-              </Button>
-            </View>
-            <Text>
-              {counter}
-            </Text>
-          </View>
+          </Text>
+          <Button
+            onPress={() => {
+              Actions.push('login');
+            }}
+            style={styles.button}
+          >
+            <Text>Go to Login!</Text>
+          </Button>
+          <Button
+            onPress={() => {
+              addCounter();
+            }}
+            style={styles.button}
+          >
+            <Text>Add counter</Text>
+          </Button>
+          <Button
+            onPress={() => {
+              minusCounter();
+            }}
+            style={styles.button}
+          >
+            <Text>Minus counter</Text>
+          </Button>
+          <Text>
+            {counter}
+          </Text>
         </Content>
         <Footer>
-          <FooterTab
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <Text>
-              home footer
-            </Text>
+          <FooterTab style={styles.footerTble}>
+            <Text>home footer</Text>
           </FooterTab>
         </Footer>
       </Container>
