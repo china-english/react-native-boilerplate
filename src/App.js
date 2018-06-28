@@ -5,21 +5,25 @@
  */
 
 // react && redux module
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
+
+import { StyleProvider } from 'native-base';
 
 import Router from './Router';
 import configureStore from './store';
 
-const preloadedState = window.__PRELOADED_STATE__;
-const store = configureStore(preloadedState);
+import getTheme from './theme/components';
+import variables from './theme/variables/platform';
 
-export default class App extends Component {
-  render() {
-    return (
+const store = configureStore();
+
+export default function App() {
+  return (
+    <StyleProvider style={getTheme(variables)}>
       <Provider store={store}>
         <Router />
       </Provider>
-    );
-  }
+    </StyleProvider>
+  );
 }

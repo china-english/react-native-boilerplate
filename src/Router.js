@@ -5,8 +5,7 @@
  */
 
 // react && redux module
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React from 'react';
 
 // Third party plug-in
 import {
@@ -14,26 +13,18 @@ import {
   Stack,
   Scene,
 } from 'react-native-router-flux';
-import {
-  Container, Footer, FooterTab, Header, Body,
-} from 'native-base';
 
 // import page container
 import Home from './container/Home';
 import Login from './container/Login';
 
-// import other file
-import configureStore from './store';
-
-export default class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Stack hideNavBar>
-          <Scene key="home" component={Home} initial />
-          <Scene key="login" component={Login} />
-        </Stack>
-      </Router>
-    );
-  }
+export default function App() {
+  return (
+    <Router>
+      <Stack hideNavBar>
+        <Scene key="home" component={Home} initial />
+        <Scene key="login" component={Login} />
+      </Stack>
+    </Router>
+  );
 }
