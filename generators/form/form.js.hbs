@@ -1,0 +1,92 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { reduxForm } from 'redux-form/immutable';
+import pick from 'lodash/pick';
+
+import Button from 'components/Button';
+import formValidators from 'utils/formValidators';
+import * as FormField from 'forms/formFields/AntDesign';
+{{#if wantMessages}}
+import TranslatedMessage{{#if wantHeaders}}, { formatMessage }{{/if}} from 'components/TranslatedMessage';
+
+import messages from './messages';
+{{/if}}
+import './style.scss';
+
+const { isRequired } = formValidators;
+
+const formFieldsObject = {
+  firstName: {
+    type: 'textInput',
+    validate: [isRequired],
+    hasLabel: false,
+    placeholder: 'firstName',
+  },
+  age: {
+    type: 'numberInput',
+    validate: [isRequired],
+    hasLabel: false,
+    placeholder: 'age',
+  },
+  sampleSelectInput: {
+    type: 'selectInput',
+    validate: [isRequired],
+    placeholder: 'sampleSelectInput',
+    formItemLayout: {
+      labelCol: { span: 24 },
+      wrsrcerCol: { span: 6 },
+    },
+    options: [
+      { label: 'Hello', value: 'hello' },
+      { label: 'World', value: 'world' },
+    ],
+  },
+  sampleSwitch: {
+    type: 'switchButton',
+    validate: [isRequired],
+    placeholder: 'sampleSwitch',
+    formItemLayout: {
+      labelCol: { span: 24 },
+      wrsrcerCol: { span: 6 },
+    },
+  },
+};
+
+function {{ properCase name }}(props) {
+  const { handleSubmit, submitting, ...otherProps } = props;
+  const groups = {
+    sample: pick(formFieldsObject, 'sampleTextInput', 'sampleNumberInput', 'sampleSelectInput', 'sampleSwitch'),
+  };
+  const keys = Object.keys(groups);
+
+  return (
+    <form onSubmit={handleSubmit} className="{{  kebabCase name }}">
+      {{#if wantMessages}}
+      <TranslatedMessage messages={messages} messageId="header" />
+      {{/if}}
+      {Object.values(groups).map((group, i) =>
+        <FormField.Group fieldsObject={group} key={keys[i]} {...otherProps} />
+      )}
+      <div className="text-center">
+        <Button htmlType="submit" type="primary" disabled={submitting} label="hello" width="100%" />
+      </div>
+    </form>
+  );
+}
+
+{{ properCase name }}.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  submitting: PropTypes.bool,
+};
+
+export default reduxForm({
+  form: '{{ properCase name }}',
+  destroyOnUnmount: false,
+  enableReinitialize: true,
+})({{ properCase name }});

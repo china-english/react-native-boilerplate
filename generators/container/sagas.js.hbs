@@ -1,0 +1,46 @@
+import {
+  {{#if wantActionsAndReducer}}
+  takeLatest,
+  {{else}}
+  // takeLatest,
+  {{/if}}
+  // cancel,
+  // take,
+  // call,
+  // put,
+  // select,
+} from 'redux-saga/effects';
+
+// import * as StrapiApi from 'apis/strapi';
+{{#if wantActionsAndReducer}}
+import {
+  DEFAULT_ACTION,
+} from './constants';
+{{/if}}
+// import { } from './actions';
+// import { } from './selectors';
+
+// Individual exports for testing
+export function* loadData() {
+  // try {
+  //   const result = yield call(StrapiApi.getXXAPI, action.uid);
+  //   yield put(loadDataSuccessAction(result));
+  // } catch (error) {
+  //   yield put(loadDataFailAction(error));
+  // }
+}
+
+export function* watchLoadData() {
+  {{#if wantActionsAndReducer}}
+  yield takeLatest(DEFAULT_ACTION, loadData);
+  {{/if}}
+  // const watcher = yield takeLatest(DEFAULT_ACTION, loadData);
+  // yield cancel(watcher);
+}
+
+export default [
+  {
+    key: '{{ camelCase name }}',
+    saga: watchLoadData,
+  },
+];

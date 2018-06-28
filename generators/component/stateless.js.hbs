@@ -1,0 +1,37 @@
+/**
+*
+* {{ properCase name }} Stateless Component
+*
+*/
+
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import classNames from 'classnames';
+
+{{#if wantMessages}}
+import TranslatedMessage from 'components/TranslatedMessage';
+import messages from './messages';
+{{/if}}
+import './style.scss';
+
+function {{ properCase name }}(props) {
+  // const imgClassName = classNames({
+  //  avatar: true,
+  //  picture: true,
+  // });
+  return (
+    <div className="{{ kebabCase name }}">
+    {{#if wantMessages}}
+      <TranslatedMessage messages={messages} messageId="header" />
+    {{/if}}
+    </div>
+  );
+}
+{{ properCase name }}.defaultProps = {
+
+};
+{{ properCase name }}.propTypes = {
+
+};
+
+export default {{ properCase name }};

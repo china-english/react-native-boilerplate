@@ -1,0 +1,32 @@
+import { createSelector } from 'reselect';
+// import { createGetSelector } from 'reselect-immutable-helpers';
+// import Immutable,{ fromJS } from 'immutable';
+// import { } from 'lodash';
+// import moment from 'moment';
+
+// import { } from 'utils/helpers';
+// import { } from 'containers/src/selectors';
+// import { } from './constants';
+
+/**
+ * Direct selector to the {{ camelCase name }} state domain
+ */
+export const select{{ properCase name }}Domain = (state) => state.get('{{ camelCase name }}');
+
+/**
+ * Other specific selectors
+ */
+// export const selectIsLoading = createGetSelector(
+//   select{{ properCase name }}Domain, 'isLoading'
+// );
+
+
+/**
+ * Default selector used by {{ properCase name }}
+ */
+export const select{{ properCase name }} = createSelector(
+  select{{ properCase name }}Domain,
+  (substate) => substate
+);
+
+export default select{{ properCase name }};

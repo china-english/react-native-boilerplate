@@ -1,0 +1,29 @@
+/*
+ *
+ * {{ properCase name }} reducer
+ *
+ */
+
+import { fromJS } from 'immutable';
+
+import { USER_LOGOUT_SUCCESS } from 'containers/src/constants';
+import {
+  DEFAULT_ACTION,
+} from './constants';
+
+const initialState = fromJS({
+
+});
+
+function {{ camelCase name }}Reducer(state = initialState, action) {
+  switch (action.type) {
+    case DEFAULT_ACTION:
+      return state;
+    case USER_LOGOUT_SUCCESS:
+      return initialState;
+    default:
+      return state;
+  }
+}
+
+export default {{ camelCase name }}Reducer;

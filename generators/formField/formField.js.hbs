@@ -1,0 +1,70 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Input, Form } from 'antd';
+import classNames from 'classnames';
+import { injectIntl } from 'react-intl';
+
+import TranslatedMessage, { formatMessage } from 'components/TranslatedMessage';
+import messages from 'forms/messages';
+
+import './style.scss';
+
+const FormItem = Form.Item;
+
+function {{ properCase name }}(props) {
+  const {
+    input,
+    hasLabel = true,
+    placeholder,
+    className,
+    formItemLayout,
+    intl,
+    meta: { dirty, touched, error },
+  } = props;
+
+  const label = hasLabel ? <TranslatedMessage messages={messages} messageId={input.name} /> : '';
+
+  const newClassName = classNames({
+    '{{ kebabCase name }}': true,
+    [className]: className,
+  });
+
+  const errorMessage = (dirty || touched) && error && <div className="text-error">
+    <TranslatedMessage messages={messages} messageId={error} />
+  </div>;
+
+  const FiledPlaceholder = formatMessage(intl, messages, placeholder);
+
+  return (
+    <FormItem
+      label={label}
+      className={newClassName}
+      {...formItemLayout}
+    >
+      <Input
+        placeholder={FiledPlaceholder}
+        defaultValue={input.value}
+        onChange={input.onChange}
+      />
+      {errorMessage}
+    </FormItem>
+  );
+}
+
+{{ properCase name }}.propTypes = {
+  formItemLayout: PropTypes.object,
+  input: PropTypes.object,
+  hasLabel: PropTypes.bool,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+  intl: PropTypes.object,
+  meta: PropTypes.object,
+};
+
+export default injectIntl({{ properCase name }});

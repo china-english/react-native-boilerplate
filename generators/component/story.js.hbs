@@ -1,0 +1,31 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import { withInfo } from '@storybook/addon-info';
+import { withKnobs } from '@storybook/addon-knobs/react';
+
+import {{ properCase name }} from '../';
+
+const componentPath = localStorage.filename.split('/stories/')[0].split('./')[1];
+storiesOf(componentPath, module)
+  .addDecorator(withKnobs)
+  .add('Normal state',
+    withInfo('Notes for Normal state')(
+      () => (
+        <{{ properCase name }} onClick={action('{{ properCase name }} was clicked')} />
+      )
+    )
+  )
+  .add('Other state',
+    withInfo('Notes for Other state')(
+      () => (
+        <{{ properCase name }} onClick={action('{{ properCase name }} was clicked')} />
+      )
+    )
+  );

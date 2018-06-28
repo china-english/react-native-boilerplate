@@ -15,8 +15,8 @@ import {
 } from 'react-native-router-flux';
 
 // import page container
-import Home from './container/Home';
-import Login from './container/Login';
+import Home from './containers/Home';
+import Login from './containers/Login';
 
 export default function App() {
   return (

@@ -1,0 +1,48 @@
+/**
+*
+* {{ properCase name }} Component
+*
+*/
+
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import classNames from 'classnames';
+
+{{#if wantMessages}}
+import TranslatedMessage from 'components/TranslatedMessage';
+import messages from './messages';
+{{/if}}
+import './style.scss';
+
+class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {};
+  // }
+
+  // onClick = () => { // eslint-disable-line no-undef
+  // }
+  //
+
+  render() {
+    // const imgClassName = classNames({
+    //  avatar: true,
+    //  picture: true,
+    // });
+    return (
+      <div className="{{ kebabCase name }}">
+      {{#if wantMessages}}
+        <TranslatedMessage messages={messages} messageId="header" />
+      {{/if}}
+      </div>
+    );
+  }
+}
+{{ properCase name }}.defaultProps = {
+
+};
+{{ properCase name }}.propTypes = {
+
+};
+
+export default {{ properCase name }};
