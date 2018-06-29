@@ -8,10 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const pageComponents = fs.readdirSync(path.join(__dirname, '../../src/components'));
 const pageContainers = fs.readdirSync(path.join(__dirname, '../../src/containers'));
-const pageForms = fs.readdirSync(path.join(__dirname, '../../src/forms'));
-// const pageFormFields = fs.readdirSync(path.join(__dirname, '../../src/forms/formFields'));
-// const srcImages = fs.readdirSync(path.join(__dirname, '../../src/images'));
-const components = pageComponents.concat(pageContainers).concat(pageForms);
+const components = pageComponents.concat(pageContainers);
 
 function componentExists(comp) {
   return components.indexOf(comp) >= 0;

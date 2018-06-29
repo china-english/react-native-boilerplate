@@ -1,3 +1,8 @@
+/*
+ *
+ * {{ properCase name }} sagas
+ *
+ */
 import {
   {{#if wantActionsAndReducer}}
   takeLatest,
@@ -5,42 +10,34 @@ import {
   // takeLatest,
   {{/if}}
   // cancel,
-  // take,
   // call,
-  // put,
-  // select,
+  put,
 } from 'redux-saga/effects';
 
-// import * as StrapiApi from 'apis/strapi';
 {{#if wantActionsAndReducer}}
-import {
-  DEFAULT_ACTION,
-} from './constants';
+import { DEFAULT_ACTION } from './constants';
+import { defaultAction } from './actions';
 {{/if}}
-// import { } from './actions';
-// import { } from './selectors';
 
-// Individual exports for testing
-export function* loadData() {
-  // try {
-  //   const result = yield call(StrapiApi.getXXAPI, action.uid);
-  //   yield put(loadDataSuccessAction(result));
-  // } catch (error) {
-  //   yield put(loadDataFailAction(error));
-  // }
+export function* defaultSaga() {
+  try {
+    yield put(defaultAction());
+    console.log('Good job! Success inject sagas in {{ properCase name }}');
+  } catch (error) {
+    console.log('Opps! There seem to be some problems When we use sagas, please check it');
+  }
 }
 
-export function* watchLoadData() {
+export function* watchDefaultSaga() {
   {{#if wantActionsAndReducer}}
-  yield takeLatest(DEFAULT_ACTION, loadData);
+  yield takeLatest(DEFAULT_ACTION, defaultSaga);
   {{/if}}
-  // const watcher = yield takeLatest(DEFAULT_ACTION, loadData);
   // yield cancel(watcher);
 }
 
 export default [
   {
     key: '{{ camelCase name }}',
-    saga: watchLoadData,
+    saga: watchDefaultSaga,
   },
 ];

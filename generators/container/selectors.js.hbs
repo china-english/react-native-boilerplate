@@ -1,32 +1,16 @@
-import { createSelector } from 'reselect';
-// import { createGetSelector } from 'reselect-immutable-helpers';
+import { createGetSelector } from 'reselect-immutable-helpers';
+// import { createSelector } from 'reselect';
 // import Immutable,{ fromJS } from 'immutable';
-// import { } from 'lodash';
-// import moment from 'moment';
 
-// import { } from 'utils/helpers';
-// import { } from 'containers/src/selectors';
-// import { } from './constants';
-
-/**
- * Direct selector to the {{ camelCase name }} state domain
+/*
+ * Direct selector to the {{ camelCase name }} reducer
+ * 直接挑选 {{ camelCase name }}Reducer
  */
-export const select{{ properCase name }}Domain = (state) => state.get('{{ camelCase name }}');
+export const select{{ properCase name }}Reducer = (state) => state.get('{{ camelCase name }}');
 
-/**
- * Other specific selectors
+/*
+ * 选择其中的特定字段
  */
-// export const selectIsLoading = createGetSelector(
-//   select{{ properCase name }}Domain, 'isLoading'
-// );
-
-
-/**
- * Default selector used by {{ properCase name }}
- */
-export const select{{ properCase name }} = createSelector(
-  select{{ properCase name }}Domain,
-  (substate) => substate
+export const selectTest = createGetSelector(
+  select{{ properCase name }}Reducer, 'test'
 );
-
-export default select{{ properCase name }};
