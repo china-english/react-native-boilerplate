@@ -20,6 +20,7 @@ import {
 } from 'native-base';
 
 import Header from '../../components/Header';
+
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
 

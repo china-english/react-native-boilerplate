@@ -5,7 +5,7 @@
  */
 import {
   {{#if wantActionsAndReducer}}
-  takeLatest,
+  // takeLatest,
   {{else}}
   // takeLatest,
   {{/if}}
@@ -15,7 +15,6 @@ import {
 } from 'redux-saga/effects';
 
 {{#if wantActionsAndReducer}}
-import { DEFAULT_ACTION } from './constants';
 import { defaultAction } from './actions';
 {{/if}}
 
@@ -30,7 +29,7 @@ export function* defaultSaga() {
 
 export function* watchDefaultSaga() {
   {{#if wantActionsAndReducer}}
-  yield takeLatest(DEFAULT_ACTION, defaultSaga);
+  // yield takeLatest(DEFAULT_ACTION, defaultSaga);
   {{/if}}
   // yield cancel(watcher);
 }
@@ -38,6 +37,6 @@ export function* watchDefaultSaga() {
 export default [
   {
     key: '{{ camelCase name }}',
-    saga: watchDefaultSaga,
+    saga: defaultSaga,
   },
 ];
