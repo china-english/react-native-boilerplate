@@ -10,8 +10,8 @@ module.exports = {
     type: 'list',
     name: 'type',
     message: 'Select the base component type:',
-    default: 'Stateless Function',
-    choices: () => ['Stateless Function', 'React.PureComponent', 'React.Component'],
+    default: 'React.Component',
+    choices: () => ['React.Component', 'Stateless Function', 'React.PureComponent'],
   }, {
     type: 'input',
     name: 'name',
@@ -38,7 +38,7 @@ module.exports = {
     type: 'confirm',
     name: 'wantSaga',
     default: true,
-    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
+    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)[note: if you select Stateless Function, saga will not create]',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
@@ -53,6 +53,9 @@ module.exports = {
       }
     }
 
+    /* Create the file infrastructure
+     * 创建文件基本结构
+     */
     const actions = [{
       type: 'add',
       path: '../src/containers/{{properCase name}}/index.js',
