@@ -15,15 +15,15 @@ import {
 } from 'react-native-router-flux';
 
 // import page container
-import Home from './containers/Home';
-import Login from './containers/Login';
+import HomeScene from './containers/HomeScene';
+import LoginScene from './containers/LoginScene';
 
 export default function App() {
   return (
     <Router>
       <Stack hideNavBar>
-        <Scene key="home" component={Home} initial />
-        <Scene key="login" component={Login} />
+        <Scene key="home" component={HomeScene} initial />
+        <Scene key="login" component={LoginScene} />
       </Stack>
     </Router>
   );

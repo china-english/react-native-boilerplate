@@ -28,7 +28,7 @@ import { selectCounter } from '../../selectors';
 
 import styles from './styles';
 
-class Home extends Component { //eslint-disable-line
+class HomeScene extends Component { //eslint-disable-line
   render() {
     const { addCounter, minusCounter, counter } = this.props;
     return (
@@ -87,13 +87,13 @@ class Home extends Component { //eslint-disable-line
   }
 }
 
-Home.propTypes = {
+HomeScene.propTypes = {
   counter: PropTypes.number,
   minusCounter: PropTypes.func,
   addCounter: PropTypes.func,
 };
 
-Home.defaultProps = {
+HomeScene.defaultProps = {
   counter: 0,
   minusCounter: null,
   addCounter: null,
@@ -108,4 +108,4 @@ const mapDispatchToProps = (dispatch) => ({
   minusCounter: () => dispatch(minusToCounter()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScene);

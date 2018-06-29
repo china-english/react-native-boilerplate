@@ -28,7 +28,7 @@ import reducer from './reducer';
 import { selectDisplay } from './selectors';
 import styles from './styles';
 
-class Login extends Component { // eslint-disable-line
+class LoginScene extends Component { // eslint-disable-line
   render() {
     const { display } = this.props;
     return (
@@ -59,11 +59,11 @@ class Login extends Component { // eslint-disable-line
   }
 }
 
-Login.propTypes = {
+LoginScene.propTypes = {
   display: PropTypes.bool,
 };
 
-Login.defaultProps = {
+LoginScene.defaultProps = {
   display: false,
 };
 
@@ -85,4 +85,4 @@ export default compose(
   withReducer,
   ...withSagas,
   withConnect,
-)(Login);
+)(LoginScene);
