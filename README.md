@@ -18,13 +18,15 @@ react-native-boilerplate
 
 2. ```cd react-native-boilerplate```
 
-3. ```
+3.
+```
 npm i
 or
 yarn
 ```
 
-4. ```
+4.
+```
 npm start && react-native run-ios
 or
 npm start && react-native run-android
@@ -41,13 +43,15 @@ npm start && react-native run-android
   6. 是否需要进行数据交互（action、redux...）；
   7. 是否需要saga（当第二步选择 stateless function 时，不会创建 saga 相关文件）；
 
+
 * component:
   1. ```npm run generate```，然后选择 component 选项；
   2. component 分三类：Component, stateless function, pureComponent；
   3. 输入 component 的名字；
 
-  持续更新中...
-  -------
-  1. 添加 redux-form;
-  
-  2. 添加 story-book;
+
+持续更新中...
+-------
+1. 添加 redux-form;
+
+2. 添加 story-book;
