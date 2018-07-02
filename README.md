@@ -3,13 +3,13 @@ react-native-boilerplate
 
 插件介绍
 --------
-1. [react: 16.3.1](https://5b05c94e0733d530fd1fafe0--reactjs.netlify.com/docs/hello-world.html)
-2. [react-native: 0.55.4](https://facebook.github.io/react-native/docs/0.55/getting-started.html)
-3. [native-base: 2.6.1](https://docs.nativebase.io/Components.html#Components)
-4. [prop-types: 15.6.2](https://github.com/facebook/prop-types)
-5. [react-native-router-flux: 4.0.0-beta.31](https://github.com/aksonov/react-native-router-flux)
-6. [redux-saga: 0.16.0](https://redux-saga.js.org/)
-7. [redux-immutable: 4.0.0](https://github.com/gajus/redux-immutable)
+1. [react => 16.3.1](https://5b05c94e0733d530fd1fafe0--reactjs.netlify.com/docs/hello-world.html)
+2. [react-native => 0.55.4](https://facebook.github.io/react-native/docs/0.55/getting-started.html)
+3. [native-base => 2.6.1](https://docs.nativebase.io/Components.html#Components)
+4. [prop-types => 15.6.2](https://github.com/facebook/prop-types)
+5. [react-native-router-flux => 4.0.0-beta.31](https://github.com/aksonov/react-native-router-flux)
+6. [redux-saga => 0.16.0](https://redux-saga.js.org/)
+7. [redux-immutable => 4.0.0](https://github.com/gajus/redux-immutable)
 
 开始使用
 -------
