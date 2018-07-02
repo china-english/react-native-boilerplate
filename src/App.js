@@ -8,7 +8,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import { StyleProvider } from 'native-base';
+import { StyleProvider, Root } from 'native-base';
 
 import Router from './Router';
 import configureStore from './store';
@@ -22,7 +22,9 @@ export default function App() {
   return (
     <StyleProvider style={getTheme(variables)}>
       <Provider store={store}>
-        <Router />
+        <Root>
+          <Router />
+        </Root>
       </Provider>
     </StyleProvider>
   );
