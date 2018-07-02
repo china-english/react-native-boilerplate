@@ -26,9 +26,14 @@ module.exports = {
     },
   }, {
     type: 'confirm',
-    name: 'wantHeaders',
+    name: 'wantHeader',
     default: true,
     message: 'Do you want app headers?',
+  }, {
+    type: 'confirm',
+    name: 'wantFooter',
+    default: true,
+    message: 'Do you want app footer?',
   }, {
     type: 'confirm',
     name: 'wantActionsAndReducer',

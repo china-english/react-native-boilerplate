@@ -12,14 +12,13 @@ import { connect } from 'react-redux';
 import { createPropsSelector } from 'reselect-immutable-helpers';
 import {
   Container,
-  Footer,
-  FooterTab,
   Button,
   Content,
   Text,
 } from 'native-base';
 
-import Header from '../../components/Header';
+import AppHeader from '../../components/AppHeader';
+import AppFooter from '../../components/AppFooter';
 
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
@@ -64,7 +63,7 @@ export class HomeScene extends React.Component { // eslint-disable-line react/pr
     } = this.props;
     return (
       <Container>
-        <Header title="Home Scene" hasLeft={false} hasRight={false} />
+        <AppHeader title="Home Scene" hasLeft={false} hasRight={false} />
 
         <Content
           contentContainerStyle={styles.contentContainer}
@@ -101,11 +100,8 @@ export class HomeScene extends React.Component { // eslint-disable-line react/pr
             {counter}
           </Text>
         </Content>
-        <Footer>
-          <FooterTab style={styles.footerTble}>
-            <Text>Login footer</Text>
-          </FooterTab>
-        </Footer>
+
+        <AppFooter pageName="HomeScene" />
       </Container>
     );
   }

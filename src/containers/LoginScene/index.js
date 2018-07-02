@@ -19,7 +19,7 @@ import {
   Text,
 } from 'native-base';
 
-import Header from '../../components/Header';
+import AppHeader from '../../components/AppHeader';
 
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
@@ -34,7 +34,7 @@ class LoginScene extends Component { // eslint-disable-line
     const { display } = this.props;
     return (
       <Container>
-        <Header />
+        <AppHeader title="Login Scene" />
 
         <Content
           contentContainerStyle={styles.contentContainer}
