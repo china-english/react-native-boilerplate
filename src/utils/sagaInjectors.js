@@ -39,7 +39,7 @@ export function injectSagaFactory(store, isValid) {
     checkKey(key);
     checkDescriptor(newDescriptor);
 
-    let hasSaga = Reflect.has(store.injectedSagas, key);
+    let hasSaga = !!store.injectedSagas[key];
 
     if (process.env.NODE_ENV !== 'production') {
       const oldDescriptor = store.injectedSagas[key];
@@ -62,7 +62,7 @@ export function ejectSagaFactory(store, isValid) {
 
     checkKey(key);
 
-    if (Reflect.has(store.injectedSagas, key)) {
+    if (store.injectedSagas[key]) {
       const descriptor = store.injectedSagas[key];
       if (descriptor.mode && descriptor.mode !== DAEMON) {
         descriptor.task.cancel();
