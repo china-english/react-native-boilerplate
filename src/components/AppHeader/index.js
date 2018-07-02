@@ -30,7 +30,10 @@ export default function AppHeader(props) {
 
   const leftButton = (
     <Left>
-      <Button onPress={() => Actions.pop()}>
+      <Button
+        onPress={() => Actions.pop()}
+        style={styles.button}
+      >
         <Icon name="arrow-back" />
         <Text>{backMessage}</Text>
       </Button>
@@ -46,6 +49,7 @@ export default function AppHeader(props) {
           duration: 3000,
           position: 'top',
         })}
+        style={styles.button}
       >
         <Icon ios="ios-menu" android="md-menu" />
       </Button>
