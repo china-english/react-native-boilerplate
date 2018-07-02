@@ -20,6 +20,7 @@
 		"hoist-non-react-statics": "^2.5.5",
 		"immutable": "^3.8.2",
 		"invariant": "^2.2.4",
+		"jest-cli": "^23.2.0",
 		"lodash": "^4.17.10",
 		"native-base": "^2.4.5",
 		"plop": "^2.0.0",
@@ -39,8 +40,10 @@
 	},
 	"devDependencies": {
 		"babel-eslint": "^8.2.5",
-		"babel-jest": "23.0.1",
+		"babel-jest": "^23.0.1",
+		"babel-polyfill": "^6.26.0",
 		"babel-preset-es2015": "^6.24.1",
+		"babel-preset-react": "^6.24.1",
 		"babel-preset-react-native": "4.0.0",
 		"eslint": "^4.19.1",
 		"eslint-config-airbnb": "^17.0.0",
@@ -49,13 +52,30 @@
 		"eslint-plugin-react": "^7.10.0",
 		"eslint-plugin-react-native": "^3.2.1",
 		"husky": "^0.14.3",
-		"jest": "23.1.0",
+		"jest": "^23.1.0",
 		"lint-staged": "^7.2.0",
 		"react-native-debugger-open": "^0.3.17",
 		"react-test-renderer": "16.0.0-alpha.6",
 		"redux-devtools-extension": "^2.13.2"
 	},
 	"jest": {
-		"preset": "react-native"
+		"preset": "react-native",
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx}",
+			"!src/**/*.test.{js,jsx}",
+			"!src/src.js"
+		],
+		"coverageThreshold": {
+			"global": {
+				"statements": 98,
+				"branches": 91,
+				"functions": 98,
+				"lines": 98
+			}
+		},
+		"moduleDirectories": [
+			"node_modules",
+			"src"
+		]
 	}
 }
