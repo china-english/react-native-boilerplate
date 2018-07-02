@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 
 import { StyleProvider, Root } from 'native-base';
 
-import Router from './Router';
+import AppRouter from './router';
 import configureStore from './store';
 
 import getTheme from './theme/components';
@@ -23,7 +23,7 @@ export default function App() {
     <StyleProvider style={getTheme(variables)}>
       <Provider store={store}>
         <Root>
-          <Router />
+          <AppRouter />
         </Root>
       </Provider>
     </StyleProvider>

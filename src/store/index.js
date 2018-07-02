@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 
 import createReducer from '../reducer';
-import sagas from '../Sagas';
+import sagas from '../sagas';
 
 // This connects the reducer to the store
 const configureStore = () => {

@@ -18,7 +18,7 @@ import {
 import HomeScene from './containers/HomeScene';
 import LoginScene from './containers/LoginScene';
 
-export default function App() {
+export default function AppRouter() {
   return (
     <Router>
       <Stack hideNavBar>
