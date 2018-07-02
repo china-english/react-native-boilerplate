@@ -66,12 +66,17 @@ module.exports = {
       path: '../src/containers/{{properCase name}}/styles.js',
       templateFile: './container/style.js.hbs',
       abortOnFail: true,
-    }, {
-      type: 'add',
-      path: '../src/containers/{{properCase name}}/tests/index.test.js',
-      templateFile: './container/test.js.hbs',
-      abortOnFail: true,
-    }];
+    },
+    /*
+     * jest 配置失败，暂时不自动添加test.js相关文件，以下同
+     */
+    // {
+    //   type: 'add',
+    //   path: '../src/containers/{{properCase name}}/tests/index.test.js',
+    //   templateFile: './container/test.js.hbs',
+    //   abortOnFail: true,
+    // }
+    ];
 
     /* If you want actions and a reducer, generate actions.js, constants.js,
      * reducer.js and the corresponding tests for actions and the reducer
@@ -94,12 +99,12 @@ module.exports = {
           templateFile: './container/selectors.js.hbs',
           abortOnFail: true,
         });
-        actions.push({
-          type: 'add',
-          path: '../src/containers/{{properCase name}}/tests/selectors.test.js',
-          templateFile: './container/selectors.test.js.hbs',
-          abortOnFail: true,
-        });
+        // actions.push({
+        //   type: 'add',
+        //   path: '../src/containers/{{properCase name}}/tests/selectors.test.js',
+        //   templateFile: './container/selectors.test.js.hbs',
+        //   abortOnFail: true,
+        // });
 
         // Reducer
         actions.push({
@@ -108,12 +113,12 @@ module.exports = {
           templateFile: './container/reducer.js.hbs',
           abortOnFail: true,
         });
-        actions.push({
-          type: 'add',
-          path: '../src/containers/{{properCase name}}/tests/reducer.test.js',
-          templateFile: './container/reducer.test.js.hbs',
-          abortOnFail: true,
-        });
+        // actions.push({
+        //   type: 'add',
+        //   path: '../src/containers/{{properCase name}}/tests/reducer.test.js',
+        //   templateFile: './container/reducer.test.js.hbs',
+        //   abortOnFail: true,
+        // });
 
         // Actions
         actions.push({
@@ -122,12 +127,12 @@ module.exports = {
           templateFile: './container/actions.js.hbs',
           abortOnFail: true,
         });
-        actions.push({
-          type: 'add',
-          path: '../src/containers/{{properCase name}}/tests/actions.test.js',
-          templateFile: './container/actions.test.js.hbs',
-          abortOnFail: true,
-        });
+        // actions.push({
+        //   type: 'add',
+        //   path: '../src/containers/{{properCase name}}/tests/actions.test.js',
+        //   templateFile: './container/actions.test.js.hbs',
+        //   abortOnFail: true,
+        // });
       }
     }
 
@@ -139,12 +144,12 @@ module.exports = {
         templateFile: './container/sagas.js.hbs',
         abortOnFail: true,
       });
-      actions.push({
-        type: 'add',
-        path: '../src/containers/{{properCase name}}/tests/sagas.test.js',
-        templateFile: './container/sagas.test.js.hbs',
-        abortOnFail: true,
-      });
+      // actions.push({
+      //   type: 'add',
+      //   path: '../src/containers/{{properCase name}}/tests/sagas.test.js',
+      //   templateFile: './container/sagas.test.js.hbs',
+      //   abortOnFail: true,
+      // });
     }
 
     return actions;
