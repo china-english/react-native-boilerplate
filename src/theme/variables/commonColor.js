@@ -279,7 +279,8 @@ module.exports = {
   grey800: '#424242',
   grey900: '#212121',
 
-  black: '#000000',
+  black: '#333333',
+  pureBlack: '#000000',
   white: '#ffffff',
 
   // status bar color for iOS and android

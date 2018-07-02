@@ -15,12 +15,12 @@ module.exports = {
     name: 'type',
     message: 'Select the type of component',
     default: 'Stateless Function',
-    choices: () => ['Stateless Function', 'React.PureComponent', 'React.Component'],
+    choices: () => ['Stateless Function', 'React.Component', 'React.PureComponent'],
   }, {
     type: 'input',
     name: 'name',
     message: 'What should it be called?',
-    default: 'Button',
+    default: 'HeaderCopy',
     validate: (value) => {
       if ((/.+/).test(value)) {
         return componentExists(value) ? 'A component or container with this name already exists' : true;
@@ -28,19 +28,8 @@ module.exports = {
 
       return 'The name is required';
     },
-  }, {
-    type: 'confirm',
-    name: 'wantMessages',
-    default: true,
-    message: 'Do you want i18n messages (i.e. will this component use text)?',
-  }, {
-    type: 'confirm',
-    name: 'wantLoadable',
-    default: false,
-    message: 'Do you want to load the component asynchronously?',
   }],
   actions: (data) => {
-    // Generate index.js and index.test.js
     let componentTemplate;
 
     switch (data.type) {
@@ -60,40 +49,10 @@ module.exports = {
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../src/components/{{properCase name}}//style.scss',
-      templateFile: './component/style.scss.hbs',
-      abortOnFail: true,
-    }, {
-      type: 'add',
-      path: '../src/components/{{properCase name}}/tests/index.test.js',
-      templateFile: './component/test.js.hbs',
-      abortOnFail: true,
-    }, {
-      type: 'add',
-      path: '../src/components/{{properCase name}}/stories/index.story.js',
-      templateFile: './component/story.js.hbs',
+      path: '../src/components/{{properCase name}}/styles.js',
+      templateFile: './component/style.js.hbs',
       abortOnFail: true,
     }];
-
-    // If they want a i18n messages file
-    if (data.wantMessages) {
-      actions.push({
-        type: 'add',
-        path: '../src/components/{{properCase name}}/messages.js',
-        templateFile: './component/messages.js.hbs',
-        abortOnFail: true,
-      });
-    }
-
-    // If want Loadable.js to load the component asynchronously
-    if (data.wantLoadable) {
-      actions.push({
-        type: 'add',
-        path: '../src/components/{{properCase name}}/Loadable.js',
-        templateFile: './component/loadable.js.hbs',
-        abortOnFail: true,
-      });
-    }
 
     return actions;
   },

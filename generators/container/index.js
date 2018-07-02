@@ -64,7 +64,7 @@ module.exports = {
     }, {
       type: 'add',
       path: '../src/containers/{{properCase name}}/styles.js',
-      templateFile: './container/style.js.hbs',
+      templateFile: './container/styles.js.hbs',
       abortOnFail: true,
     },
     /*
