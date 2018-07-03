@@ -2,7 +2,11 @@
 
 export default {
   fieldVertical: {
-    // flexDirection: 'column',
-    // alignItems: 'stretch',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    height: 80,
+  },
+  labelVertical: {
+    paddingHorizontal: 5,
   },
 };

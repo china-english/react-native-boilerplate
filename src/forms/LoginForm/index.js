@@ -20,6 +20,7 @@ const formFieldsObject = {
   password: {
     label: 'password',
     type: 'textInput',
+    secureTextEntry: true,
     placeholder: 'placeholderPassword',
   },
 };
