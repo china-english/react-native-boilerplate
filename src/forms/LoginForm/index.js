@@ -1,12 +1,13 @@
 import React from 'react';
-import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import {
-  Button, Text,
+  Button, Text, Form,
 } from 'native-base';
-import { reduxForm } from 'redux-form';
-import pick from 'lodash/pick';
 
-import * as FormField from '../formFields';
+import pick from 'lodash/pick';
+import { reduxForm } from 'redux-form/immutable';
+
+import Group from '../formFields';
 
 import styles from './styles';
 
@@ -23,24 +24,37 @@ const formFieldsObject = {
   },
 };
 
-function LoginForm() {
+
+const LoginForm = (props) => {
+  const {
+    handleSubmit, ...otherProps
+  } = props;
+
   const loginFileds = [
     pick(formFieldsObject, 'email', 'password'),
   ];
   return (
-    <View style={styles.form}>
+    <Form style={styles.form}>
       {loginFileds.map((loginFiled) => (
-        <FormField.Group
+        <Group
           fieldsObject={loginFiled}
           key={loginFiled}
+          {...otherProps}
         />
       ))}
-      <Button block style={styles.button}>
+      <Button block primary style={styles.button} onPress={handleSubmit}>
         <Text>Submit</Text>
       </Button>
-    </View>
+    </Form>
   );
-}
+};
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
+LoginForm.defaultProps = {
+  // handleSubmit: () => null,
+};
+
 export default reduxForm({
   form: 'loginForm',
 })(LoginForm);

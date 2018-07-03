@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 import {
   Item,
   Input,
-  Text,
   Label,
 } from 'native-base';
 import styles from '../styles';
@@ -26,11 +25,12 @@ export default function TextInput(props) {
   }
 
   return (
-    <Item style={itemLayout}>
-      <Label style={styles.label}>
-        <Text>{labelText}</Text>
-      </Label>
-      <Input placeholder={placeholder} {...input} />
+    <Item>
+      <Label>{labelText}</Label>
+      <Input
+        placeholder={placeholder}
+        onChangeText={input.onChange}
+      />
     </Item>
   );
 }

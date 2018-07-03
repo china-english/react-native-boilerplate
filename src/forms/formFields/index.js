@@ -9,20 +9,19 @@ const allFields = {
   textInput: TextInput,
 };
 
-export const Group = ({ fieldsObject, ...otherProps }) => {
+export default function Group({ fieldsObject, ...otherProps }) {
   const renderFieldObject = (fieldObject, name) => {
     const isRequired = fieldObject.validate ? fieldObject.validate.some((d) => d.name === 'isRequired') : false;
     if (fieldObject.isFieldArray) {
       return (
-        <FieldArray isRequired={isRequired} {...fieldObject} {...otherProps} component={allFields[fieldObject.type]} key={name} name={name} />
+        <FieldArray {...otherProps} {...fieldObject} isRequired={isRequired} component={allFields[fieldObject.type]} key={name} name={name} />
       );
     }
-
     return (
       <Field
-        isRequired={isRequired}
-        {...fieldObject}
         {...otherProps}
+        {...fieldObject}
+        isRequired={isRequired}
         component={allFields[fieldObject.type]}
         key={name}
         name={name}
@@ -31,7 +30,7 @@ export const Group = ({ fieldsObject, ...otherProps }) => {
   };
 
   return map(fieldsObject, renderFieldObject);
-};
+}
 
 Group.propTypes = {
   fieldsObject: PropTypes.object,

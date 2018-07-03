@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
-import { reducer as formReducer } from 'redux-form';
+import { reducer as formReducer } from 'redux-form/immutable';
 
 import { ADD_TO_COUNTER, MINUS_TO_COUNTER } from './actions';
 
