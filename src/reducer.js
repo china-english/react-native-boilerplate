@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
+import { reducer as formReducer } from 'redux-form';
 
 import { ADD_TO_COUNTER, MINUS_TO_COUNTER } from './actions';
 
@@ -21,6 +22,7 @@ const reducer = (state = initialState, action) => {
 export default function createReducer(injectedReducers) {
   const allReducer = combineReducers({
     nativeBoilerplate: reducer,
+    form: formReducer,
     ...injectedReducers,
   });
   const rootReducer = (state = fromJS({}), action) => allReducer(state, action);

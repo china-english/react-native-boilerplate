@@ -20,6 +20,7 @@ import {
 } from 'native-base';
 
 import AppHeader from '../../components/AppHeader';
+import LoginForm from '../../forms/LoginForm';
 
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
@@ -49,6 +50,7 @@ class LoginScene extends Component { // eslint-disable-line
           {display
             && <Text>Now, display is true</Text>
           }
+          <LoginForm />
         </Content>
         <Footer>
           <FooterTab style={styles.footerTble}>
