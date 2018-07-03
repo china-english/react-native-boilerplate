@@ -1,13 +1,19 @@
+import { Dimensions } from 'react-native';
 import { grey200 } from '../../theme/variables/commonColor';
+
+const { height } = Dimensions.get('window');
 
 export default {
   contentContainer: {
-    flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
   content: {
     backgroundColor: grey200,
+  },
+  contentView: {
+    backgroundColor: white,
+    height: height{{#if wantHeader}} - 64{{/if}}{{#if wantFooter}} - 55{{/if}},
+    justifyContent: 'center',
   },
   button: {
     alignSelf: 'center',
@@ -19,5 +25,6 @@ export default {
   },
   generateText: {
     textAlign: 'center',
+    marginVertical: 10,
   },
 };
