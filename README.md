@@ -10,6 +10,7 @@ react-native-boilerplate
 5. [react-native-router-flux => 4.0.0-beta.31](https://github.com/aksonov/react-native-router-flux)
 6. [redux-saga => 0.16.0](https://redux-saga.js.org/)
 7. [redux-immutable => 4.0.0](https://github.com/gajus/redux-immutable)
+8. [redux-form => 7.4.2](https://redux-form.com/7.4.2/examples/)
 
 开始使用
 -------
@@ -52,6 +53,5 @@ npm start && react-native run-android
 
 持续更新中...
 -------
-1. 添加 redux-form;
 
-2. 添加 story-book;
+1. 添加 story-book;
