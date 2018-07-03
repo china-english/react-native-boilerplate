@@ -1,7 +1,15 @@
-import { DISPLAY_ACTION } from './constants';
+/*
+ *
+ * LoginScene actions
+ *
+ */
 
-export function displayAction() {
+import {
+  DEFAULT_ACTION,
+} from './constants';
+
+export function defaultAction() {
   return {
-    type: DISPLAY_ACTION,
+    type: DEFAULT_ACTION,
   };
 }

@@ -29,44 +29,44 @@ export default function AppHeader(props) {
   } = props;
 
   const leftButton = (
-    <Left>
-      <Button
-        onPress={() => Actions.pop()}
-        style={styles.button}
-      >
-        <Icon name="arrow-back" />
-        <Text>{backMessage}</Text>
-      </Button>
-    </Left>
+    <Button
+      onPress={() => Actions.pop()}
+      style={styles.button}
+    >
+      <Icon name="arrow-back" />
+      <Text>{backMessage}</Text>
+    </Button>
   );
 
   const rightButton = (
-    <Right>
-      <Button
-        onPress={() => Toast.show({
-          text: 'No function',
-          buttonText: 'Okay',
-          duration: 3000,
-          position: 'top',
-        })}
-        style={styles.button}
-      >
-        <Icon ios="ios-menu" android="md-menu" />
-      </Button>
-    </Right>
+    <Button
+      onPress={() => Toast.show({
+        text: 'No function',
+        buttonText: 'Okay',
+        duration: 3000,
+        position: 'top',
+      })}
+      style={styles.button}
+    >
+      <Icon ios="ios-menu" android="md-menu" />
+    </Button>
   );
 
   const titleBody = (
-    <Body>
-      <Title>{title}</Title>
-    </Body>
+    <Title>{title}</Title>
   );
 
   return (
     <Header style={styles.headerStyle}>
-      { hasLeft && leftButton }
-      { hasTitle && titleBody }
-      { hasRight && rightButton }
+      <Left>
+        { hasLeft && leftButton }
+      </Left>
+      <Body>
+        { hasTitle && titleBody }
+      </Body>
+      <Right>
+        { hasRight && rightButton }
+      </Right>
     </Header>
   );
 }

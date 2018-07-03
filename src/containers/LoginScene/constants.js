@@ -1,2 +1,7 @@
+/*
+ *
+ * LoginScene constants
+ *
+ */
 
-export const DISPLAY_ACTION = 'src/LoginScene/DISPLAY_ACTION';
+export const DEFAULT_ACTION = 'src/LoginScene/DEFAULT_ACTION';

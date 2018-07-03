@@ -1,7 +1,16 @@
 import { createGetSelector } from 'reselect-immutable-helpers';
 // import { createSelector } from 'reselect';
-// import Immutable from 'immutable';
+// import Immutable,{ fromJS } from 'immutable';
 
-export const selectLoginReducer = (state) => state.get('login');
+/*
+ * Direct selector to the loginScene reducer
+ * 直接挑选 loginSceneReducer
+ */
+export const selectLoginSceneReducer = (state) => state.get('loginScene');
 
-export const selectDisplay = createGetSelector(selectLoginReducer, 'display');
+/*  selector parameters from loginSceneReducer
+ * 选择其中的特定字段
+ */
+export const selectTest = createGetSelector(
+  selectLoginSceneReducer, 'test'
+);

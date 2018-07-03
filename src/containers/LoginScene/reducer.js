@@ -1,17 +1,26 @@
+/*
+ *
+ * LoginScene reducer
+ *
+ */
+
 import { fromJS } from 'immutable';
 
-import { DISPLAY_ACTION } from './constants';
+import {
+  DEFAULT_ACTION,
+} from './constants';
 
 const initialState = fromJS({
-  display: false,
+  test: 'welcome!',
 });
 
-function loginReducer(state = initialState, action) {
+function loginSceneReducer(state = initialState, action) {
   switch (action.type) {
-    case DISPLAY_ACTION:
-      return state.update('display', (counter) => !counter);
+    case DEFAULT_ACTION:
+      return state;
     default:
       return state;
   }
 }
-export default loginReducer;
+
+export default loginSceneReducer;
