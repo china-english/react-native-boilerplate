@@ -1,0 +1,70 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import pick from 'lodash/pick';
+import { reduxForm } from 'redux-form/immutable';
+import {
+  Button,
+  Text,
+  Form,
+} from 'native-base';
+
+import Group from '../formFields';
+
+import styles from './styles';
+
+const {{ properCase name }} = (props) => {
+  const { handleSubmit, ...otherProps } = props;
+
+  // Add your formField in this object
+  const formFieldsObject = {
+    email: {
+      label: 'Email',
+      type: 'textInput',
+      placeholder: 'placeholderEmail',
+    },
+    password: {
+      label: 'password',
+      type: 'textInput',
+      secureTextEntry: true,
+      placeholder: 'placeholderPassword',
+    },
+  };
+
+  // 使用 lodash 挑选出你需要展示的formField
+  const formFields = [
+    pick(formFieldsObject, 'email', 'password'),
+  ];
+
+  return (
+    <Form style={styles.form}>
+      {formFields.map((formField) => (
+        <Group
+          fieldsObject={formField}
+          key={formField}
+          {...otherProps}
+        />
+      ))}
+      <Button block primary style={styles.button} onPress={handleSubmit}>
+        <Text>Submit</Text>
+      </Button>
+    </Form>
+  );
+};
+
+{{ properCase name }}.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
+
+{{ properCase name }}.defaultProps = {
+};
+
+export default reduxForm({
+  form: '{{ camelCase name }}',
+  destroyOnUnmount: false,
+})({{ properCase name }});

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Text, Form,
+  Button,
+  Text,
+  Form,
 } from 'native-base';
 
 import pick from 'lodash/pick';
@@ -53,7 +55,6 @@ LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
 LoginForm.defaultProps = {
-  // handleSubmit: () => null,
 };
 
 export default reduxForm({
