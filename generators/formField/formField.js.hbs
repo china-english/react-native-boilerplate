@@ -1,8 +1,8 @@
 /**
- *
- * HomeScene Container
- *
- */
+*
+* {{ properCase name }}
+*
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -14,10 +14,12 @@ import {
 
 import styles from '../styles';
 
-const TextInput = (props) => {
+const {{ properCase name }} = (props) => {
   const {
-    input, placeholder, label, layout, itemSettings, secureTextEntry,
-    itemstyle, labelStyle,
+    input,
+    placeholder, label,
+    secureTextEntry,
+    layout, itemSettings, itemstyle, labelStyle,
   } = props;
 
   const itemLayout = [itemstyle];
@@ -43,7 +45,7 @@ const TextInput = (props) => {
   );
 };
 
-TextInput.defaultProps = {
+{{ properCase name }}.defaultProps = {
   input: {},
   placeholder: '',
   label: '',
@@ -54,7 +56,7 @@ TextInput.defaultProps = {
   labelStyle: {},
 };
 
-TextInput.propTypes = {
+{{ properCase name }}.propTypes = {
   input: PropTypes.object,
   placeholder: PropTypes.string,
   label: PropTypes.string,
@@ -65,4 +67,4 @@ TextInput.propTypes = {
   labelStyle: PropTypes.object,
 };
 
-export default TextInput;
+export default {{ properCase name }};

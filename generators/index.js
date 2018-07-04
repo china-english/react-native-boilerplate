@@ -9,11 +9,13 @@ const path = require('path');
 const componentGenerator = require('./component/index.js');
 const containerGenerator = require('./container/index.js');
 const formGenerator = require('./form/index.js');
+const formFieldGenerator = require('./formField/index.js');
 
 module.exports = (plop) => {
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('container', containerGenerator);
   plop.setGenerator('form', formGenerator);
+  plop.setGenerator('formField', formFieldGenerator);
   plop.addHelper('directory', (comp) => {
     try {
       fs.accessSync(path.join(__dirname, `../src/containers/${comp}`), fs.F_OK);
@@ -22,7 +24,11 @@ module.exports = (plop) => {
       try {
         return `forms/${comp}`;
       } catch (e1) {
-        return `components/${comp}`;
+        try {
+          return `forms/formFields/${comp}`;
+        } catch (e2) {
+          return `components/${comp}`;
+        }
       }
     }
   });
