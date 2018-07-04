@@ -18,6 +18,8 @@ import {
 import HomeScene from './containers/HomeScene';
 import LoginScene from './containers/LoginScene';
 
+// -- ADD NEW ROUTE FILE --
+
 export default function AppRouter() {
   return (
     <Router>

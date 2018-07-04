@@ -16,6 +16,9 @@ module.exports = (plop) => {
   plop.setGenerator('container', containerGenerator);
   plop.setGenerator('form', formGenerator);
   plop.setGenerator('formField', formFieldGenerator);
+
+  plop.setHelper('preCurly', (t) => `{${t}}`);
+
   plop.addHelper('directory', (comp) => {
     try {
       fs.accessSync(path.join(__dirname, `../src/containers/${comp}`), fs.F_OK);

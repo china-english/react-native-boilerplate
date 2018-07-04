@@ -26,29 +26,42 @@ module.exports = {
     },
   }, {
     type: 'confirm',
+    name: 'hasRouter',
+    default: true,
+    message: 'Do you want to link it with a route?',
+  }, {
+    when: (answers) => answers.hasRouter,
+    type: 'input',
+    name: 'routerName',
+    message: 'What should the route be called?',
+    default: '/test',
+  }, {
+    type: 'confirm',
     name: 'wantHeader',
     default: true,
-    message: 'Do you want app headers?',
+    message: 'Do you want app header?',
   }, {
     type: 'confirm',
     name: 'wantFooter',
     default: true,
     message: 'Do you want app footer?',
   }, {
+    when: (answers) => answers.type !== 'Stateless Function',
     type: 'confirm',
     name: 'wantActionsAndReducer',
     default: true,
     message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
   }, {
+    when: (answers) => answers.type !== 'Stateless Function',
     type: 'confirm',
     name: 'wantSaga',
     default: true,
-    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)[note: if you select Stateless Function, saga will not create]',
+    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
   }],
-  actions: (data) => {
+  actions: (answers) => {
     // Generate index.js and index.test.js
     var componentTemplate; // eslint-disable-line no-var
-    switch (data.type) {
+    switch (answers.type) {
       case 'Stateless Function': {
         componentTemplate = './container/stateless.js.hbs';
         break;
@@ -88,7 +101,7 @@ module.exports = {
      * 如果你需要 actions 和 reducer，那么将会生成以下文件：actions.js, constants.js,
      * reducer.js 以及 actions.test.js 和 reducer.test.js
      */
-    if (data.wantActionsAndReducer) {
+    if (answers.wantActionsAndReducer) {
       // Constants
       actions.push({
         type: 'add',
@@ -96,53 +109,51 @@ module.exports = {
         templateFile: './container/constants.js.hbs',
         abortOnFail: true,
       });
-      if (data.type !== 'Stateless Function') {
-        // Selectors
-        actions.push({
-          type: 'add',
-          path: '../src/containers/{{properCase name}}/selectors.js',
-          templateFile: './container/selectors.js.hbs',
-          abortOnFail: true,
-        });
-        // actions.push({
-        //   type: 'add',
-        //   path: '../src/containers/{{properCase name}}/tests/selectors.test.js',
-        //   templateFile: './container/selectors.test.js.hbs',
-        //   abortOnFail: true,
-        // });
+      // Selectors
+      actions.push({
+        type: 'add',
+        path: '../src/containers/{{properCase name}}/selectors.js',
+        templateFile: './container/selectors.js.hbs',
+        abortOnFail: true,
+      });
+      // actions.push({
+      //   type: 'add',
+      //   path: '../src/containers/{{properCase name}}/tests/selectors.test.js',
+      //   templateFile: './container/selectors.test.js.hbs',
+      //   abortOnFail: true,
+      // });
 
-        // Reducer
-        actions.push({
-          type: 'add',
-          path: '../src/containers/{{properCase name}}/reducer.js',
-          templateFile: './container/reducer.js.hbs',
-          abortOnFail: true,
-        });
-        // actions.push({
-        //   type: 'add',
-        //   path: '../src/containers/{{properCase name}}/tests/reducer.test.js',
-        //   templateFile: './container/reducer.test.js.hbs',
-        //   abortOnFail: true,
-        // });
+      // Reducer
+      actions.push({
+        type: 'add',
+        path: '../src/containers/{{properCase name}}/reducer.js',
+        templateFile: './container/reducer.js.hbs',
+        abortOnFail: true,
+      });
+      // actions.push({
+      //   type: 'add',
+      //   path: '../src/containers/{{properCase name}}/tests/reducer.test.js',
+      //   templateFile: './container/reducer.test.js.hbs',
+      //   abortOnFail: true,
+      // });
 
-        // Actions
-        actions.push({
-          type: 'add',
-          path: '../src/containers/{{properCase name}}/actions.js',
-          templateFile: './container/actions.js.hbs',
-          abortOnFail: true,
-        });
-        // actions.push({
-        //   type: 'add',
-        //   path: '../src/containers/{{properCase name}}/tests/actions.test.js',
-        //   templateFile: './container/actions.test.js.hbs',
-        //   abortOnFail: true,
-        // });
-      }
+      // Actions
+      actions.push({
+        type: 'add',
+        path: '../src/containers/{{properCase name}}/actions.js',
+        templateFile: './container/actions.js.hbs',
+        abortOnFail: true,
+      });
+      // actions.push({
+      //   type: 'add',
+      //   path: '../src/containers/{{properCase name}}/tests/actions.test.js',
+      //   templateFile: './container/actions.test.js.hbs',
+      //   abortOnFail: true,
+      // });
     }
 
     // Sagas
-    if (data.wantSaga && data.type !== 'Stateless Function') {
+    if (answers.wantSaga) {
       actions.push({
         type: 'add',
         path: '../src/containers/{{properCase name}}/sagas.js',
@@ -157,6 +168,21 @@ module.exports = {
       // });
     }
 
+    // router
+    if (answers.routerName) {
+      actions.push({
+        type: 'modify',
+        path: '../src/routes.js',
+        pattern: /(<\/Stack>)/gi,
+        template: '  <Scene key="{{ routerName }}" component={{{preCurly (properCase name)}}} />\n      $1',
+      });
+      actions.push({
+        type: 'modify',
+        path: '../src/routes.js',
+        pattern: /(-- ADD NEW ROUTE FILE --)/gi,
+        template: '$1\nimport {{properCase name}} from \'./containers/{{properCase name}}\';',
+      });
+    }
     return actions;
   },
 };
