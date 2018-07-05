@@ -36,7 +36,7 @@ const {{ properCase name }} = (props) => {
     },
   };
 
-  // 使用 lodash 挑选出你需要展示的formField
+  // 使用 pick 方法挑选出你需要展示的formField
   const formFields = [
     pick(formFieldsObject, 'email', 'password'),
   ];

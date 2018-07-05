@@ -29,10 +29,10 @@ module.exports = {
       return 'The name is required';
     },
   }],
-  actions: (data) => {
+  actions: (answers) => {
     let componentTemplate;
 
-    switch (data.type) {
+    switch (answers.type) {
       case 'Stateless Function': {
         componentTemplate = './component/stateless.js.hbs';
         break;
