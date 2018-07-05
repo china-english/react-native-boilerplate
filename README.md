@@ -19,19 +19,9 @@ react-native-boilerplate
 
 2. ```cd react-native-boilerplate```
 
-3.
-```
-npm i
-or
-yarn
-```
+3. ```npm i or yarn```
 
-4.
-```
-npm start && react-native run-ios
-or
-npm start && react-native run-android
-```
+4. ```npm start && react-native run-ios or npm start && react-native run-android```
 
 模版生成器的使用
 ---------
@@ -39,16 +29,29 @@ npm start && react-native run-android
   1. ```npm run generate```，然后选择 container 选项；
   2. container 分三类：Component, stateless function, pureComponent；
   3. 输入 container 的名字；
-  4. 是否需要 app 的 header 部分；
-  5. 是否需要 app 的 footer 部分；
-  6. 是否需要进行数据交互（action、redux...）；
-  7. 是否需要saga（当第二步选择 stateless function 时，不会创建 saga 相关文件）；
-
+  4. container 是否需要链接 route；
+  5. 输入 route 的名字；
+  6. 是否需要 app 的 header 部分；
+  7. 是否需要 app 的 footer 部分；
+  8. 是否需要进行数据交互（action、redux...）；
+  9. 是否需要 saga；
+  > * 当 container 的类型为 stateless function 时，8、9不会进行
+  > * 当 container 不需要链接 route 的时候，5不会执行
+  > * 当 container 需要链接 route 的时候，会自动在 route 中添加相关 route
 
 * component:
   1. ```npm run generate```，然后选择 component 选项；
   2. component 分三类：Component, stateless function, pureComponent；
   3. 输入 component 的名字；
+
+* form:
+  1. ```npm run generate```，然后选择 form 选项；
+  2. 同 component
+
+* formField:
+  1. ```npm run generate```，然后选择 formField;
+  2. 输入 formField 的名字；
+  > formField 生成时会自动修改相关引入文件，你只需要在 form 文件中修改相应的 formField type 名即可.
 
 
 持续更新中...
