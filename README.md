@@ -39,16 +39,16 @@ react-native-boilerplate
   > 当 container 不需要链接 route 的时候，5不会执行<br/>
   > 当 container 需要链接 route 的时候，会自动在 route 中添加相关 route
 
-# component:
+### component
   1. ```npm run generate```，然后选择 component 选项；
   2. component 分三类：Component, stateless function, pureComponent；
   3. 输入 component 的名字；
 
-# form:
+### form
   1. ```npm run generate```，然后选择 form 选项；
   2. 同 component
 
-# formField:
+### formField
   1. ```npm run generate```，然后选择 formField;
   2. 输入 formField 的名字；
   > formField 生成时会自动修改相关引入文件，你只需要在 form 文件中修改相应的 formField type 名即可.
