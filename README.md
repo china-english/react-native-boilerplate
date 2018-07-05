@@ -25,7 +25,7 @@ react-native-boilerplate
 
 模版生成器的使用
 ---------
-# container:
+### container
   1. ```npm run generate```，然后选择 container 选项；
   2. container 分三类：Component, stateless function, pureComponent；
   3. 输入 container 的名字；
