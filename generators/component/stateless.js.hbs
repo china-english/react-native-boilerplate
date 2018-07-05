@@ -14,7 +14,7 @@ import {
 
 import styles from './styles';
 
-function {{ properCase name }}(props) {
+const {{ properCase name }} = (props) => {
   const { welcome } = props;
   return (
     <View style={styles.content}>
@@ -24,10 +24,12 @@ function {{ properCase name }}(props) {
       <Text>此组件由生成器生成</Text>
     </View>
   );
-}
+};
+
 {{ properCase name }}.defaultProps = {
   welcome: 'Welcome',
 };
+
 {{ properCase name }}.propTypes = {
   welcome: PropTypes.string,
 };
