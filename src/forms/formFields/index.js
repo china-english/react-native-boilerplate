@@ -3,18 +3,21 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form/immutable';
 import map from 'lodash/map';
 
-import TextInput from './TextInput';
-
-const allFields = {
-  textInput: TextInput,
-};
+import { ALL_FIELDS } from './constants';
 
 export default function Group({ fieldsObject, ...otherProps }) {
   const renderFieldObject = (fieldObject, name) => {
     const isRequired = fieldObject.validate ? fieldObject.validate.some((d) => d.name === 'isRequired') : false;
     if (fieldObject.isFieldArray) {
       return (
-        <FieldArray {...otherProps} {...fieldObject} isRequired={isRequired} component={allFields[fieldObject.type]} key={name} name={name} />
+        <FieldArray
+          {...otherProps}
+          {...fieldObject}
+          isRequired={isRequired}
+          component={ALL_FIELDS[fieldObject.type]}
+          key={name}
+          name={name}
+        />
       );
     }
     return (
@@ -22,7 +25,7 @@ export default function Group({ fieldsObject, ...otherProps }) {
         {...otherProps}
         {...fieldObject}
         isRequired={isRequired}
-        component={allFields[fieldObject.type]}
+        component={ALL_FIELDS[fieldObject.type]}
         key={name}
         name={name}
       />
