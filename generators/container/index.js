@@ -19,7 +19,7 @@ module.exports = {
     default: 'IndexScene',
     validate: (value) => {
       if ((/.+/).test(value)) {
-        return componentExists(value) ? 'A component or container with this name already exists' : true;
+        return componentExists(value) ? 'A file with this name already exists' : true;
       }
 
       return 'The name is required';
