@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Content } from 'native-base';
+import styles from './styles';
 
 export default function FooterView(props) {
   const { children } = props;
   return (
-    <Container>
+    <Container style={styles.main}>
       <Content></Content>
       {children}
     </Container>

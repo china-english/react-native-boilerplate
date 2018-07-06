@@ -17,6 +17,7 @@ configure(() => {
   require('./componentStories'); // eslint-disable-line
   require('./headerStories'); // eslint-disable-line
   require('./footerStories'); // eslint-disable-line
+  require('./formFieldStories'); // eslint-disable-line
 }, module);
 
 // This assumes that storybook is running on the same host as your RN packager,
