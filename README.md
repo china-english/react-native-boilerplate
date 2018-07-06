@@ -5,7 +5,7 @@ react-native-boilerplate
 * react-native => 0.55.4
 
 |verison|plug-in|note|
-|:---:|:---:|:---:|
+|:---:|---|---|
 |[0.0.1](https://github.com/china-english/react-native-boilerplate/releases/tag/0.0.1)|react-native-router-flux,native-base,redux-immutable,redux-saga| |
 |[0.1.0](https://github.com/china-english/react-native-boilerplate/releases/tag/0.1.0)|redux-form| 在 0.0.1 的基础上添加 redux-form|
 |[0.1.1](https://github.com/china-english/react-native-boilerplate/releases/tag/0.1.1)|redux-form| 在 0.1.0 的基础上添加 redux-form 生成器|
