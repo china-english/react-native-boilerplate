@@ -25,9 +25,13 @@ module.exports = {
       if ((/.+/).test(value)) {
         return componentExists(value) ? 'A file with this name already exists' : true;
       }
-
       return 'The name is required';
     },
+  }, {
+    type: 'confirm',
+    name: 'hasStorybook',
+    message: 'Do you want to link it with storybook?',
+    default: true,
   }],
   actions: (answers) => {
     let componentTemplate;
@@ -54,6 +58,24 @@ module.exports = {
       abortOnFail: true,
     }];
 
+    if (answers.hasStorybook) {
+      actions.push({
+        type: 'modify',
+        path: '../storybook/componentStories/index.js',
+        pattern: /(\)\);)/gi,
+        template: '))\n'
+          + '  .add(\'{{properCase name}}\', () => (\n'
+          + '    <{{properCase name}} />\n'
+          + '  $1',
+      });
+      actions.push({
+        type: 'modify',
+        path: '../storybook/componentStories/index.js',
+        pattern: /(-- IMPORT NEW STORYBOOK FILE --)/gi,
+        template: '$1\nimport {{properCase name}} from \'../../src/components/{{properCase name}}\';',
+
+      });
+    }
     return actions;
   },
 };

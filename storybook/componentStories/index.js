@@ -7,9 +7,9 @@ import { action } from '@storybook/addon-actions';
 
 import ContentView from './ContentView';
 import Button from './Button';
-import TextInput from '../../src/forms/formFields/TextInput';
 
-// storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+// -- IMPORT NEW STORYBOOK FILE --
+import TextInput from '../../src/forms/formFields/TextInput';
 
 storiesOf('componentStories', module)
   .addDecorator((getStory) => <ContentView>{getStory()}</ContentView>)
