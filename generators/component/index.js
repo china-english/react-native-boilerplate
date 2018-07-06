@@ -64,7 +64,7 @@ module.exports = {
         path: '../storybook/componentStories/index.js',
         pattern: /(\)\);)/gi,
         template: '))\n'
-          + '  .add(\'{{properCase name}}\', () => (\n'
+          + '  .add(\'{{titleCase name}}\', () => (\n'
           + '    <{{properCase name}} />\n'
           + '  $1',
       });

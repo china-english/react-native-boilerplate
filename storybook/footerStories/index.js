@@ -1,3 +1,7 @@
+/*
+ * app 中需要显示在 native-base Content 组件以外的请用这种方式书写 storybook
+ */
+
 import React from 'react';
 
 import { storiesOf } from '@storybook/react-native';
@@ -8,8 +12,8 @@ import FooterView from './FooterView';
 
 import AppFooter from '../../src/components/AppFooter';
 
-storiesOf('specialStories', module)
+storiesOf('Footer', module)
   .addDecorator((getStory) => <FooterView>{getStory()}</FooterView>)
-  .add('footer', () => (
+  .add('App Footer', () => (
     <AppFooter />
   ));

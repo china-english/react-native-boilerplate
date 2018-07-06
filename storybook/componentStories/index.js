@@ -11,12 +11,12 @@ import Button from './Button';
 // -- IMPORT NEW STORYBOOK FILE --
 import TextInput from '../../src/forms/formFields/TextInput';
 
-storiesOf('componentStories', module)
+storiesOf('Component', module)
   .addDecorator((getStory) => <ContentView>{getStory()}</ContentView>)
-  .add('TextInput', () => (
+  .add('Text Input', () => (
     <TextInput />
   ))
-  .add('button', () => (
+  .add('Button', () => (
     <Button onPress={action('clicked-text')}>
       <Text>button</Text>
     </Button>

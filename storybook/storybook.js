@@ -4,9 +4,12 @@ import { getStorybookUI, configure } from '@storybook/react-native';
 import {
   StyleProvider,
 } from 'native-base';
+import { Provider } from 'react-redux';
 
 import getTheme from '../src/theme/components';
 import variables from '../src/theme/variables/platform';
+
+import configureStore from '../src/store';
 
 // import stories
 configure(() => {
@@ -25,9 +28,13 @@ const StorybookUIRoot = getStorybookUI({ port: 7007, onDeviceUI: true });
 // eslint-disable-next-line react/prefer-stateless-function
 class StorybookUIHMRRoot extends Component {
   render() {
+    const store = configureStore();
+
     return (
       <StyleProvider style={getTheme(variables)}>
-        <StorybookUIRoot />
+        <Provider store={store}>
+          <StorybookUIRoot />
+        </Provider>
       </StyleProvider>
     );
   }
