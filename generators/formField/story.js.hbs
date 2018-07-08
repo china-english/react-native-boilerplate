@@ -1,0 +1,15 @@
+import React from 'react';
+
+import { storiesOf } from '@storybook/react-native';
+// import { action } from '@storybook/addon-actions';
+// import { linkTo } from '@storybook/addon-links';
+
+import {{position}}View from '../../../../storybook/{{position}}View';
+
+import {{properCase name}} from '.';
+
+storiesOf('{{titleCase name}}', module)
+  .addDecorator((getStory) => <{{position}}View>{getStory()}</{{position}}View>)
+  .add('{{properCase name}}', () => (
+    <{{properCase name}} />
+  ));

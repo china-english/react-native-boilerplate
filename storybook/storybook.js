@@ -10,14 +10,11 @@ import getTheme from '../src/theme/components';
 import variables from '../src/theme/variables/platform';
 
 import configureStore from '../src/store';
+import { loadStories } from './storyLoader';
 
 // import stories
 configure(() => {
-  require('./formStories'); // eslint-disable-line
-  require('./componentStories'); // eslint-disable-line
-  require('./headerStories'); // eslint-disable-line
-  require('./footerStories'); // eslint-disable-line
-  require('./formFieldStories'); // eslint-disable-line
+  loadStories();
 }, module);
 
 // This assumes that storybook is running on the same host as your RN packager,

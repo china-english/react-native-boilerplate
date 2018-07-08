@@ -32,6 +32,12 @@ module.exports = {
     name: 'hasStorybook',
     message: 'Do you want to link it with storybook?',
     default: true,
+  }, {
+    type: 'list',
+    name: 'position',
+    message: 'What will it be shown as',
+    default: 'Content',
+    choices: () => ['Header', 'Content', 'Footer'],
   }],
   actions: (answers) => {
     let formTemplate;
@@ -60,20 +66,10 @@ module.exports = {
 
     if (answers.hasStorybook) {
       actions.push({
-        type: 'modify',
-        path: '../storybook/formStories/index.js',
-        pattern: /(\)\);)/gi,
-        template: '))\n'
-          + '  .add(\'{{titleCase name}}\', () => (\n'
-          + '    <{{properCase name}} onSubmit={action(\'submit form data\')} />\n'
-          + '  $1',
-      });
-      actions.push({
-        type: 'modify',
-        path: '../storybook/formStories/index.js',
-        pattern: /(-- IMPORT NEW STORYBOOK FILE --)/gi,
-        template: '$1\nimport {{properCase name}} from \'../../src/forms/{{properCase name}}\';',
-
+        type: 'add',
+        path: '../src/forms/{{properCase name}}/index.stories.js',
+        templateFile: './component/story.js.hbs',
+        abortOnFail: true,
       });
     }
     return actions;
