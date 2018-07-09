@@ -30,12 +30,6 @@ module.exports = {
     default: true,
     message: 'Do you want to link it with a route?',
   }, {
-    when: (answers) => answers.hasRouter,
-    type: 'input',
-    name: 'routerName',
-    message: 'What should the route be called?',
-    default: '/test',
-  }, {
     type: 'confirm',
     name: 'wantHeader',
     default: true,
@@ -169,12 +163,15 @@ module.exports = {
     }
 
     // router
-    if (answers.routerName) {
+    if (answers.hasRouter) {
+      const reg = new RegExp('Scene');
+      const routerName = answers.name.replace(reg, '')
+        .replace(/( |^)[A-Z]/g, (L) => L.toLowerCase());
       actions.push({
         type: 'modify',
         path: '../src/routes.js',
         pattern: /(<\/Stack>)/gi,
-        template: '  <Scene key="{{ routerName }}" component={{{preCurly (properCase name)}}} />\n      $1',
+        template: `  <Scene key="${routerName}" component={{{preCurly (properCase name)}}} />\n      $1`,
       });
       actions.push({
         type: 'modify',
