@@ -11,6 +11,7 @@ react-native-boilerplate
 |[0.1.1](https://github.com/china-english/react-native-boilerplate/releases/tag/0.1.1)|redux-form| 在 0.1.0 的基础上添加 redux-form 生成器|
 |[0.2.0](https://github.com/china-english/react-native-boilerplate/releases/tag/0.2.0)|story-book| |
 
+![img](https://github.com/china-english/react-native-boilerplate/blob/master/gif/generate.gif)
 
 插件介绍
 --------
