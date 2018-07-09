@@ -31,7 +31,7 @@ module.exports = {
     type: 'confirm',
     name: 'wantTransLate',
     default: true,
-    message: 'Do you want transLate the component?',
+    message: 'Do you want translate the component?',
   }, {
     type: 'confirm',
     name: 'hasStorybook',

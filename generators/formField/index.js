@@ -25,7 +25,7 @@ module.exports = {
     type: 'confirm',
     name: 'wantTransLate',
     default: true,
-    message: 'Do you want transLate the app formField?',
+    message: 'Do you want translate the app formField?',
   }, {
     type: 'confirm',
     name: 'hasStorybook',

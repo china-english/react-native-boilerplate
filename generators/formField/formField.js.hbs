@@ -35,11 +35,11 @@ const {{ properCase name }} = (props) => {
 
   const labelText = label || input.name;
   const placeholderText = (itemSettings && itemSettings.floatingLabel === true)
-    ? null : {{#if wantTransLate}}transLate(placeholder){{else}}placeholder{{/if}};
+    ? null : {{#if wantTransLate}}translate(placeholder){{else}}placeholder{{/if}};
 
   return (
     <Item {...itemSettings} style={itemLayout}>
-      <Label style={labelVertical}>{{#if wantTransLate}}{transLate(labelText)}{{else}}{labelText}{{/if}}</Label>
+      <Label style={labelVertical}>{{#if wantTransLate}}{translate(labelText)}{{else}}{labelText}{{/if}}</Label>
       <Input
         placeholder={placeholderText}
         onChangeText={input.onChange}

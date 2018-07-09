@@ -31,7 +31,7 @@ module.exports = {
     type: 'confirm',
     name: 'wantTransLate',
     default: true,
-    message: 'Do you want transLate the app form?',
+    message: 'Do you want translate the app form?',
   }, {
     type: 'confirm',
     name: 'hasStorybook',

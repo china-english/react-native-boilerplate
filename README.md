@@ -56,13 +56,15 @@ react-native-boilerplate
 
   5. 输入 route 的名字；
 
-  6. 是否需要 app 的 header 部分；
+  6. 是否需要翻译 container；
 
-  7. 是否需要 app 的 footer 部分；
+  7. 是否需要 app 的 header 部分；
 
-  8. 是否需要进行数据交互（action、redux...）；
+  8. 是否需要 app 的 footer 部分；
 
-  9. 是否需要 saga；
+  9. 是否需要进行数据交互（action、redux...）；
+
+  10. 是否需要 saga；
 
   > 当 container 的类型为 stateless function 时，8、9不会进行 <br/>
   > 当 container 不需要链接 route 的时候，5不会执行<br/>
@@ -76,9 +78,10 @@ react-native-boilerplate
 
   3. 输入 component 的名字；
 
-  4. 是否需要链接 storybook；
+  4. 是否需要翻译 component；
 
-  > 链接到 storybook 时，自动分类为 component
+  5. 是否需要链接 storybook；
+
 
 ### form
 
@@ -88,9 +91,10 @@ react-native-boilerplate
 
   3. 输入 form 的名字；
 
-  4. 是否需要链接 storybook；
+  4. 是否需要翻译 form；
 
-  > 链接到 storybook 时，自动分类为 form
+  5. 是否需要链接 storybook；
+
 
 ### formField
 
@@ -98,10 +102,11 @@ react-native-boilerplate
 
   2. 输入 formField 的名字；
 
-  3. 是否需要链接 storybook；
+  3. 是否需要翻译 formField；
+
+  4. 是否需要链接 storybook；
 
   > formField 生成时会自动修改相关引入文件，你只需要在 form 文件中修改相应的 formField type 名即可.
-  > 链接到 storybook 时，自动分类为 formField
 
 
 storybook 的使用
@@ -115,3 +120,4 @@ storybook 的使用
 
 > 当你运行 storybook 时，你的应用将无法运行(被 storybook 覆盖)，想要返回应用时，需要停止 ```npm run storybook``` 重跑 ```npm start``` <br />
 > 当你使用 native-base 时，存在两个特殊组件（ header 和 container ），已将其单独处理。
+> 当你使用 ```npm run generate``` 生成新的 storybook 时，请 重新跑一次 ```npm run storybook```
