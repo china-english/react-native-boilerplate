@@ -13,6 +13,10 @@ import {
   Text,
   Form,
 } from 'native-base';
+{{#if wantTransLate}}
+
+import { translate } from '../../utils/helpers';
+{{/if}}
 
 import Group from '../formFields';
 
@@ -52,7 +56,7 @@ class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
           />
         ))}
         <Button block primary style={styles.button} onPress={handleSubmit}>
-          <Text>Submit</Text>
+          <Text>{{#if wantTransLate}}{translate('submit')}{{else}}Submit{{/if}}</Text>
         </Button>
       </Form>
     );
