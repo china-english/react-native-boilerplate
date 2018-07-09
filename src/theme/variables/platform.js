@@ -270,6 +270,10 @@ export default {
     return color(this.toolbarDefaultBg).darken(0.03).hex();
   },
 
+  // some const
+  headerHeight: platform === 'ios' ? 64 : 58,
+  statusbarHeight: platform === 'ios' ? 0 : 24,
+
   dropdownBg: black,
   dropdownLinkColor: black,
   inputLineHeight: 24,
