@@ -5,3 +5,5 @@ import { createGetSelector } from 'reselect-immutable-helpers';
 export const selectReducer = (state) => state.get('nativeBoilerplate');
 
 export const selectCounter = createGetSelector(selectReducer, 'counter');
+
+export const selectLanguage = createGetSelector(selectReducer, 'language');

@@ -20,12 +20,12 @@ import LoginScene from './containers/LoginScene';
 
 // -- ADD NEW ROUTE FILE --
 
-export default function AppRouter() {
+export default function AppRouter(props) {
   return (
     <Router>
       <Stack hideNavBar>
-        <Scene key="home" component={HomeScene} initial />
-        <Scene key="login" component={LoginScene} />
+        <Scene key="home" component={HomeScene} initial {...props} />
+        <Scene key="login" component={LoginScene} {...props} />
       </Stack>
     </Router>
   );

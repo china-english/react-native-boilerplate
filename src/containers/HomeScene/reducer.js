@@ -11,7 +11,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  test: 'Hello! welcome to use generator to\n generate your file',
+  test: 'welcome',
 });
 
 function homeSceneReducer(state = initialState, action) {
