@@ -31,6 +31,11 @@ module.exports = {
     message: 'Do you want to link it with a route?',
   }, {
     type: 'confirm',
+    name: 'wantTransLate',
+    default: true,
+    message: 'Do you want transLate the app container?',
+  }, {
+    type: 'confirm',
     name: 'wantHeader',
     default: true,
     message: 'Do you want app header?',
@@ -171,7 +176,7 @@ module.exports = {
         type: 'modify',
         path: '../src/routes.js',
         pattern: /(<\/Stack>)/gi,
-        template: `  <Scene key="${routerName}" component={{{preCurly (properCase name)}}} />\n      $1`,
+        template: `  <Scene key="${routerName}" component={{{preCurly (properCase name)}}} {...props} />\n      $1`,
       });
       actions.push({
         type: 'modify',
