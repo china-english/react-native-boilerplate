@@ -32,6 +32,7 @@ module.exports = {
     message: 'Do you want to link it with storybook?',
     default: true,
   }, {
+    when: (answers) => answers.hasStorybook,
     type: 'list',
     name: 'position',
     message: 'What will it be shown as',

@@ -21,7 +21,6 @@ module.exports = {
       if ((/.+/).test(value)) {
         return componentExists(value) ? 'A file with this name already exists' : true;
       }
-
       return 'The name is required';
     },
   }, {
