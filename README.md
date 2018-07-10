@@ -118,8 +118,8 @@ react-native-boilerplate
 
   10. 是否需要 saga；
 
-  > 当 container 的类型为 stateless function 时，8、9不会进行 <br/>
-  > 当 container 不需要链接 route 的时候，5不会执行<br/>
+  > 当 container 的类型为 stateless function 时，8、9不会进行  
+  > 当 container 不需要链接 route 的时候，5不会执行  
   > 当 container 需要链接 route 的时候，会自动在 route 中添加相关 route
 
 ### component
@@ -170,6 +170,6 @@ storybook 的使用
 
 3. 打开 http://localhost:7007/ 就可以测试已有的组件了
 
-> 当你运行 storybook 时，你的应用将无法运行(被 storybook 覆盖)，想要返回应用时，需要停止 ```npm run storybook``` 重跑 ```npm start``` <br />
-> 当你使用 native-base 时，存在两个特殊组件（ header 和 container ），已将其单独处理。
+> 当你运行 storybook 时，你的应用将无法运行(被 storybook 覆盖)，想要返回应用时，需要停止 ```npm run storybook``` 重新 ```npm start``` 随后刷新你的应用即可  
+> 当你使用 native-base 时，存在两个特殊组件（ header 和 container ），已将其单独处理。  
 > 当你使用 ```npm run generate``` 生成新的 storybook 时，请 重新跑一次 ```npm run storybook```
