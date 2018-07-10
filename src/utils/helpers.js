@@ -10,6 +10,7 @@ I18n.translations = {
 };
 
 export const translate = (value) => {
+  if (!value) return value;
   const label = I18n.t(`${value}`);
   if (label.indexOf('[missing') === 0) {
     console.warn('translate', label);

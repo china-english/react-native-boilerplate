@@ -18,7 +18,6 @@ import { selectLanguage } from './selectors';
 import { setLanguage } from './actions';
 
 const languages = ['en', 'zh'];
-const deviceLocale = I18n.locale;
 
 class TranslateRoute extends React.Component { // eslint-disable-line
   // constructor(props) {
@@ -26,23 +25,6 @@ class TranslateRoute extends React.Component { // eslint-disable-line
   //   this.state = {
   //   };
   // }
-
-  async componentWillMount() {
-    const { updateLanguage } = this.props;
-    try {
-      let languageSaved = await AsyncStorage.getItem('language');
-      if (deviceLocale !== languageSaved) {
-        if (!languageSaved) {
-          // if not found, then get the device language
-          languageSaved = deviceLocale;
-        }
-      }
-      I18n.locale = languageSaved;
-      updateLanguage(languageSaved);
-    } catch (error) {
-      console.warn('did not find saved language, it will just proceed with deviceLocale');
-    }
-  }
 
   changeLanguage = (value) => {
     const { updateLanguage } = this.props;
