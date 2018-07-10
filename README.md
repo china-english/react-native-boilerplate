@@ -11,7 +11,6 @@ react-native-boilerplate
 |[0.1.1](https://github.com/china-english/react-native-boilerplate/releases/tag/0.1.1)|redux-form| 在 0.1.0 的基础上添加 redux-form 生成器|
 |[0.2.0](https://github.com/china-english/react-native-boilerplate/releases/tag/0.2.0)|story-book| |
 
-![img](https://github.com/china-english/react-native-boilerplate/blob/master/gif/generate.gif)
 
 插件介绍
 --------
@@ -31,6 +30,58 @@ react-native-boilerplate
 7. [redux-immutable => 4.0.0](https://github.com/gajus/redux-immutable)
 
 8. [redux-form => 7.4.2](https://redux-form.com/7.4.2/examples/)
+
+项目结构
+--------
+ * react-native-boilerplate/
+  * android/
+  * ios/
+  * ...
+  * src/
+    * components/
+      * componentName/
+        * index.js
+        * index.stories.js
+        * styles.js
+    * containers/
+      * containerName/
+        * actions.js
+        * constants.js
+        * index.js
+        * reducer.js
+        * sagas.js
+        * selectors.js
+        * styles.js
+    * forms/
+      * formFields/
+        * formFieldName/
+          * index.js
+          * index.stories.js
+        * constants.js
+        * index.js
+        * styles.js
+      * formName/
+        * index.js
+        * index.stories.js
+        * styles.js
+    * translations/
+      * en.js
+      * zh.js
+    * store/
+    * actions.js
+    * App.js
+    * constants.js
+    * reducer.js
+    * routes.js
+    * sagas.js
+    * selectors.js
+    * translateRoute.js
+  * storybook
+    * ContentView/
+    * FooterView/
+    * HeaderView/
+    * ...
+
 
 开始使用
 -------

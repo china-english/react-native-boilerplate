@@ -1,7 +1,7 @@
 import I18n from 'react-native-i18n';
 import startCase from 'lodash/startCase';
-import en from './en';
-import zh from './zh';
+import en from '../translations/en';
+import zh from '../translations/zh';
 
 I18n.fallbacks = true;
 I18n.translations = {
