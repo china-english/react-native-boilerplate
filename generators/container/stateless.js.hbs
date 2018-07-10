@@ -6,8 +6,9 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+// import { Actions } from 'react-native-router-flux';
 import { compose } from 'redux';
+import { connect } from 'react-redux';
 {{#if wantActionsAndReducer}}
 import { createPropsSelector } from 'reselect-immutable-helpers';
 {{/if}}
@@ -17,25 +18,42 @@ import {
   Text,
   View,
 } from 'native-base';
-
 {{#if wantHeader}}
+
 import AppHeader from '../../components/AppHeader';
 {{/if}}
 {{#if wantFooter}}
+{{#if wantHeader}}
+{{else}}
+
+{{/if}}
 import AppFooter from '../../components/AppFooter';
 {{/if}}
-
 {{#if wantActionsAndReducer}}
+
 // import injectReducer from '../../utils/injectReducer';
 {{/if}}
+{{#if wantSaga}}
+{{#if wantActionsAndReducer}}
+{{else}}
+
+{{/if}}
+import injectSaga from '../../utils/injectSaga';
+{{/if}}
 {{#if wantTransLate}}
+
 import { translate } from '../../utils/helpers';
 {{/if}}
-
 {{#if wantActionsAndReducer}}
-// import { selectTest } from '../sourceFile/selectors';
+
+// import { selector } from '../sourceFile/selectors';
 // import reducer from '../sourceFile/reducer';
 {{/if}}
+{{#if wantSaga}}
+
+import sagas from './sagas';
+{{/if}}
+
 import styles from './styles';
 
 function {{ properCase name }}(props) {
@@ -44,8 +62,8 @@ function {{ properCase name }}(props) {
     <Container>
       {{#if wantHeader}}
       <AppHeader title="{{titleCase name}}" />
-      {{/if}}
 
+      {{/if}}
       <Content
         contentContainerStyle={styles.contentContainer}
         style={styles.content}
@@ -61,8 +79,8 @@ function {{ properCase name }}(props) {
           {{/if}}
         </View>
       </Content>
-
       {{#if wantFooter}}
+
       <AppFooter pageName="{{properCase name}}" />
       {{/if}}
     </Container>
@@ -98,7 +116,6 @@ const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withConnect = connect(null, mapDispatchToProps);
 
 {{/if}}
-
 export default compose(
 {{#if wantActionsAndReducer}}
   // withReducer,

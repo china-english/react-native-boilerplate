@@ -4,11 +4,7 @@ import { grey200, white } from '../../theme/variables/commonColor';
 import variables from '../../theme/variables/platform';
 
 const { height } = Dimensions.get('window');
-const {
-  {{#if wantHeader}}headerHeight,{{/if}}
-  {{#if wantFooter}}footerHeight,{{/if}}
-  statusbarHeight,
-} = variables;
+const { {{#if wantHeader}}headerHeight, {{/if}}{{#if wantFooter}}footerHeight, {{/if}}statusbarHeight } = variables;
 
 export default {
   contentContainer: {

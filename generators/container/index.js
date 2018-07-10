@@ -45,13 +45,11 @@ module.exports = {
     default: true,
     message: 'Do you want app footer?',
   }, {
-    when: (answers) => answers.type !== 'Stateless Function',
     type: 'confirm',
     name: 'wantActionsAndReducer',
     default: true,
     message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
   }, {
-    when: (answers) => answers.type !== 'Stateless Function',
     type: 'confirm',
     name: 'wantSaga',
     default: true,

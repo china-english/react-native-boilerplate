@@ -1,12 +1,12 @@
 import { createGetSelector } from 'reselect-immutable-helpers';
+import Immutable from 'immutable';
 // import { createSelector } from 'reselect';
-// import Immutable,{ fromJS } from 'immutable';
 
 /*
  * Direct selector to the {{ camelCase name }} reducer
  * 直接挑选 {{ camelCase name }}Reducer
  */
-export const select{{ properCase name }}Reducer = (state) => state.get('{{ camelCase name }}');
+export const select{{ properCase name }}Reducer = (state) => state.get('{{ camelCase name }}', Immutable.Map());
 
 /*  selector parameters from {{ camelCase name }}Reducer
  * 选择其中的特定字段

@@ -18,31 +18,41 @@ import {
   Text,
   View,
 } from 'native-base';
-
 {{#if wantHeader}}
+
 import AppHeader from '../../components/AppHeader';
 {{/if}}
 {{#if wantFooter}}
+{{#if wantHeader}}
+{{else}}
+
+{{/if}}
 import AppFooter from '../../components/AppFooter';
 {{/if}}
-
 {{#if wantActionsAndReducer}}
+
 import injectReducer from '../../utils/injectReducer';
 {{/if}}
 {{#if wantSaga}}
+{{#if wantActionsAndReducer}}
+{{else}}
+
+{{/if}}
 import injectSaga from '../../utils/injectSaga';
 {{/if}}
 {{#if wantTransLate}}
+
 import { translate } from '../../utils/helpers';
 {{/if}}
-
-{{#if wantSaga}}
-import sagas from './sagas';
-{{/if}}
 {{#if wantActionsAndReducer}}
+
 import { selectTest } from './selectors';
 // import { defaultAction } from './actions';
 import reducer from './reducer';
+{{/if}}
+{{#if wantSaga}}
+
+import sagas from './sagas';
 {{/if}}
 
 import styles from './styles';
@@ -75,8 +85,8 @@ export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
       <Container>
         {{#if wantHeader}}
         <AppHeader title="{{titleCase name}}" />
-        {{/if}}
 
+        {{/if}}
         <Content
           contentContainerStyle={styles.contentContainer}
           style={styles.content}
@@ -92,8 +102,8 @@ export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
             {{/if}}
           </View>
         </Content>
-
         {{#if wantFooter}}
+
         <AppFooter pageName="{{properCase name}}" />
         {{/if}}
       </Container>
@@ -108,7 +118,6 @@ export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
 {{ properCase name }}.propTypes = {
   test: PropTypes.string,
 };
-
 
 {{#if wantActionsAndReducer}}
 const mapStateToProps = createPropsSelector({
@@ -132,8 +141,8 @@ const withConnect = connect(null, mapDispatchToProps);
 {{/if}}
 {{#if wantSaga}}
 const withSagas = sagas.map((saga) => injectSaga(saga));
-{{/if}}
 
+{{/if}}
 export default compose(
 {{#if wantActionsAndReducer}}
   withReducer,
