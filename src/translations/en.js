@@ -12,4 +12,5 @@ export default {
   en: 'English',
   add: 'Add',
   minus: 'Minus',
+  footer: 'react-native-boilerplate',
 };

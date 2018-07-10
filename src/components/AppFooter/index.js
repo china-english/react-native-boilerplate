@@ -12,21 +12,27 @@ import {
   Text,
 } from 'native-base';
 
+import { translate } from '../../utils/helpers';
+
 import styles from './styles';
 
-function AppFooter(props) {
+const AppFooter = (props) => {
   const { pageName } = props;
   return (
     <Footer>
       <FooterTab style={styles.footerTble}>
-        <Text style={styles.text}>react-native-boilerplate {pageName}Footer</Text>
+        <Text style={styles.text}>
+          {translate('footer')} {pageName}Footer
+        </Text>
       </FooterTab>
     </Footer>
   );
-}
+};
+
 AppFooter.defaultProps = {
   pageName: '',
 };
+
 AppFooter.propTypes = {
   pageName: PropTypes.string,
 };

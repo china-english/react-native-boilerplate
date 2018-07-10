@@ -12,4 +12,5 @@ export default {
   en: 'English',
   add: '加',
   minus: '减',
+  footer: 'native 模版',
 };
