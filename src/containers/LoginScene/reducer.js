@@ -11,7 +11,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  test: 'welcome!',
+  test: 'welcome',
 });
 
 function loginSceneReducer(state = initialState, action) {

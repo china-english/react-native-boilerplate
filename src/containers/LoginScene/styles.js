@@ -1,7 +1,10 @@
 import { Dimensions } from 'react-native';
 import { grey200, white } from '../../theme/variables/commonColor';
 
+import variables from '../../theme/variables/platform';
+
 const { height } = Dimensions.get('window');
+const { headerHeight, footerHeight, statusbarHeight } = variables;
 
 export default {
   contentContainer: {
@@ -12,7 +15,7 @@ export default {
   },
   contentView: {
     backgroundColor: white,
-    height: height - 64 - 55,
+    minHeight: height - headerHeight - footerHeight - statusbarHeight,
     justifyContent: 'center',
   },
   button: {
