@@ -1,6 +1,6 @@
 import { createGetSelector } from 'reselect-immutable-helpers';
-// import { createSelector } from 'reselect';
 import Immutable from 'immutable';
+// import { createSelector } from 'reselect';
 
 /*
  * Direct selector to the homeScene reducer

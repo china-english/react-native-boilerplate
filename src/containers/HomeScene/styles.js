@@ -1,21 +1,28 @@
 import { Dimensions } from 'react-native';
-import { grey200 } from '../../theme/variables/commonColor';
+import { grey200, white } from '../../theme/variables/commonColor';
+
+import variables from '../../theme/variables/platform';
 
 const { height } = Dimensions.get('window');
+const { headerHeight, footerHeight, statusbarHeight } = variables;
 
 export default {
   contentContainer: {
     justifyContent: 'center',
-    backgroundColor: '#fff',
-    height: height - 64 - 55,
   },
   content: {
     backgroundColor: grey200,
   },
+  contentView: {
+    backgroundColor: white,
+    minHeight: height - headerHeight - footerHeight - statusbarHeight,
+    justifyContent: 'center',
+  },
   button: {
     alignSelf: 'center',
     marginBottom: 10,
-    marginTop: 10,
+    minWidth: 150,
+    justifyContent: 'space-evenly',
   },
   footerTble: {
     justifyContent: 'center',
@@ -23,5 +30,6 @@ export default {
   },
   generateText: {
     textAlign: 'center',
+    marginVertical: 10,
   },
 };

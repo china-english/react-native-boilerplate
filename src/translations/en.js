@@ -7,4 +7,9 @@ export default {
   placeholderPassword: 'Please enter your password',
   email: 'Email',
   password: 'Password',
+  login: 'Go to Login!',
+  zh: 'Chinese',
+  en: 'English',
+  add: 'Add',
+  minus: 'Minus',
 };

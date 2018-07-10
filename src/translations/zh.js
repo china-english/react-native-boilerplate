@@ -7,4 +7,9 @@ export default {
   placeholderPassword: '请输入你的密码',
   email: '邮箱',
   password: '密码',
+  login: '登录',
+  zh: '中文',
+  en: 'English',
+  add: '加',
+  minus: '减',
 };

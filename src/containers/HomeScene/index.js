@@ -12,9 +12,10 @@ import { connect } from 'react-redux';
 import { createPropsSelector } from 'reselect-immutable-helpers';
 import {
   Container,
-  Button,
   Content,
   Text,
+  View,
+  Button,
 } from 'native-base';
 
 import AppHeader from '../../components/AppHeader';
@@ -22,17 +23,20 @@ import AppFooter from '../../components/AppFooter';
 
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
+
 import { translate } from '../../utils/helpers';
 
-import sagas from './sagas';
 import { selectTest } from './selectors';
-import { selectCounter } from '../../selectors';
+// import { defaultAction } from './actions';
+import reducer from './reducer';
 
+import sagas from './sagas';
+
+import { selectCounter } from '../../selectors';
 import {
   addToCounter,
   minusToCounter,
 } from '../../actions';
-import reducer from './reducer';
 
 import styles from './styles';
 
@@ -60,7 +64,7 @@ export class HomeScene extends React.Component { // eslint-disable-line
 
   render() {
     const {
-      addCounter, minusCounter, counter, test, changeLanguage,
+      test, addCounter, minusCounter, counter, changeLanguage,
     } = this.props;
     return (
       <Container>
@@ -70,53 +74,57 @@ export class HomeScene extends React.Component { // eslint-disable-line
           contentContainerStyle={styles.contentContainer}
           style={styles.content}
         >
-          <Text style={styles.generateText}>{translate(test)}</Text>
-          <Text style={styles.generateText}>
-            {translate('generatorMessage')}
-          </Text>
-          <Button
-            onPress={() => {
-              Actions.push('login');
-            }}
-            style={styles.button}
-          >
-            <Text>Go to Login!</Text>
-          </Button>
-          <Button
-            onPress={() => {
-              changeLanguage('zh');
-            }}
-            style={styles.button}
-          >
-            <Text>Change Language to ZH</Text>
-          </Button>
-          <Button
-            onPress={() => {
-              changeLanguage('en');
-            }}
-            style={styles.button}
-          >
-            <Text>Change Language to EN</Text>
-          </Button>
-          <Button
-            onPress={() => {
-              addCounter();
-            }}
-            style={styles.button}
-          >
-            <Text>Add counter</Text>
-          </Button>
-          <Button
-            onPress={() => {
-              minusCounter();
-            }}
-            style={styles.button}
-          >
-            <Text>Minus counter</Text>
-          </Button>
-          <Text style={styles.generateText}>
-            {counter}
-          </Text>
+          <View style={styles.contentView}>
+            <Text style={styles.generateText}>{translate(test)}</Text>
+            <Text style={styles.generateText}>
+              {translate('generatorMessage')}
+            </Text>
+
+            <Button
+              onPress={() => {
+                Actions.push('login');
+              }}
+              style={styles.button}
+            >
+              <Text>{translate('login')}</Text>
+            </Button>
+
+            <Button
+              onPress={() => {
+                changeLanguage('zh');
+              }}
+              style={styles.button}
+            >
+              <Text>{translate('zh')}</Text>
+            </Button>
+            <Button
+              onPress={() => {
+                changeLanguage('en');
+              }}
+              style={styles.button}
+            >
+              <Text>{translate('en')}</Text>
+            </Button>
+
+            <Button
+              onPress={() => {
+                addCounter();
+              }}
+              style={styles.button}
+            >
+              <Text>{translate('add')}</Text>
+            </Button>
+            <Button
+              onPress={() => {
+                minusCounter();
+              }}
+              style={styles.button}
+            >
+              <Text>{translate('minus')}</Text>
+            </Button>
+
+            <Text style={styles.generateText}>{counter}</Text>
+          </View>
         </Content>
 
         <AppFooter pageName="HomeScene" />
@@ -126,21 +134,20 @@ export class HomeScene extends React.Component { // eslint-disable-line
 }
 
 HomeScene.defaultProps = {
-  counter: 0,
-  minusCounter: null,
   addCounter: null,
-  test: '',
+  counter: 0,
   changeLanguage: () => null,
+  minusCounter: null,
+  test: '',
 };
 
 HomeScene.propTypes = {
-  counter: PropTypes.number,
-  minusCounter: PropTypes.func,
   addCounter: PropTypes.func,
-  test: PropTypes.string,
+  counter: PropTypes.number,
   changeLanguage: PropTypes.func,
+  minusCounter: PropTypes.func,
+  test: PropTypes.string,
 };
-
 
 const mapStateToProps = createPropsSelector({
   counter: selectCounter,
