@@ -48,7 +48,6 @@
     "redux-form": "^7.4.2",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
     "reselect-immutable-helpers": "^1.2.2"
   },
