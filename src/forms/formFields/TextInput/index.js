@@ -1,8 +1,8 @@
 /**
- *
- * HomeScene Container
- *
- */
+*
+* TextInput
+*
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -12,12 +12,16 @@ import {
   Label,
 } from 'native-base';
 
+import { translate } from '../../../utils/helpers';
+
 import styles from '../styles';
 
 const TextInput = (props) => {
   const {
-    input, placeholder, label, layout, itemSettings, secureTextEntry,
-    itemstyle, labelStyle,
+    input,
+    placeholder, label,
+    secureTextEntry,
+    layout, itemSettings, itemstyle, labelStyle,
   } = props;
 
   const itemLayout = [itemstyle];
@@ -29,11 +33,11 @@ const TextInput = (props) => {
 
   const labelText = label || input.name;
   const placeholderText = (itemSettings && itemSettings.floatingLabel === true)
-    ? null : placeholder;
+    ? null : translate(placeholder);
 
   return (
     <Item {...itemSettings} style={itemLayout}>
-      <Label style={labelVertical}>{labelText}</Label>
+      <Label style={labelVertical}>{translate(labelText)}</Label>
       <Input
         placeholder={placeholderText}
         onChangeText={input.onChange}
