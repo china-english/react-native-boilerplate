@@ -12,4 +12,7 @@ storiesOf('App Footer', module)
   .addDecorator((getStory) => <FooterView>{getStory()}</FooterView>)
   .add('AppFooter', () => (
     <AppFooter />
+  ))
+  .add('AppFooter with pageName', () => (
+    <AppFooter pageName="story" />
   ));

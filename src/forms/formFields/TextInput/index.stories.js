@@ -10,6 +10,24 @@ import TextInput from '.';
 
 storiesOf('Text Input', module)
   .addDecorator((getStory) => <ContentView>{getStory()}</ContentView>)
-  .add('TextInput', () => (
-    <TextInput />
+  .add('default', () => (
+    <TextInput placeholder="placeholderEmail" />
+  ))
+  .add('with label', () => (
+    <TextInput label="email" placeholder="placeholderEmail" />
+  ))
+  .add('with layout', () => (
+    <TextInput label="email" layout="vertical" placeholder="placeholderEmail" />
+  ))
+  .add('with secureTextEntry', () => (
+    <TextInput label="email" secureTextEntry placeholder="placeholderEmail" />
+  ))
+  .add('with fixedLabel', () => (
+    <TextInput label="email" itemSettings={{ fixedLabel: true }} placeholder="placeholderEmail" />
+  ))
+  .add('with floatingLabel', () => (
+    <TextInput label="email" itemSettings={{ floatingLabel: true }} placeholder="placeholderEmail" />
+  ))
+  .add('with stackedLabel', () => (
+    <TextInput label="email" itemSettings={{ stackedLabel: true }} placeholder="placeholderEmail" />
   ));
