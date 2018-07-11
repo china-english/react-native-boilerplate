@@ -118,7 +118,6 @@ react-native-boilerplate
 
   10. 是否需要 saga；
 
-  > 当 container 的类型为 stateless function 时，8、9不会进行  
   > 当 container 不需要链接 route 的时候，5不会执行  
   > 当 container 需要链接 route 的时候，会自动在 route 中添加相关 route
 
