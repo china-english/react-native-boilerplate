@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import I18n from 'react-native-i18n';
 import { AsyncStorage } from 'react-native';
 import { createPropsSelector } from 'reselect-immutable-helpers';
+import SplashScreen from 'react-native-splash-screen';
 
 import AppRoutes from './routes';
 
@@ -25,6 +26,12 @@ class TranslateRoute extends React.Component { // eslint-disable-line
   //   this.state = {
   //   };
   // }
+
+  componentDidMount() {
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide();
+  }
 
   changeLanguage = (value) => {
     const { updateLanguage } = this.props;
