@@ -13,4 +13,5 @@ export default {
   add: '加',
   minus: '减',
   footer: 'native 模版',
+  back: '返回',
 };

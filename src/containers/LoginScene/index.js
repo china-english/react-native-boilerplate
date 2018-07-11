@@ -65,7 +65,7 @@ export class LoginScene extends React.Component { // eslint-disable-line
     const { test } = this.props;
     return (
       <Container>
-        <AppHeader title="Login Scene" hasRight={false} />
+        <AppHeader title="Login Scene" />
 
         <Content
           contentContainerStyle={styles.contentContainer}

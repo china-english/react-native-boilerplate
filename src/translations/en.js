@@ -13,4 +13,5 @@ export default {
   add: 'Add',
   minus: 'Minus',
   footer: 'react-native-boilerplate',
+  back: 'Back',
 };

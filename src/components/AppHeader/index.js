@@ -1,14 +1,11 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+*
+* AppHeader Stateless Component
+*
+*/
 
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { Actions } from 'react-native-router-flux';
-
 import {
   Header,
   Left,
@@ -18,40 +15,35 @@ import {
   Title,
   Icon,
   Text,
-  Toast,
 } from 'native-base';
+import { Actions } from 'react-native-router-flux';
+
+import { translate } from '../../utils/helpers';
 
 import styles from './styles';
 
-export default function AppHeader(props) {
+const AppHeader = (props) => {
   const {
-    title, hasLeft, hasRight, hasTitle, backMessage,
+    title, hasLeft, hasRight, hasTitle, backMessage, leftPress, rightPress,
   } = props;
 
   const leftButton = (
     <Button
-      onPress={() => Actions.pop()}
+      onPress={leftPress}
       style={styles.button}
     >
       <Icon name="arrow-back" />
-      <Text>{backMessage}</Text>
+      <Text>{translate(backMessage)}</Text>
     </Button>
   );
-
   const rightButton = (
     <Button
-      onPress={() => Toast.show({
-        text: 'No function',
-        buttonText: 'Okay',
-        duration: 3000,
-        position: 'top',
-      })}
+      onPress={rightPress}
       style={styles.button}
     >
       <Icon ios="ios-menu" android="md-menu" />
     </Button>
   );
-
   const titleBody = (
     <Title>{title}</Title>
   );
@@ -69,14 +61,6 @@ export default function AppHeader(props) {
       </Right>
     </Header>
   );
-}
-
-AppHeader.propTypes = {
-  title: PropTypes.string,
-  hasLeft: PropTypes.bool,
-  hasTitle: PropTypes.bool,
-  hasRight: PropTypes.bool,
-  backMessage: PropTypes.string,
 };
 
 AppHeader.defaultProps = {
@@ -84,5 +68,19 @@ AppHeader.defaultProps = {
   hasLeft: true,
   hasTitle: true,
   hasRight: true,
-  backMessage: 'Back',
+  backMessage: 'back',
+  leftPress: () => Actions.pop(),
+  rightPress: () => alert('OK'),// eslint-disable-line
 };
+
+AppHeader.propTypes = {
+  title: PropTypes.string,
+  hasLeft: PropTypes.bool,
+  hasTitle: PropTypes.bool,
+  hasRight: PropTypes.bool,
+  backMessage: PropTypes.string,
+  leftPress: PropTypes.func,
+  rightPress: PropTypes.func,
+};
+
+export default AppHeader;
