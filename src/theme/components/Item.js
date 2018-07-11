@@ -81,7 +81,7 @@ export default (variables = variable) => {
       height: variables.inputHeightBase,
       color: variables.inputColor,
       flex: 1,
-      top: Platform.OS === 'ios' ? 1.5 : 4,
+      top: Platform.OS === 'ios' ? 1.5 : undefined,
       fontSize: variables.inputFontSize,
       lineHeight: variables.inputLineHeight,
     },
