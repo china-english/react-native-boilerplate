@@ -61,7 +61,7 @@ module.exports = {
       actions.push({
         type: 'add',
         path: '../src/forms/formFields/{{properCase name}}/index.stories.js',
-        templateFile: './component/story.js.hbs',
+        templateFile: './formField/story.js.hbs',
         abortOnFail: true,
       });
     }
