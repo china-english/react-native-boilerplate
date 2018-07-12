@@ -172,13 +172,3 @@ storybook 的使用
 > 当你运行 storybook 时，你的应用将无法运行(被 storybook 覆盖)，想要返回应用时，需要停止 ```npm run storybook``` 重新 ```npm start``` 随后刷新你的应用即可  
 > 当你使用 native-base 时，存在两个特殊组件（ header 和 container ），已将其单独处理。  
 > 当你使用 ```npm run generate``` 生成新的 storybook 时，请 重新跑一次 ```npm run storybook```
-
-
-关于 react-native-splash-screen
--------
-
-iOS 运行时，如果出现 BUILD FAILED 错误，错误内容如下
-> 类似于 error: unknown receiver 'SplashScreen'; did you mean 'RNSplashScreen'? ...
-
-解决方案： 进入 ```node_modules/react-native-splash-screen/ios/RNSplashScreen.m``` 文件夹中，将52行中 SplashScreen 改成 RNSplashScreen 即可正常运行;
-等待修复中...
