@@ -72,32 +72,18 @@
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-react-native": "^3.2.1",
     "husky": "^0.14.3",
-    "jest": "^23.1.0",
+    "jest": "^23.4.0",
     "lint-staged": "^7.2.0",
     "react-dom": "16.3.1",
     "react-native-debugger-open": "^0.3.17",
     "react-native-storybook-loader": "^1.8.0",
-    "react-test-renderer": "16.0.0-alpha.6",
+    "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "^2.13.2"
   },
   "jest": {
     "preset": "react-native",
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/**/*.test.{js,jsx}",
-      "!src/src.js"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "statements": 98,
-        "branches": 91,
-        "functions": 98,
-        "lines": 98
-      }
-    },
-    "moduleDirectories": [
-      "node_modules",
-      "src"
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|native-base-shoutem-theme|react-native-easy-grid|react-native-drawer|react-native-vector-icons|react-native-keyboard-aware-scroll-view|react-native-swiper|react-navigation|native-base|react-native-router-flux|react-native-splash-screen|react-native-iphone-x-helper|react-native-safe-area-view)/)"
     ]
   }
 }
