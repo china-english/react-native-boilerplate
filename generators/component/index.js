@@ -68,6 +68,11 @@ module.exports = {
       path: '../src/components/{{properCase name}}/styles.js',
       templateFile: './component/style.js.hbs',
       abortOnFail: true,
+    }, {
+      type: 'add',
+      path: '../src/components/{{properCase name}}/tests/index.test.js',
+      templateFile: './component/test.js.hbs',
+      abortOnFail: true,
     }];
 
     if (answers.hasStorybook) {

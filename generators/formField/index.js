@@ -46,6 +46,11 @@ module.exports = {
       templateFile: './formField/formField.js.hbs',
       abortOnFail: true,
     }, {
+      type: 'add',
+      path: '../src/forms/formFields/{{properCase name}}/tests/index.test.js',
+      templateFile: './formField/test.js.hbs',
+      abortOnFail: true,
+    }, {
       type: 'modify',
       path: '../src/forms/formFields/constants.js',
       pattern: /(\/\/ IMPORT FORM_FIELDS)/gi,

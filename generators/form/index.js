@@ -68,6 +68,11 @@ module.exports = {
       path: '../src/forms/{{properCase name}}/styles.js',
       templateFile: './form/style.js.hbs',
       abortOnFail: true,
+    }, {
+      type: 'add',
+      path: '../src/forms/{{properCase name}}/tests/index.test.js',
+      templateFile: './form/test.js.hbs',
+      abortOnFail: true,
     }];
 
     if (answers.hasStorybook) {

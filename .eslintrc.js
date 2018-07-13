@@ -1,10 +1,13 @@
 module.exports = {
-    "extends": "airbnb",
-    "plugins": [
-      "react",
-      "jsx-a11y",
-      "react-native"
-    ],
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "react-native"
+  ],
+  "env": {
+    "jest": true
+  },
   "globals": {
     "__DEV__": true,
     "fetch": true

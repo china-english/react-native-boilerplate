@@ -1,9 +1,9 @@
 import 'react-native';
 // import React from 'react';
 // import renderer from 'react-test-renderer';
-// import {{ properCase name }} from '..';
+// import AppFooter from '..';
 
-describe('<{{ properCase name }} />', () => {
+describe('<AppFooter />', () => {
   it('Tests specified unit', () => {
     expect(true).toEqual(true);
   });

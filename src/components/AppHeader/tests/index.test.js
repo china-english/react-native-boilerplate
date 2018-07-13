@@ -1,9 +1,9 @@
 import 'react-native';
 // import React from 'react';
 // import renderer from 'react-test-renderer';
-// import {{ properCase name }} from '..';
+// import AppHeader from '..';
 
-describe('<{{ properCase name }} />', () => {
+describe('<AppHeader />', () => {
   it('Tests specified unit', () => {
     expect(true).toEqual(true);
   });

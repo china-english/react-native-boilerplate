@@ -1,8 +1,10 @@
-// import { fromJS } from 'immutable';
-// import { select{{ properCase name }}Reducer } from '../selectors';
+import { fromJS } from 'immutable';
+import { select{{ properCase name }}Reducer } from '../selectors';
 
 describe('select{{ properCase name }}Reducer', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('Tests specified unit', () => {
+    const initialState = fromJS({});
+    const expected = fromJS({});
+    expect(select{{ properCase name }}Reducer(initialState)).toEqual(expected);
   });
 });
