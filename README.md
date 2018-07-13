@@ -94,6 +94,13 @@ react-native-boilerplate
 
 4. ```npm start && react-native run-ios or npm start && react-native run-android```
 
+
+debugger 工具
+-------
+本项目使用 [React Native Debugger](https://github.com/jhen0409/react-native-debugger) 进行测试。(工具需要安装)
+
+
+
 模版生成器的使用
 ---------
 ### container
