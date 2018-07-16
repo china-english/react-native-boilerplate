@@ -1,5 +1,3 @@
-// import variable from "./../variables/platform";
-
 export default () => {
   const labelTheme = {
     '.focused': {

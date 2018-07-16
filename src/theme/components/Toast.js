@@ -13,15 +13,15 @@ export default (variables = variable) => {
     '.success': {
       backgroundColor: variables.brandSuccess,
     },
-    backgroundColor: 'rgba(255,255,255,0.6)',
+    backgroundColor: 'rgba(0,0,0,0.8)',
     borderRadius: platform === 'ios' ? 5 : 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-    minHeight: 30,
+    minHeight: 50,
     'NativeBase.Text': {
-      color: variables.brandDanger,
+      color: '#fff',
       flex: 1,
     },
     'NativeBase.Button': {

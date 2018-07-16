@@ -1,8 +1,4 @@
-import variable from '../variables/platform';
-
-export default (variables = variable) => {
-  const { platform } = variables;
-
+export default () => {
   const theme = {
     'NativeBase.Item': {
       '.fixedLabel': {
@@ -27,7 +23,10 @@ export default (variables = variable) => {
         },
         'NativeBase.Input': {
           paddingLeft: null,
-          marginLeft: platform === 'ios' ? undefined : -5,
+          marginLeft: null,
+        },
+        'NativeBase.Icon': {
+          marginTop: 36,
         },
         marginLeft: 15,
       },
@@ -35,11 +34,14 @@ export default (variables = variable) => {
         'NativeBase.Input': {
           paddingLeft: null,
           top: 10,
-          marginLeft: platform === 'ios' ? undefined : -5,
+          marginLeft: null,
         },
         'NativeBase.Label': {
           left: 0,
-          top: 8,
+          top: 6,
+        },
+        'NativeBase.Icon': {
+          top: 6,
         },
         marginTop: 15,
         marginLeft: 15,

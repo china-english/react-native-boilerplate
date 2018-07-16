@@ -6,11 +6,26 @@ export default (variables = variable) => {
   const itemTheme = {
     '.floatingLabel': {
       'NativeBase.Input': {
-        height: 60,
+        height: 50,
         top: 8,
+        paddingTop: 3,
+        paddingBottom: 7,
+        '.multiline': {
+          minHeight: variables.inputHeightBase,
+          paddingTop: Platform.OS === 'ios' ? 10 : 3,
+          paddingBottom: Platform.OS === 'ios' ? 14 : 10,
+        },
       },
       'NativeBase.Label': {
         top: 8,
+      },
+      'NativeBase.Icon': {
+        top: 6,
+        paddingTop: 8,
+      },
+      'NativeBase.IconNB': {
+        top: 6,
+        paddingTop: 8,
       },
     },
     '.fixedLabel': {
@@ -39,13 +54,25 @@ export default (variables = variable) => {
         alignSelf: 'flex-start',
         fontSize: variables.inputFontSize - 2,
       },
+      'NativeBase.Icon': {
+        marginTop: 36,
+      },
       'NativeBase.Input': {
         alignSelf: Platform.OS === 'ios' ? 'stretch' : 'flex-start',
         flex: 1,
         width: Platform.OS === 'ios' ? null : variables.deviceWidth - 25,
         fontSize: variables.inputFontSize,
+        lineHeight: variables.inputLineHeight - 6,
+        '.secureTextEntry': {
+          fontSize: variables.inputFontSize - 4,
+        },
+        '.multiline': {
+          paddingTop: Platform.OS === 'ios' ? 9 : undefined,
+          paddingBottom: Platform.OS === 'ios' ? 9 : undefined,
+        },
       },
       flexDirection: null,
+      minHeight: variables.inputHeightBase + 15,
     },
     '.inlineLabel': {
       'NativeBase.Label': {
@@ -78,12 +105,14 @@ export default (variables = variable) => {
       paddingRight: 8,
     },
     'NativeBase.Input': {
+      '.multiline': {
+        height: null,
+      },
       height: variables.inputHeightBase,
       color: variables.inputColor,
       flex: 1,
       top: Platform.OS === 'ios' ? 1.5 : undefined,
       fontSize: variables.inputFontSize,
-      lineHeight: variables.inputLineHeight,
     },
     '.underline': {
       'NativeBase.Input': {
@@ -122,7 +151,7 @@ export default (variables = variable) => {
         paddingLeft: 8,
       },
       'NativeBase.Icon': {
-        paddingLeft: 15,
+        paddingLeft: 10,
       },
       '.success': {
         borderColor: variables.inputSuccessBorderColor,
@@ -190,16 +219,19 @@ export default (variables = variable) => {
         color: '#384850',
       },
     },
+    '.picker': {
+      marginLeft: 0,
+    },
 
     borderWidth: variables.borderWidth * 2,
     borderTopWidth: 0,
     borderRightWidth: 0,
     borderLeftWidth: 0,
     borderColor: variables.inputBorderColor,
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
     flexDirection: 'row',
     alignItems: 'center',
-    // marginLeft: 2,
+    marginLeft: 2,
   };
 
   return itemTheme;

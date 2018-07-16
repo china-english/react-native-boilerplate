@@ -5,7 +5,7 @@ export default (variables = variable) => {
 
   const tabHeadingTheme = {
     flexDirection: 'row',
-    backgroundColor: variables.brandPrimary,
+    backgroundColor: variables.tabDefaultBg,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -15,9 +15,8 @@ export default (variables = variable) => {
       minWidth: platform === 'android' ? undefined : 60,
     },
     'NativeBase.Text': {
-      color: variables.topTabBarActiveTextColor,
+      color: variables.topTabBarTextColor,
       marginHorizontal: 7,
-      fontWeight: platform === 'ios' ? '500' : '300',
     },
     'NativeBase.Icon': {
       color: variables.topTabBarTextColor,
@@ -26,7 +25,7 @@ export default (variables = variable) => {
     '.active': {
       'NativeBase.Text': {
         color: variables.topTabBarActiveTextColor,
-        fontWeight: '900',
+        fontWeight: '600',
       },
       'NativeBase.Icon': {
         color: variables.topTabBarActiveTextColor,

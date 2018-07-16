@@ -1,8 +1,7 @@
 import variable from '../variables/platform';
 
 export default (variables = variable) => {
-  const { platformStyle } = variables;
-  const { platform } = variables;
+  const { platformStyle, platform } = variables;
 
   const buttonTheme = {
     '.disabled': {
@@ -405,7 +404,7 @@ export default (variables = variable) => {
       marginRight: 0,
       color: variables.inverseTextColor,
       fontSize: variables.btnTextSize,
-      lineHeight: variables.btnLineHeight,
+      backgroundColor: 'transparent',
       // childPosition: 1
     },
 

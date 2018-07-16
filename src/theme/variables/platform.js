@@ -23,6 +23,7 @@ const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 const platform = Platform.OS;
 const platformStyle = undefined;
+const isIphoneX = platform === 'ios' && (deviceHeight === 812 || deviceWidth === 812);
 const { isPad } = Platform;
 
 export default {
@@ -281,6 +282,7 @@ export default {
   jumbotronPadding: 30,
   deviceWidth,
   deviceHeight,
+  isIphoneX,
   // use in components
   brandPrimary: brand,
   grey,
@@ -290,4 +292,20 @@ export default {
   brandSuccess,
   // New Variable
   inputGroupRoundedBorderRadius: 30,
+
+  // iPhoneX SafeArea
+  Inset: {
+    portrait: {
+      topInset: 24,
+      leftInset: 0,
+      rightInset: 0,
+      bottomInset: 34,
+    },
+    landscape: {
+      topInset: 0,
+      leftInset: 44,
+      rightInset: 44,
+      bottomInset: 21,
+    },
+  },
 };
