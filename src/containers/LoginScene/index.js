@@ -17,15 +17,15 @@ import {
   View,
 } from 'native-base';
 
-import AppHeader from '../../components/AppHeader';
-import AppFooter from '../../components/AppFooter';
+import AppHeader from 'components/AppHeader';
+import AppFooter from 'components/AppFooter';
 
-import LoginForm from '../../forms/LoginForm';
+import LoginForm from 'forms/LoginForm';
 
-import injectReducer from '../../utils/injectReducer';
-import injectSaga from '../../utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 
-import { translate } from '../../utils/helpers';
+import { translate } from 'utils/helpers';
 
 import { selectTest } from './selectors';
 // import { defaultAction } from './actions';

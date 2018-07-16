@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react-native';
 // import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';
 
-import FooterView from '../../../storybook/FooterView';
+import FooterView from 'storybook/FooterView';
 
 import AppFooter from '.';
 

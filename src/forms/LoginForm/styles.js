@@ -1,4 +1,4 @@
-import { white } from '../../theme/variables/commonColor';
+import { white } from 'commonColor';
 
 export default {
   form: {

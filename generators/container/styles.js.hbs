@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native';
-import { grey200, white } from '../../theme/variables/commonColor';
+import { grey200, white } from 'commonColor';
 
-import variables from '../../theme/variables/platform';
+import variables from 'platform';
 
 const { height } = Dimensions.get('window');
 const { {{#if wantHeader}}headerHeight, {{/if}}{{#if wantFooter}}footerHeight, {{/if}}statusbarHeight } = variables;

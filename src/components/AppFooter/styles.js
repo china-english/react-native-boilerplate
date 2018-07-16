@@ -1,4 +1,4 @@
-import { lightBlack } from '../../theme/variables/commonColor';
+import { lightBlack } from 'commonColor';
 
 export default {
   footerTble: {

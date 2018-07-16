@@ -18,7 +18,7 @@ import {
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
-import { translate } from '../../utils/helpers';
+import { translate } from 'utils/helpers';
 
 import styles from './styles';
 

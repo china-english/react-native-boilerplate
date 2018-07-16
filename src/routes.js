@@ -15,8 +15,8 @@ import {
 } from 'react-native-router-flux';
 
 // import page container
-import HomeScene from './containers/HomeScene';
-import LoginScene from './containers/LoginScene';
+import HomeScene from 'containers/HomeScene';
+import LoginScene from 'containers/LoginScene';
 
 // -- ADD NEW ROUTE FILE --
 

@@ -17,7 +17,7 @@ import {
   lightBlue,
   purple,
   blackGrey,
-} from './commonColor';
+} from 'commonColor';
 
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;

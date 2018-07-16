@@ -1,4 +1,4 @@
-// import { grey200 } from '../../theme/variables/commonColor';
+// import { grey200 } from 'commonColor';
 
 export default {
   fieldVertical: {

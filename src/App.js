@@ -10,11 +10,12 @@ import { Provider } from 'react-redux';
 
 import { StyleProvider, Root } from 'native-base';
 
+import getTheme from 'theme/components';
+import variables from 'platform';
+
 import TranslateRoute from './translateRoute';
 import configureStore from './store';
 
-import getTheme from './theme/components';
-import variables from './theme/variables/platform';
 
 const store = configureStore();
 

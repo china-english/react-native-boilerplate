@@ -1,3 +1,22 @@
 {
-  "presets": ["react-native"]
+  "presets": ["react-native"],
+  "plugins": [
+    ["module-resolver", {
+      "cwd": "babelrc",
+      "root": "./src",
+      "alias": {
+        "src": "./src",
+        "components": "./src/components",
+        "containers": "./src/containers",
+        "forms": "./src/forms",
+        "formFields": "./src/forms/formFields",
+        "utils": "./src/utils",
+        "commonColor": "./src/theme/variables/commonColor",
+        "platform": "./src/theme/variables/platform",
+        "theme": "./src/theme",
+        "translations": "./src/translations",
+        "storybook": "./storybook",
+      }
+    }]
+  ]
 }

@@ -12,7 +12,7 @@ import {
   Label,
 } from 'native-base';
 
-import { translate } from '../../../utils/helpers';
+import { translate } from 'utils/helpers';
 
 import styles from '../styles';
 

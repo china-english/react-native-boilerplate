@@ -14,8 +14,8 @@ import {
   Form,
 } from 'native-base';
 
-import { translate } from '../../utils/helpers';
-import Group from '../formFields';
+import { translate } from 'utils/helpers';
+import Group from 'formFields';
 
 import styles from './styles';
 
