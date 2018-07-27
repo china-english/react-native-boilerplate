@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react-native';
 
 import ContentView from 'storybook/ContentView';
 
-import TextInput from '.';
+import TextInput from '..';
 
 storiesOf('Text Input', module)
   .addDecorator((getStory) => <ContentView>{getStory()}</ContentView>)

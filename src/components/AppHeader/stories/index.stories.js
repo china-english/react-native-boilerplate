@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 
 import HeaderView from 'storybook/HeaderView';
 
-import AppHeader from '.';
+import AppHeader from '..';
 
 storiesOf('App Header', module)
   .addDecorator((getStory) => <HeaderView>{getStory()}</HeaderView>)

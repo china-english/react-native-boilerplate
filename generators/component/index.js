@@ -78,7 +78,7 @@ module.exports = {
     if (answers.hasStorybook) {
       actions.push({
         type: 'add',
-        path: '../src/components/{{properCase name}}/index.stories.js',
+        path: '../src/components/{{properCase name}}/stories/index.stories.js',
         templateFile: './component/story.js.hbs',
         abortOnFail: true,
       });

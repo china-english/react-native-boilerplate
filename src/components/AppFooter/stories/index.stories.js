@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react-native';
 
 import FooterView from 'storybook/FooterView';
 
-import AppFooter from '.';
+import AppFooter from '..';
 
 storiesOf('App Footer', module)
   .addDecorator((getStory) => <FooterView>{getStory()}</FooterView>)

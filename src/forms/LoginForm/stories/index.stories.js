@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 
 import ContentView from 'storybook/ContentView';
 
-import LoginForm from '.';
+import LoginForm from '..';
 
 storiesOf('Login Form', module)
   .addDecorator((getStory) => <ContentView>{getStory()}</ContentView>)

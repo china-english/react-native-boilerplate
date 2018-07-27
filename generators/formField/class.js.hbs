@@ -1,0 +1,102 @@
+/**
+*
+* {{ properCase name }}
+*
+*/
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  Item,
+  Radio,
+  Label,
+  Text,
+} from 'native-base';
+{{#if wantTransLate}}
+
+import { translate } from 'utils/helpers';
+{{/if}}
+
+import styles from '../styles';
+
+class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: !!props.input.value,
+    };
+  }
+
+  onChange = () => {
+    const { selected } = this.state;
+    const { input } = this.props;
+    this.setState({ selected: !selected });
+    input.onChange(!selected);
+  }
+
+  render() {
+    const {
+      input, label, hasLabel, children, standardStyle,
+      itemSettings, itemstyle, labelStyle, meta,
+    } = this.props;
+    const { dirty, error, touched } = meta;
+    const { selected } = this.state;
+
+    const hasError = (dirty || touched) && error;
+    const labelText = label || input.name;
+
+    return (
+      <Item {...itemSettings} style={itemstyle}>
+        <Radio
+          style={styles.radio}
+          standardStyle={standardStyle}
+          selected={selected}
+          onPress={this.onChange}
+        />
+        { hasLabel && <Label style={labelStyle}>{{#if wantTransLate}}{translate(labelText)}{{else}}{labelText}{{/if}}</Label> }
+        { children }
+        { hasError && <Text style={styles.errorStyle}>{{#if wantTransLate}}{translate(error)}{{else}}{error}{{/if}}</Text> }
+      </Item>
+    );
+  }
+}
+
+{{ properCase name }}.defaultProps = {
+  input: {
+    value: false,
+    onChange: () => null,
+  },
+  meta: {
+    dirty: false,
+    error: undefined,
+    touched: false,
+  },
+  label: '',
+  itemSettings: {},
+  itemstyle: {},
+  labelStyle: {},
+  hasLabel: false,
+  children: null,
+  standardStyle: true,
+};
+
+{{ properCase name }}.propTypes = {
+  input: PropTypes.shape({
+    value: PropTypes.any,
+    onChange: PropTypes.func,
+  }),
+  meta: PropTypes.shape({
+    dirty: PropTypes.bool,
+    error: PropTypes.any,
+    touched: PropTypes.bool,
+  }),
+  label: PropTypes.string,
+  itemSettings: PropTypes.object,
+  itemstyle: PropTypes.object,
+  labelStyle: PropTypes.object,
+  hasLabel: PropTypes.bool,
+  children: PropTypes.any,
+  standardStyle: PropTypes.bool,
+};
+
+export default {{ properCase name }};

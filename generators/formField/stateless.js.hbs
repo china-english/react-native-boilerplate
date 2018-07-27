@@ -10,6 +10,7 @@ import {
   Item,
   Input,
   Label,
+  Text,
 } from 'native-base';
 {{#if wantTransLate}}
 
@@ -20,11 +21,11 @@ import styles from '../styles';
 
 const {{ properCase name }} = (props) => {
   const {
-    input,
-    placeholder, label,
-    secureTextEntry,
+    input, placeholder, label,
+    secureTextEntry, meta,
     layout, itemSettings, itemstyle, labelStyle,
   } = props;
+  const { dirty, error, touched } = meta;
 
   const itemLayout = [itemstyle];
   const labelVertical = [labelStyle];
@@ -32,6 +33,8 @@ const {{ properCase name }} = (props) => {
     itemLayout.push(styles.fieldVertical);
     labelVertical.push(styles.labelVertical);
   }
+
+  const hasError = (dirty || touched) && error;
 
   const labelText = label || input.name;
   const placeholderText = (itemSettings && itemSettings.floatingLabel === true)
@@ -44,13 +47,20 @@ const {{ properCase name }} = (props) => {
         placeholder={placeholderText}
         onChangeText={input.onChange}
         secureTextEntry={secureTextEntry}
+        defaultValue={input.value}
       />
+      {hasError && <Text style={styles.errorStyle}>{{#if wantTransLate}}{translate(error)}{{else}}{error}{{/if}}</Text>}
     </Item>
   );
 };
 
 {{ properCase name }}.defaultProps = {
   input: {},
+  meta: {
+    dirty: false,
+    error: undefined,
+    touched: false,
+  },
   placeholder: '',
   label: '',
   layout: '',
@@ -61,7 +71,15 @@ const {{ properCase name }} = (props) => {
 };
 
 {{ properCase name }}.propTypes = {
-  input: PropTypes.object,
+  input: PropTypes.shape({
+    value: PropTypes.any,
+    onChange: PropTypes.func,
+  }),
+  meta: PropTypes.shape({
+    dirty: PropTypes.bool,
+    error: PropTypes.any,
+    touched: PropTypes.bool,
+  }),
   placeholder: PropTypes.string,
   label: PropTypes.string,
   layout: PropTypes.string,

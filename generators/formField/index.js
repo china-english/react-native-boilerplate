@@ -11,6 +11,12 @@ const componentExists = require('../utils/componentExists');
 module.exports = {
   description: 'Add a form field component',
   prompts: [{
+    type: 'list',
+    name: 'type',
+    message: 'Select the type of form',
+    default: 'Stateless Function',
+    choices: () => ['Stateless Function', 'React.Component', 'React.PureComponent'],
+  }, {
     type: 'input',
     name: 'name',
     message: 'What should it be called?',
@@ -40,10 +46,22 @@ module.exports = {
     choices: () => ['Header', 'Content', 'Footer'],
   }],
   actions: (answers) => {
+    let formFieldsTemplate;
+
+    switch (answers.type) {
+      case 'Stateless Function': {
+        formFieldsTemplate = './formField/stateless.js.hbs';
+        break;
+      }
+      default: {
+        formFieldsTemplate = './formField/class.js.hbs';
+      }
+    }
+
     const actions = [{
       type: 'add',
       path: '../src/forms/formFields/{{properCase name}}/index.js',
-      templateFile: './formField/formField.js.hbs',
+      templateFile: formFieldsTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
@@ -65,7 +83,7 @@ module.exports = {
     if (answers.hasStorybook) {
       actions.push({
         type: 'add',
-        path: '../src/forms/formFields/{{properCase name}}/index.stories.js',
+        path: '../src/forms/formFields/{{properCase name}}/stories/index.stories.js',
         templateFile: './formField/story.js.hbs',
         abortOnFail: true,
       });
