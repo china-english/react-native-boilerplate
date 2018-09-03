@@ -8,7 +8,7 @@ import {{position}}View from 'storybook/{{position}}View';
 
 import {{properCase name}} from '..';
 
-storiesOf('{{titleCase name}}', module)
+storiesOf('forms/{{titleCase name}}', module)
   .addDecorator((getStory) => <{{position}}View>{getStory()}</{{position}}View>)
   .add('{{properCase name}}', () => (
     <{{properCase name}} onSubmit={action('submit {{camelCase name}} data')} />

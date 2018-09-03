@@ -7,6 +7,7 @@
 'use strict';
 
 const componentExists = require('../utils/componentExists');
+const containerExists = require('../utils/containerExists');
 
 module.exports = {
   description: 'Add an unconnected component',
@@ -34,6 +35,22 @@ module.exports = {
     message: 'Do you want translate the component?',
   }, {
     type: 'confirm',
+    name: 'isContainerComponent',
+    default: false,
+    message: 'Does this component belong to container ?',
+  }, {
+    when: (answers) => answers.isContainerComponent,
+    type: 'input',
+    name: 'containerName',
+    message: 'What is the name of this container?',
+    validate: (value) => {
+      if ((/.+/).test(value)) {
+        return containerExists(value) ? true : 'this container doesn\'t exists';
+      }
+      return 'The name is required';
+    },
+  }, {
+    type: 'confirm',
     name: 'hasStorybook',
     message: 'Do you want to link it with storybook?',
     default: true,
@@ -47,6 +64,11 @@ module.exports = {
   }],
   actions: (answers) => {
     let componentTemplate;
+    let pathName = '../src/components/{{properCase name}}';
+
+    if (answers.isContainerComponent) {
+      pathName = `../src/containers/${answers.containerName}/components/{{properCase name}}`;
+    }
 
     switch (answers.type) {
       case 'Stateless Function': {
@@ -60,17 +82,17 @@ module.exports = {
 
     const actions = [{
       type: 'add',
-      path: '../src/components/{{properCase name}}/index.js',
+      path: `${pathName}/index.js`,
       templateFile: componentTemplate,
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../src/components/{{properCase name}}/styles.js',
+      path: `${pathName}/styles.js`,
       templateFile: './component/style.js.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../src/components/{{properCase name}}/tests/index.test.js',
+      path: `${pathName}/tests/index.test.js`,
       templateFile: './component/test.js.hbs',
       abortOnFail: true,
     }];
@@ -78,7 +100,7 @@ module.exports = {
     if (answers.hasStorybook) {
       actions.push({
         type: 'add',
-        path: '../src/components/{{properCase name}}/stories/index.stories.js',
+        path: `${pathName}/stories/index.stories.js`,
         templateFile: './component/story.js.hbs',
         abortOnFail: true,
       });

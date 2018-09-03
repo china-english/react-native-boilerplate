@@ -173,7 +173,7 @@ module.exports = {
       actions.push({
         type: 'modify',
         path: '../src/routes.js',
-        pattern: /(-- ADD NEW ROUTE FILE --)/gi,
+        pattern: /(\n)(export default)/gi,
         template: '$1\nimport {{properCase name}} from \'containers/{{properCase name}}\';',
       });
     }
