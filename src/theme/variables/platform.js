@@ -1,22 +1,28 @@
+// @flow
+
 import color from 'color';
 
 import { Platform, Dimensions, PixelRatio } from 'react-native';
+
 import {
   brandInfo,
   brandSuccess,
   brandWarning,
   brandSidebar,
+  brandLight,
   brand,
-  grey,
   darkGrey,
   white,
-  blue,
-  green,
   red,
   black,
   lightBlue,
   purple,
-  blackGrey,
+  fullBlack,
+  badgeBg,
+  disabledBg,
+  generateBorder,
+  inputBorder,
+  grey650,
 } from 'commonColor';
 
 const deviceHeight = Dimensions.get('window').height;
@@ -24,75 +30,61 @@ const deviceWidth = Dimensions.get('window').width;
 const platform = Platform.OS;
 const platformStyle = undefined;
 const isIphoneX = platform === 'ios' && (deviceHeight === 812 || deviceWidth === 812);
-const { isPad } = Platform;
 
 export default {
   platformStyle,
   platform,
-  // AndroidRipple
+  deviceWidth,
+  deviceHeight,
+  isIphoneX,
+  // Accordion
+  headerStyle: '#edebed',
+  iconStyle: fullBlack,
+  contentStyle: brandLight,
+  expandedIconStyle: fullBlack,
+  accordionBorderColor: '#d3d3d3',
+
+  // Android
   androidRipple: true,
   androidRippleColor: 'rgba(256, 256, 256, 0.3)',
   androidRippleColorDark: 'rgba(0, 0, 0, 0.15)',
+  btnUppercaseAndroidText: true,
 
   // Badge
-  badgeBg: red,
+  badgeBg,
   badgeColor: white,
-  // New Variable
   badgePadding: platform === 'ios' ? 3 : 0,
 
   // Button
   btnFontFamily: platform === 'ios' ? 'System' : 'Roboto_medium',
-  btnDisabledBg: darkGrey,
-  btnDisabledClr: grey,
-
-  // CheckBox
-  checkboxRadius: platform === 'ios' ? 13 : 0,
-  CheckboxRadius: isPad ? 16 : this.checkboxRadius,
-  CheckboxBorderWidth: platform === 'ios' ? 1 : 2,
-  checkboxPaddingLeft: platform === 'ios' ? 4 : 2,
-  CheckboxPaddingLeft: isPad ? 6 : this.checkboxPaddingLeft,
-  CheckboxPaddingBottom: platform === 'ios' ? 0 : 5,
-  checkboxIconSize: platform === 'ios' ? 21 : 14,
-  CheckboxIconSize: isPad ? 36 : this.checkboxIconSize,
-  CheckboxIconMarginTop: platform === 'ios' ? undefined : 1,
-  checkboxFontSize: platform === 'ios' ? 23 / 0.9 : 18,
-  CheckboxFontSize: isPad ? 45 : this.checkboxFontSize,
-  DefaultFontSize: 17,
-  checkboxBgColor: lightBlue,
-  checkboxSize: isPad ? 30 : 20,
-  checkboxTickColor: white,
-
-  // New Variable
-  get defaultTextColor() {
-    return this.textColor;
-  },
-
+  btnDisabledBg: disabledBg,
+  buttonPadding: 6,
   get btnPrimaryBg() {
-    return brand;
+    return this.brandPrimary;
   },
   get btnPrimaryColor() {
     return this.inverseTextColor;
   },
   get btnInfoBg() {
-    return brandInfo;
+    return this.brandInfo;
   },
   get btnInfoColor() {
     return this.inverseTextColor;
   },
   get btnSuccessBg() {
-    return brandSuccess;
+    return this.brandSuccess;
   },
   get btnSuccessColor() {
     return this.inverseTextColor;
   },
   get btnDangerBg() {
-    return red;
+    return this.brandDanger;
   },
   get btnDangerColor() {
     return this.inverseTextColor;
   },
   get btnWarningBg() {
-    return brandWarning;
+    return this.brandWarning;
   },
   get btnWarningColor() {
     return this.inverseTextColor;
@@ -109,9 +101,6 @@ export default {
   get borderRadiusLarge() {
     return this.fontSizeBase * 3.8;
   },
-
-  buttonPadding: 6,
-
   get iconSizeLarge() {
     return this.iconFontSize * 1.5;
   },
@@ -121,11 +110,42 @@ export default {
 
   // Card
   cardDefaultBg: white,
+  cardBorderColor: generateBorder,
+  cardBorderRadius: 2,
+  cardItemPadding: platform === 'ios' ? 10 : 12,
+
+  // CheckBox
+  CheckboxRadius: platform === 'ios' ? 13 : 0,
+  CheckboxBorderWidth: platform === 'ios' ? 1 : 2,
+  CheckboxPaddingLeft: platform === 'ios' ? 4 : 2,
+  CheckboxPaddingBottom: platform === 'ios' ? 0 : 5,
+  CheckboxIconSize: platform === 'ios' ? 21 : 16,
+  CheckboxIconMarginTop: platform === 'ios' ? undefined : 1,
+  CheckboxFontSize: platform === 'ios' ? 23 / 0.9 : 17,
+  checkboxBgColor: lightBlue,
+  checkboxSize: 20,
+  checkboxTickColor: white,
+
+  // Color
+  brandPrimary: brand,
+  brandInfo,
+  brandSuccess,
+  brandDanger: red,
+  brandWarning,
+  brandDark: fullBlack,
+  brandLight,
+
+  // Container
+  containerBgColor: white,
+
+  // Date Picker
+  datePickerTextColor: fullBlack,
+  datePickerBg: 'transparent',
 
   // Font
+  DefaultFontSize: 16,
   fontFamily: platform === 'ios' ? 'System' : 'Roboto',
   fontSizeBase: 15,
-
   get fontSizeH1() {
     return this.fontSizeBase * 1.8;
   },
@@ -138,65 +158,55 @@ export default {
 
   // Footer
   footerHeight: 55,
-  footerDefaultBg: 'transparent',
+  footerDefaultBg: platform === 'ios' ? brandLight : brand,
+  footerPaddingBottom: 0,
 
   // FooterTab
-  tabBarTextColor: lightBlue,
+  tabBarTextColor: platform === 'ios' ? '#6b6b6b' : purple,
   tabBarTextSize: platform === 'ios' ? 14 : 11,
-  activeTab: platform === 'ios' ? blue : white,
-  sTabBarActiveTextColor: blue,
-  tabBarActiveTextColor: white,
-  tabActiveBgColor: brand,
-
-  // Tab
-  tabDefaultBg: blue,
-  topTabBarTextColor: purple,
-  topTabBarActiveTextColor: white,
-  topTabActiveBgColor: platform === 'ios' ? blue : undefined,
-  topTabBarBorderColor: white,
-  topTabBarActiveBorderColor: darkGrey,
+  activeTab: platform === 'ios' ? brand : white,
+  sTabBarActiveTextColor: brand,
+  tabBarActiveTextColor: platform === 'ios' ? brand : white,
+  tabActiveBgColor: platform === 'ios' ? '#cde1f9' : brand,
 
   // Header
   toolbarBtnColor: white,
-  toolbarDefaultBg: brand,
+  toolbarDefaultBg: platform === 'ios' ? brandLight : brand,
   toolbarHeight: platform === 'ios' ? 64 : 56,
-  toolbarIconSize: platform === 'ios' ? 20 : 22,
   toolbarSearchIconSize: platform === 'ios' ? 20 : 23,
-  toolbarInputColor: platform === 'ios' ? grey : white,
+  toolbarInputColor: platform === 'ios' ? '#CECDD2' : white,
   searchBarHeight: platform === 'ios' ? 30 : 40,
-  toolbarInverseBg: black,
-  toolbarTextColor: white,
-  iosStatusbar: 'light-content',
-  toolbarDefaultBorder: darkGrey,
+  searchBarInputHeight: platform === 'ios' ? 30 : 50,
+  toolbarBtnTextColor: platform === 'ios' ? brand : white,
+  toolbarDefaultBorder: platform === 'ios' ? '#a7a6ab' : brand,
+  iosStatusbar: platform === 'ios' ? 'dark-content' : 'light-content',
   get statusBarColor() {
-    return color(this.toolbarDefaultBg).darken(0.2).hex();
+    return color(this.toolbarDefaultBg)
+      .darken(0.2)
+      .hex();
+  },
+  get darkenHeader() {
+    return color(this.tabBgColor)
+      .darken(0.03)
+      .hex();
   },
 
   // Icon
   iconFamily: 'Ionicons',
   iconFontSize: platform === 'ios' ? 30 : 28,
-  iconMargin: 7,
   iconHeaderSize: platform === 'ios' ? 33 : 24,
 
   // InputGroup
   inputFontSize: 17,
-  inputBorderColor: grey,
-  inputSuccessBorderColor: green,
-  inputErrorBorderColor: red,
-
+  inputBorderColor: inputBorder,
+  inputSuccessBorderColor: brandSuccess,
+  inputErrorBorderColor: badgeBg,
+  inputHeightBase: 50,
   get inputColor() {
     return this.textColor;
   },
   get inputColorPlaceholder() {
-    return blackGrey;
-  },
-
-  inputGroupMarginBottom: 10,
-  inputHeightBase: 50,
-  inputPaddingLeft: 5,
-
-  get inputPaddingLeftIcon() {
-    return this.inputPaddingLeft * 8;
+    return darkGrey;
   },
 
   // Line Height
@@ -204,93 +214,75 @@ export default {
   lineHeightH1: 32,
   lineHeightH2: 27,
   lineHeightH3: 22,
-  iconLineHeight: platform === 'ios' ? 37 : 30,
   lineHeight: platform === 'ios' ? 20 : 24,
+  listItemSelected: platform === 'ios' ? brand : brand,
 
   // List
-  listBorderColor: darkGrey,
-  listDividerBg: grey,
-  listItemHeight: 45,
-  listBtnUnderlayColor: grey,
-
-  // Card
-  cardBorderColor: darkGrey,
-
-  // Changed Variable
+  listBg: 'transparent',
+  listBorderColor: '#c9c9c9',
+  listDividerBg: brandLight,
+  listBtnUnderlayColor: inputBorder,
   listItemPadding: platform === 'ios' ? 10 : 12,
-
-  listNoteColor: darkGrey,
+  listNoteColor: '#808080',
   listNoteSize: 13,
 
   // Progress Bar
-  defaultProgressColor: red,
+  defaultProgressColor: badgeBg,
   inverseProgressColor: brandSidebar,
 
   // Radio Button
   radioBtnSize: platform === 'ios' ? 25 : 23,
-  radioSelectedColorAndroid: lightBlue,
-
-  // New Variable
+  radioSelectedColorAndroid: brand,
   radioBtnLineHeight: platform === 'ios' ? 29 : 24,
-
-  radioColor: darkGrey,
-
-  get radioSelectedColor() {
-    return color(this.radioColor).darken(0.2).hex();
+  get radioColor() {
+    return this.brandPrimary;
   },
 
+  // Segment
+  segmentBackgroundColor: platform === 'ios' ? brandLight : brand,
+  segmentActiveBackgroundColor: platform === 'ios' ? brand : white,
+  segmentTextColor: platform === 'ios' ? brand : white,
+  segmentActiveTextColor: platform === 'ios' ? white : brand,
+  segmentBorderColor: platform === 'ios' ? brand : white,
+  segmentBorderColorMain: platform === 'ios' ? darkGrey : brand,
+
   // Spinner
-  defaultSpinnerColor: green,
+  defaultSpinnerColor: brand,
   inverseSpinnerColor: brandSidebar,
 
+  // Tab
+  tabDefaultBg: platform === 'ios' ? brandLight : brand,
+  topTabBarTextColor: platform === 'ios' ? grey650 : '#b3c7f9',
+  topTabBarActiveTextColor: platform === 'ios' ? brand : white,
+  topTabBarBorderColor: platform === 'ios' ? darkGrey : white,
+  topTabBarActiveBorderColor: platform === 'ios' ? brand : white,
+
   // Tabs
-  tabBgColor: grey,
+  tabBgColor: brandLight,
   tabFontSize: 15,
-  tabTextColor: brandSidebar,
 
   // Text
   textColor: black,
   inverseTextColor: white,
   noteFontSize: 14,
+  get defaultTextColor() {
+    return this.textColor;
+  },
 
   // Title
   titleFontfamily: platform === 'ios' ? 'System' : 'Roboto_medium',
   titleFontSize: platform === 'ios' ? 17 : 19,
-  subTitleFontSize: platform === 'ios' ? 12 : 14,
-  subtitleColor: white,
-
-  // New Variable
-  titleFontColor: white,
+  subTitleFontSize: platform === 'ios' ? 11 : 14,
+  subtitleColor: platform === 'ios' ? darkGrey : white,
+  titleFontColor: platform === 'ios' ? fullBlack : white,
 
   // Other
-  borderRadiusBase: 5,
+  borderRadiusBase: platform === 'ios' ? 5 : 2,
   borderWidth: 1 / PixelRatio.getPixelSizeForLayoutSize(1),
   contentPadding: 10,
-
-  get darkenHeader() {
-    return color(this.toolbarDefaultBg).darken(0.03).hex();
-  },
-
-  // some const
-  headerHeight: platform === 'ios' ? 64 : 58,
-  statusbarHeight: platform === 'ios' ? 0 : 24,
-
-  dropdownBg: black,
-  dropdownLinkColor: black,
+  dropdownLinkColor: '#414142',
   inputLineHeight: 24,
-  jumbotronBg: darkGrey,
-  jumbotronPadding: 30,
-  deviceWidth,
-  deviceHeight,
-  isIphoneX,
-  // use in components
-  brandPrimary: brand,
-  grey,
-  brandDanger: red,
   black,
-  brandWarning,
-  brandSuccess,
-  // New Variable
   inputGroupRoundedBorderRadius: 30,
 
   // iPhoneX SafeArea

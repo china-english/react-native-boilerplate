@@ -1,3 +1,5 @@
+// @flow
+
 export default () => {
   const contentTheme = {
     flex: 1,

@@ -275,6 +275,7 @@ module.exports = {
   grey400: '#bdbdbd',
   grey500: '#9e9e9e',
   grey600: '#757575',
+  grey650: '#666666',
   grey700: '#616161',
   grey800: '#424242',
   grey900: '#212121',
@@ -298,18 +299,20 @@ module.exports = {
   brandSuccess: '#5cb85c',
   brandWarning: '#f0ad4e',
   brandSidebar: '#252932',
+  brandLight: '#f4f4f4',
 
   /*
     Add colors that are not provided by the designer in the color library。
     在这里添加颜色库中设计者没有提供的颜色。
   */
-  grey: '#E8E8E8',
   darkGrey: '#999999',
-  blue: '#007AFF',
   lightBlue: '#039BE5',
-  green: '#43A047',
   red: '#d9534f',
   purple: '#b3c7f9',
+  badgeBg: '#ED1727',
+  disabledBg: '#b5b5b5',
+  generateBorder: '#cccccc',
+  inputBorder: '#D9D5DC',
 
   /*
     If the designer changes the color transparency, add the rgba color here.

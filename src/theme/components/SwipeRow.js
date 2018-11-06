@@ -1,3 +1,5 @@
+// @flow
+
 export default () => {
   const swipeRowTheme = {
     'NativeBase.ListItem': {

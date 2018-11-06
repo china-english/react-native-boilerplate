@@ -1,3 +1,5 @@
+// @flow
+
 export default () => {
   const pickerTheme = {
     '.note': {

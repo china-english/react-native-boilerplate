@@ -1,3 +1,5 @@
+// @flow
+
 export default () => {
   const leftTheme = {
     flex: 1,

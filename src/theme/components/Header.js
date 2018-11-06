@@ -1,8 +1,10 @@
+// @flow
+
 import { PixelRatio, StatusBar } from 'react-native';
 
 import variable from '../variables/platform';
 
-export default (variables = variable) => {
+export default (variables /* : * */ = variable) => {
   const { platformStyle, platform } = variables;
 
   const headerTheme = {
@@ -315,10 +317,7 @@ export default (variables = variable) => {
           borderRadius: 50,
           'NativeBase.Icon': {
             color: variables.toolbarBtnColor,
-            fontSize:
-              platform === 'ios' && variables.platformStyle !== 'material'
-                ? variables.iconHeaderSize - 9
-                : variables.iconHeaderSize - 2,
+            fontSize: variables.iconHeaderSize - 2,
             marginTop: 0,
             marginLeft: 2,
             marginRight: 0,
@@ -326,10 +325,7 @@ export default (variables = variable) => {
           },
           'NativeBase.IconNB': {
             color: variables.toolbarBtnColor,
-            fontSize:
-              platform === 'ios' && variables.platformStyle !== 'material'
-                ? variables.iconHeaderSize - 9
-                : variables.iconHeaderSize - 2,
+            fontSize: variables.iconHeaderSize - 2,
             marginTop: 0,
             marginLeft: 2,
             marginRight: 0,
@@ -369,15 +365,23 @@ export default (variables = variable) => {
     },
     backgroundColor: variables.toolbarDefaultBg,
     flexDirection: 'row',
-    paddingHorizontal: 10,
+    // paddingHorizontal: 10,
+    paddingLeft:
+      platform === 'ios' && variables.platformStyle !== 'material' ? 6 : 10,
+    paddingRight: 10,
     justifyContent: 'center',
     paddingTop: platform === 'ios' ? 18 : 0,
-    borderBottomWidth: platform === 'ios' ? 1 / PixelRatio.getPixelSizeForLayoutSize(1) : 0,
-    borderBottomColor: variables.toolbarDefaultBg,
-    height: variables.toolbarHeight,
+    borderBottomWidth:
+      platform === 'ios' ? 1 / PixelRatio.getPixelSizeForLayoutSize(1) : 0,
+    borderBottomColor: variables.toolbarDefaultBorder,
+    height:
+      variables.platform === 'ios' && variables.platformStyle === 'material'
+        ? variables.toolbarHeight + StatusBar.height
+        : variables.toolbarHeight,
     elevation: 3,
     shadowColor: platformStyle === 'material' ? '#000' : undefined,
-    shadowOffset: platformStyle === 'material' ? { width: 0, height: 2 } : undefined,
+    shadowOffset:
+      platformStyle === 'material' ? { width: 0, height: 2 } : undefined,
     shadowOpacity: platformStyle === 'material' ? 0.2 : undefined,
     shadowRadius: platformStyle === 'material' ? 1.2 : undefined,
     top: 0,

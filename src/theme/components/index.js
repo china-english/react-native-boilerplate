@@ -1,3 +1,5 @@
+// @flow
+
 import _ from 'lodash';
 import bodyTheme from './Body';
 import leftTheme from './Left';
@@ -43,7 +45,7 @@ import separatorTheme from './Separator';
 import pickerTheme from './Picker';
 import variable from '../variables/platform';
 
-export default (variables = variable) => {
+export default (variables /* : * */ = variable) => {
   const theme = {
     variables,
     'NativeBase.Left': {
@@ -214,7 +216,7 @@ export default (variables = variable) => {
   };
 
   const cssifyTheme = (grandparent, parent, parentKey) => {
-    const grandItem = grandparent;
+    const grandparents = grandparent;
     _.forEach(parent, (style, styleName) => {
       // console.log('styleName', styleName);
       // console.log('parentKey', parentKey);
@@ -223,11 +225,11 @@ export default (variables = variable) => {
         && parentKey
         && parentKey.indexOf('.') === 0
       ) {
-        if (grandItem) {
-          if (!grandItem[styleName]) {
-            grandItem[styleName] = {};
+        if (grandparents) {
+          if (!grandparents[styleName]) {
+            grandparents[styleName] = {};
           } else {
-            grandItem[styleName][parentKey] = style;
+            grandparents[styleName][parentKey] = style;
           }
         }
       }

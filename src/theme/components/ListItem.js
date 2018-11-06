@@ -1,9 +1,11 @@
+// @flow
+
 import { Platform, PixelRatio } from 'react-native';
 
 import pickerTheme from './Picker';
 import variable from '../variables/platform';
 
-export default (variables = variable) => {
+export default (variables /* : * */ = variable) => {
   const { platform } = variables;
   const selectedStyle = {
     'NativeBase.Text': {
@@ -232,6 +234,8 @@ export default (variables = variable) => {
     '.avatar': {
       'NativeBase.Left': {
         flex: 0,
+        alignSelf: 'flex-start',
+        paddingTop: 14,
       },
       'NativeBase.Body': {
         'NativeBase.Text': {
