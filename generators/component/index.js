@@ -30,11 +30,6 @@ module.exports = {
     },
   }, {
     type: 'confirm',
-    name: 'wantTransLate',
-    default: true,
-    message: 'Do you want translate the component?',
-  }, {
-    type: 'confirm',
     name: 'isContainerComponent',
     default: false,
     message: 'Does this component belong to container ?',
@@ -42,13 +37,18 @@ module.exports = {
     when: (answers) => answers.isContainerComponent,
     type: 'input',
     name: 'containerName',
-    message: 'What is the name of this container?',
+    message: 'What is the name of the container?',
     validate: (value) => {
       if ((/.+/).test(value)) {
-        return containerExists(value) ? true : 'this container doesn\'t exists';
+        return !containerExists(value) ? 'A file with this name does not exist' : true;
       }
       return 'The name is required';
     },
+  }, {
+    type: 'confirm',
+    name: 'wantTransLate',
+    default: true,
+    message: 'Do you want translate the app component?',
   }, {
     type: 'confirm',
     name: 'hasStorybook',
@@ -64,12 +64,6 @@ module.exports = {
   }],
   actions: (answers) => {
     let componentTemplate;
-    let pathName = '../src/components/{{properCase name}}';
-
-    if (answers.isContainerComponent) {
-      pathName = `../src/containers/${answers.containerName}/components/{{properCase name}}`;
-    }
-
     switch (answers.type) {
       case 'Stateless Function': {
         componentTemplate = './component/stateless.js.hbs';
@@ -80,6 +74,10 @@ module.exports = {
       }
     }
 
+    let pathName = '../src/components/{{properCase name}}';
+    if (answers.isContainerComponent) {
+      pathName = `../src/containers/${answers.containerName}/components/{{properCase name}}`;
+    }
     const actions = [{
       type: 'add',
       path: `${pathName}/index.js`,
