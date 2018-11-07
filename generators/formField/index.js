@@ -71,8 +71,8 @@ module.exports = {
     }, {
       type: 'modify',
       path: '../src/forms/formFields/constants.js',
-      pattern: /(\/\/ IMPORT FORM_FIELDS)/gi,
-      template: '$1\nimport {{properCase name}} from \'./{{properCase name}}\';',
+      pattern: /(\n)(export const)/gi,
+      template: 'import {{properCase name}} from \'./{{properCase name}}\';\n$1$2',
     }, {
       type: 'modify',
       path: '../src/forms/formFields/constants.js',

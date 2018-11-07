@@ -24,7 +24,7 @@ const TextInput = (props) => {
     layout, itemSettings, itemstyle, labelStyle,
   } = props;
 
-  const itemLayout = [itemstyle];
+  const itemLayout = [styles.defaultItem, itemstyle];
   const labelVertical = [labelStyle];
   if (layout === 'vertical') {
     itemLayout.push(styles.fieldVertical);

@@ -1,8 +1,16 @@
 /**
-*
-* {{ properCase name }}
-*
-*/
+ *
+ * {{ properCase name }} formField file
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
+ *
+ */
+{{#if wantTransLate}}
+
+/* global translate */
+{{/if}}
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -10,16 +18,11 @@ import {
   Item,
   Radio,
   Label,
-  Text,
 } from 'native-base';
-{{#if wantTransLate}}
 
-import { translate } from 'utils/helpers';
-{{/if}}
+import styles from 'formFields/styles';
 
-import styles from '../styles';
-
-class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
+class {{ properCase name }} extends {{{ type }}} {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,25 +40,23 @@ class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
   render() {
     const {
       input, label, hasLabel, children, standardStyle,
-      itemSettings, itemstyle, labelStyle, meta,
+      itemSettings, itemstyle, labelStyle,
     } = this.props;
-    const { dirty, error, touched } = meta;
     const { selected } = this.state;
+    const itemLayout = [styles.defaultItem, itemstyle];
 
-    const hasError = (dirty || touched) && error;
     const labelText = label || input.name;
 
     return (
-      <Item {...itemSettings} style={itemstyle}>
+      <Item {...itemSettings} style={itemLayout}>
         <Radio
           style={styles.radio}
           standardStyle={standardStyle}
           selected={selected}
           onPress={this.onChange}
         />
-        { hasLabel && <Label style={labelStyle}>{{#if wantTransLate}}{translate(labelText)}{{else}}{labelText}{{/if}}</Label> }
-        { children }
-        { hasError && <Text style={styles.errorStyle}>{{#if wantTransLate}}{translate(error)}{{else}}{error}{{/if}}</Text> }
+        {hasLabel && <Label style={labelStyle}>{{#if wantTransLate}}{translate(labelText)}{{else}}{labelText}{{/if}}</Label>}
+        {children && children}
       </Item>
     );
   }
@@ -66,16 +67,11 @@ class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
     value: false,
     onChange: () => null,
   },
-  meta: {
-    dirty: false,
-    error: undefined,
-    touched: false,
-  },
   label: '',
   itemSettings: {},
   itemstyle: {},
   labelStyle: {},
-  hasLabel: false,
+  hasLabel: true,
   children: null,
   standardStyle: true,
 };
@@ -84,11 +80,6 @@ class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
   input: PropTypes.shape({
     value: PropTypes.any,
     onChange: PropTypes.func,
-  }),
-  meta: PropTypes.shape({
-    dirty: PropTypes.bool,
-    error: PropTypes.any,
-    touched: PropTypes.bool,
   }),
   label: PropTypes.string,
   itemSettings: PropTypes.object,

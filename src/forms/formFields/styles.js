@@ -1,6 +1,10 @@
-// import { grey200 } from 'commonColor';
+// import * as commonColor from 'commonColor';
 
 export default {
+  defaultItem: {
+    marginLeft: 0,
+  },
+
   fieldVertical: {
     flexDirection: 'column',
     alignItems: 'stretch',
