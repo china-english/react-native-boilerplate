@@ -1,11 +1,12 @@
-import { white } from 'commonColor';
+import * as commonColor from 'commonColor';
 
 export default {
   form: {
-    backgroundColor: white,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    backgroundColor: commonColor.white,
   },
   button: {
     marginTop: 20,
-    marginHorizontal: 15,
   },
 };

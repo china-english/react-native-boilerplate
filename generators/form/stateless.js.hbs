@@ -1,8 +1,16 @@
 /**
-*
-* {{ properCase name }}
-*
-*/
+ *
+ * {{ properCase name }} form file
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
+ *
+ */
+{{#if wantTransLate}}
+
+/* global translate */
+{{/if}}
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -13,10 +21,7 @@ import {
   Text,
   Form,
 } from 'native-base';
-{{#if wantTransLate}}
 
-import { translate } from 'utils/helpers';
-{{/if}}
 import Group from 'formFields';
 
 import styles from './styles';
@@ -69,5 +74,4 @@ const {{ properCase name }} = (props) => {
 
 export default reduxForm({
   form: '{{ camelCase name }}',
-  destroyOnUnmount: false,
 })({{ properCase name }});

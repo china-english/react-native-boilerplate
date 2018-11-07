@@ -1,5 +1,14 @@
-import React from 'react';
+/**
+ *
+ * {{ properCase name }} storybook file
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
+ *
+ */
 
+import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';
@@ -8,7 +17,7 @@ import {{position}}View from 'storybook/{{position}}View';
 
 import {{properCase name}} from '..';
 
-storiesOf('forms/{{titleCase name}}', module)
+storiesOf('forms/{{properCase name}}', module)
   .addDecorator((getStory) => <{{position}}View>{getStory()}</{{position}}View>)
   .add('{{properCase name}}', () => (
     <{{properCase name}} onSubmit={action('submit {{camelCase name}} data')} />
