@@ -1,62 +1,76 @@
 /**
  * Container Generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
  */
 
 const componentExists = require('../utils/componentExists');
 
 module.exports = {
   description: 'Add a container component',
-  prompts: [{
-    type: 'list',
-    name: 'type',
-    message: 'Select the base component type:',
-    default: 'React.Component',
-    choices: () => ['React.Component', 'Stateless Function', 'React.PureComponent'],
-  }, {
-    type: 'input',
-    name: 'name',
-    message: 'What should it be called?',
-    default: 'IndexScene',
-    validate: (value) => {
-      if ((/.+/).test(value)) {
-        return componentExists(value) ? 'A file with this name already exists' : true;
-      }
-      return 'The name is required';
+  prompts: [
+    {
+      type: 'list',
+      name: 'type',
+      message: 'Select the base container type:',
+      default: 'React.Component',
+      choices: () => ['React.Component', 'Stateless Function', 'React.PureComponent'],
     },
-  }, {
-    type: 'confirm',
-    name: 'hasRouter',
-    default: true,
-    message: 'Do you want to link it with a route?',
-  }, {
-    type: 'confirm',
-    name: 'wantTransLate',
-    default: true,
-    message: 'Do you want translate the app container?',
-  }, {
-    type: 'confirm',
-    name: 'wantHeader',
-    default: true,
-    message: 'Do you want app header?',
-  }, {
-    type: 'confirm',
-    name: 'wantFooter',
-    default: true,
-    message: 'Do you want app footer?',
-  }, {
-    type: 'confirm',
-    name: 'wantActionsAndReducer',
-    default: true,
-    message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
-  }, {
-    type: 'confirm',
-    name: 'wantSaga',
-    default: true,
-    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
-  }],
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What should it be called?',
+      default: 'IndexScene',
+      validate: (value) => {
+        if ((/.+/).test(value)) {
+          return componentExists(value) ? 'A file with this name already exists' : true;
+        }
+        return 'The name is required';
+      },
+    },
+    {
+      type: 'confirm',
+      name: 'hasRouter',
+      default: true,
+      message: 'Do you want to link it with a route?',
+    },
+    {
+      type: 'confirm',
+      name: 'wantTransLate',
+      default: true,
+      message: 'Do you want translate the app container?',
+    },
+    {
+      type: 'confirm',
+      name: 'wantHeader',
+      default: true,
+      message: 'Do you want app header?',
+    },
+    {
+      type: 'confirm',
+      name: 'wantFooter',
+      default: true,
+      message: 'Do you want app footer?',
+    },
+    {
+      when: (answers) => answers.type !== 'Stateless Function',
+      type: 'confirm',
+      name: 'wantActionsAndReducer',
+      default: true,
+      message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
+    },
+    {
+      when: (answers) => answers.type !== 'Stateless Function',
+      type: 'confirm',
+      name: 'wantSaga',
+      default: true,
+      message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
+    },
+  ],
   actions: (answers) => {
     // Generate index.js and index.test.js
-    var componentTemplate; // eslint-disable-line no-var
+    let componentTemplate;
     switch (answers.type) {
       case 'Stateless Function': {
         componentTemplate = './container/stateless.js.hbs';
@@ -166,15 +180,15 @@ module.exports = {
         .replace(/( |^)[A-Z]/g, (L) => L.toLowerCase());
       actions.push({
         type: 'modify',
-        path: '../src/routes.js',
+        path: '../src/AppRoutes.js',
         pattern: /(<\/Stack>)/gi,
-        template: `  <Scene key="${routerName}" component={{{preCurly (properCase name)}}} {...props} />\n      $1`,
+        template: `  <Scene key="${routerName}" component={{{preCurly (properCase name)}}} />\n      $1`,
       });
       actions.push({
         type: 'modify',
-        path: '../src/routes.js',
+        path: '../src/AppRoutes.js',
         pattern: /(\n)(export default)/gi,
-        template: '$1\nimport {{properCase name}} from \'containers/{{properCase name}}\';',
+        template: 'import {{properCase name}} from \'containers/{{properCase name}}\';\n$1$2',
       });
     }
     return actions;

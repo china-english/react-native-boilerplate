@@ -4,6 +4,8 @@
  *
  */
 
+/* global translate changeLanguage */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Actions } from 'react-native-router-flux';
@@ -18,53 +20,36 @@ import {
   Button,
 } from 'native-base';
 
-import AppHeader from 'components/AppHeader';
-import AppFooter from 'components/AppFooter';
-
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 
-import { translate } from 'utils/helpers';
+import AppHeader from 'components/AppHeader';
+import AppFooter from 'components/AppFooter';
 
 import { selectTest } from './selectors';
-// import { defaultAction } from './actions';
-import reducer from './reducer';
-
-import sagas from './sagas';
-
 import { selectCounter } from '../../selectors';
 import {
   addToCounter,
   minusToCounter,
 } from '../../actions';
-
+// import { defaultAction } from './actions';
+import reducer from './reducer';
+import sagas from './sagas';
 import styles from './styles';
 
 export class HomeScene extends React.Component { // eslint-disable-line
   // constructor(props) {
   //   super(props);
-  //   this.state = {
-  //   };
+  //   this.state = {};
   // }
-  //
-  // componentWillMount() {
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  // }
-  //
-  // componentDidMount() {
-  // }
-  //
-  // componentWillUnmount() {
-  // }
-
-  // onClick = () => {
-  // }
+  // componentWillMount() {}
+  // componentWillReceiveProps(nextProps) {}
+  // componentDidMount() {}
+  // componentWillUnmount() {}
 
   render() {
     const {
-      test, addCounter, minusCounter, counter, changeLanguage,
+      test, addCounter, minusCounter, counter,
     } = this.props;
     return (
       <Container>
@@ -136,7 +121,6 @@ export class HomeScene extends React.Component { // eslint-disable-line
 HomeScene.defaultProps = {
   addCounter: null,
   counter: 0,
-  changeLanguage: () => null,
   minusCounter: null,
   test: '',
 };
@@ -144,7 +128,6 @@ HomeScene.defaultProps = {
 HomeScene.propTypes = {
   addCounter: PropTypes.func,
   counter: PropTypes.number,
-  changeLanguage: PropTypes.func,
   minusCounter: PropTypes.func,
   test: PropTypes.string,
 };

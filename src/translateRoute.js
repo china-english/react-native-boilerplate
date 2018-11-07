@@ -3,6 +3,7 @@
  * https://github.com/facebook/react-native
  * @flow
  */
+/* global window */
 
 // react && redux module
 import React from 'react';
@@ -13,11 +14,12 @@ import { AsyncStorage } from 'react-native';
 import { createPropsSelector } from 'reselect-immutable-helpers';
 import SplashScreen from 'react-native-splash-screen';
 
-import AppRoutes from './routes';
-
+import { translate } from 'utils/helpers';
+import AppRoutes from './AppRoutes';
 import { selectLanguage } from './selectors';
 import { setLanguage } from './actions';
 
+window.translate = translate;
 const languages = ['en', 'zh'];
 
 class TranslateRoute extends React.Component { // eslint-disable-line
@@ -30,6 +32,7 @@ class TranslateRoute extends React.Component { // eslint-disable-line
   componentDidMount() {
     // do stuff while splash screen is shown
     // After having done stuff (such as async tasks) hide the splash screen
+    window.changeLanguage = this.changeLanguage;
     SplashScreen.hide();
   }
 
@@ -46,7 +49,7 @@ class TranslateRoute extends React.Component { // eslint-disable-line
   };
 
   render() {
-    return <AppRoutes changeLanguage={this.changeLanguage} />;
+    return <AppRoutes />;
   }
 }
 

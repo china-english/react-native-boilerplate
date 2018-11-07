@@ -2,6 +2,8 @@
   "name": "Boilerplate",
   "version": "0.4.0",
   "private": true,
+  "author": "fei",
+  "license": "MIT",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest && eslint ./src",

@@ -1,13 +1,13 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ *
+ * app routes file
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
+ *
  */
 
-// react && redux module
 import React from 'react';
-
-// Third party plug-in
 import {
   Router,
   Stack,
@@ -18,12 +18,12 @@ import {
 import HomeScene from 'containers/HomeScene';
 import LoginScene from 'containers/LoginScene';
 
-export default function AppRouter(props) {
+export default function AppRoutes() {
   return (
     <Router>
       <Stack hideNavBar>
-        <Scene key="home" component={HomeScene} initial {...props} />
-        <Scene key="login" component={LoginScene} {...props} />
+        <Scene key="home" component={HomeScene} initial />
+        <Scene key="login" component={LoginScene} />
       </Stack>
     </Router>
   );
