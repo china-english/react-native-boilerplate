@@ -1,5 +1,3 @@
-// import { grey200, black } from 'commonColor';
-
 export default {
   headerStyle: {
     justifyContent: 'center',

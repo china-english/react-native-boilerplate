@@ -23,6 +23,7 @@ import {
   generateBorder,
   inputBorder,
   grey650,
+  transparent,
 } from 'commonColor';
 
 const deviceHeight = Dimensions.get('window').height;
@@ -170,14 +171,14 @@ export default {
   tabActiveBgColor: platform === 'ios' ? '#cde1f9' : brand,
 
   // Header
-  toolbarBtnColor: white,
+  toolbarBtnColor: black,
   toolbarDefaultBg: platform === 'ios' ? brandLight : brand,
   toolbarHeight: platform === 'ios' ? 64 : 56,
   toolbarSearchIconSize: platform === 'ios' ? 20 : 23,
   toolbarInputColor: platform === 'ios' ? '#CECDD2' : white,
   searchBarHeight: platform === 'ios' ? 30 : 40,
   searchBarInputHeight: platform === 'ios' ? 30 : 50,
-  toolbarBtnTextColor: platform === 'ios' ? brand : white,
+  toolbarBtnTextColor: black,
   toolbarDefaultBorder: platform === 'ios' ? '#a7a6ab' : brand,
   iosStatusbar: platform === 'ios' ? 'dark-content' : 'light-content',
   get statusBarColor() {
@@ -283,6 +284,7 @@ export default {
   dropdownLinkColor: '#414142',
   inputLineHeight: 24,
   black,
+  transparent,
   inputGroupRoundedBorderRadius: 30,
 
   // iPhoneX SafeArea
