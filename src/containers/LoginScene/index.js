@@ -1,8 +1,14 @@
 /**
  *
  * LoginScene Container
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
  *
  */
+
+/* global translate */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -14,68 +20,40 @@ import {
   Container,
   Content,
   Text,
-  View,
 } from 'native-base';
+
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 
 import AppHeader from 'components/AppHeader';
 import AppFooter from 'components/AppFooter';
 
 import LoginForm from 'forms/LoginForm';
 
-import injectReducer from 'utils/injectReducer';
-import injectSaga from 'utils/injectSaga';
-
-import { translate } from 'utils/helpers';
-
-import { selectTest } from './selectors';
+import { selectGenerateText } from './selectors';
 // import { defaultAction } from './actions';
 import reducer from './reducer';
-
 import sagas from './sagas';
-
 import styles from './styles';
 
-export class LoginScene extends React.Component { // eslint-disable-line
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //   };
-  // }
-  //
-  // componentWillMount() {
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  // }
-  //
-  // componentDidMount() {
-  // }
-  //
-  // componentWillUnmount() {
-  // }
-
-  // onClick = () => {
-  // }
-
+export class LoginScene extends React.Component {
   onSubmit = (value) => {
     alert(JSON.stringify(value.toJS())); // eslint-disable-line
   }
 
   render() {
-    const { test } = this.props;
+    const { generateText } = this.props;
     return (
       <Container>
-        <AppHeader title="Login Scene" />
+        <AppHeader title="loginScene" />
 
         <Content
           contentContainerStyle={styles.contentContainer}
           style={styles.content}
         >
-          <View style={styles.contentView}>
-            <Text style={styles.generateText}>{translate(test)}</Text>
-            <Text style={styles.generateText}>{translate('generatorMessage')}</Text>
-            <LoginForm onSubmit={this.onSubmit} />
-          </View>
+          <Text style={styles.generateText}>{translate(generateText)}</Text>
+          <Text style={styles.generateText}>{translate('generatorMessage')}</Text>
+          <LoginForm onSubmit={this.onSubmit} />
         </Content>
 
         <AppFooter pageName="LoginScene" />
@@ -85,15 +63,15 @@ export class LoginScene extends React.Component { // eslint-disable-line
 }
 
 LoginScene.defaultProps = {
-  test: '',
+  generateText: '',
 };
 
 LoginScene.propTypes = {
-  test: PropTypes.string,
+  generateText: PropTypes.string,
 };
 
 const mapStateToProps = createPropsSelector({
-  test: selectTest,
+  generateText: selectGenerateText,
 });
 
 const mapDispatchToProps = (dispatch) => ({
