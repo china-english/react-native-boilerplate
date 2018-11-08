@@ -1,6 +1,10 @@
 /**
  *
  * HomeScene Container
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
  *
  */
 
@@ -16,7 +20,6 @@ import {
   Container,
   Content,
   Text,
-  View,
   Button,
 } from 'native-base';
 
@@ -26,7 +29,7 @@ import injectSaga from 'utils/injectSaga';
 import AppHeader from 'components/AppHeader';
 import AppFooter from 'components/AppFooter';
 
-import { selectTest } from './selectors';
+import { selectGenerateText } from './selectors';
 import { selectCounter } from '../../selectors';
 import {
   addToCounter,
@@ -37,79 +40,64 @@ import reducer from './reducer';
 import sagas from './sagas';
 import styles from './styles';
 
-export class HomeScene extends React.Component { // eslint-disable-line
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {};
-  // }
-  // componentWillMount() {}
-  // componentWillReceiveProps(nextProps) {}
-  // componentDidMount() {}
-  // componentWillUnmount() {}
+export class HomeScene extends React.PureComponent {
+  renderLink = () => (
+    <Button
+      onPress={() => {
+        Actions.push('login');
+      }}
+      style={styles.button}
+    >
+      <Text>{translate('login')}</Text>
+    </Button>
+  )
+
+  renderChangeLanguage = (language) => (
+    <Button
+      onPress={() => { changeLanguage(language); }}
+      style={styles.button}
+    >
+      <Text>{translate(language)}</Text>
+    </Button>
+  )
+
+  renderCalculate = (type) => {
+    const { addCounter, minusCounter } = this.props;
+    const calculateFunc = type === 'add' ? addCounter : minusCounter;
+    return (
+      <Button
+        onPress={calculateFunc}
+        style={styles.button}
+      >
+        <Text>{translate(type)}</Text>
+      </Button>
+    );
+  }
 
   render() {
-    const {
-      test, addCounter, minusCounter, counter,
-    } = this.props;
+    const { generateText, counter } = this.props;
     return (
       <Container>
-        <AppHeader title="Home Scene" hasLeft={false} hasRight={false} />
+        <AppHeader title="homeScene" hasLeft={false} hasRight={false} />
 
         <Content
           contentContainerStyle={styles.contentContainer}
           style={styles.content}
         >
-          <View style={styles.contentView}>
-            <Text style={styles.generateText}>{translate(test)}</Text>
-            <Text style={styles.generateText}>
-              {translate('generatorMessage')}
-            </Text>
+          <Text style={styles.generateText}>{translate(generateText)}</Text>
+          <Text style={styles.generateText}>
+            {translate('generatorMessage')}
+          </Text>
 
-            <Button
-              onPress={() => {
-                Actions.push('login');
-              }}
-              style={styles.button}
-            >
-              <Text>{translate('login')}</Text>
-            </Button>
+          { this.renderLink() }
 
-            <Button
-              onPress={() => {
-                changeLanguage('zh');
-              }}
-              style={styles.button}
-            >
-              <Text>{translate('zh')}</Text>
-            </Button>
-            <Button
-              onPress={() => {
-                changeLanguage('en');
-              }}
-              style={styles.button}
-            >
-              <Text>{translate('en')}</Text>
-            </Button>
+          { this.renderChangeLanguage('zh') }
+          { this.renderChangeLanguage('en') }
 
-            <Button
-              onPress={() => {
-                addCounter();
-              }}
-              style={styles.button}
-            >
-              <Text>{translate('add')}</Text>
-            </Button>
-            <Button
-              onPress={() => {
-                minusCounter();
-              }}
-              style={styles.button}
-            >
-              <Text>{translate('minus')}</Text>
-            </Button>
+          { this.renderCalculate('add') }
+          { this.renderCalculate('minus') }
 
-            <Text style={styles.generateText}>{counter}</Text>
-          </View>
+          <Text style={styles.generateText}>{counter}</Text>
         </Content>
 
         <AppFooter pageName="HomeScene" />
@@ -122,19 +110,19 @@ HomeScene.defaultProps = {
   addCounter: null,
   counter: 0,
   minusCounter: null,
-  test: '',
+  generateText: '',
 };
 
 HomeScene.propTypes = {
   addCounter: PropTypes.func,
   counter: PropTypes.number,
   minusCounter: PropTypes.func,
-  test: PropTypes.string,
+  generateText: PropTypes.string,
 };
 
 const mapStateToProps = createPropsSelector({
   counter: selectCounter,
-  test: selectTest,
+  generateText: selectGenerateText,
 });
 
 const mapDispatchToProps = (dispatch) => ({

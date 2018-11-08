@@ -1,8 +1,16 @@
+/*
+ *
+ * HomeScene sagas test file
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
+ *
+ */
+
 /* eslint-disable redux-saga/yield-effects */
 // import { take, call, put } from 'redux-saga/effects';
-// import {
-//   DEFAULT_ACTION,
-// } from '../constants';
+// import { DEFAULT_ACTION } from '../constants';
 // import { defaultSaga } from '../sagas';
 
 // const generator = defaultSaga();

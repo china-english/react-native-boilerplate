@@ -1,6 +1,10 @@
 /*
  *
  * HomeScene sagas
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
  *
  */
 import {

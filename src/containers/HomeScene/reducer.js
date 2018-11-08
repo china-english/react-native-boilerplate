@@ -1,6 +1,10 @@
 /*
  *
  * HomeScene reducer
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
  *
  */
 
@@ -11,7 +15,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  test: 'welcome',
+  generateText: 'welcome',
 });
 
 function homeSceneReducer(state = initialState, action) {
