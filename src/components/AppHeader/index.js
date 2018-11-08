@@ -1,11 +1,18 @@
 /**
 *
 * AppHeader Stateless Component
+* created by generator
+*
+* source => https://github.com/china-english/react-native-boilerplate
+* author => fei
 *
 */
 
+/* global translate */
+
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Actions } from 'react-native-router-flux';
 import {
   Header,
   Left,
@@ -16,9 +23,6 @@ import {
   Icon,
   Text,
 } from 'native-base';
-import { Actions } from 'react-native-router-flux';
-
-import { translate } from 'utils/helpers';
 
 import styles from './styles';
 
@@ -45,7 +49,7 @@ const AppHeader = (props) => {
     </Button>
   );
   const titleBody = (
-    <Title>{title}</Title>
+    <Title>{translate(title)}</Title>
   );
 
   return (
@@ -68,9 +72,9 @@ AppHeader.defaultProps = {
   hasLeft: true,
   hasTitle: true,
   hasRight: true,
-  backMessage: 'back',
+  backMessage: '',
   leftPress: () => Actions.pop(),
-  rightPress: () => alert('OK'),// eslint-disable-line
+  rightPress: () => null,
 };
 
 AppHeader.propTypes = {

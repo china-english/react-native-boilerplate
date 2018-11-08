@@ -1,5 +1,14 @@
-import React from 'react';
+/**
+ *
+ * AppHeader storybook file
+ * created by generator
+ *
+ * source => https://github.com/china-english/react-native-boilerplate
+ * author => fei
+ *
+ */
 
+import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';
