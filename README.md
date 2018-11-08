@@ -19,7 +19,7 @@ react-native-boilerplate
 
 2. [react-native => 0.55.4](https://facebook.github.io/react-native/docs/0.55/getting-started.html)
 
-3. [native-base => 2.6.1](https://docs.nativebase.io/Components.html#Components)
+3. [native-base => 2.8.1](https://docs.nativebase.io/Components.html#Components)
 
 4. [prop-types => 15.6.2](https://github.com/facebook/prop-types)
 
@@ -31,57 +31,12 @@ react-native-boilerplate
 
 8. [redux-form => 7.4.2](https://redux-form.com/7.4.2/examples/)
 
-项目结构
---------
- * react-native-boilerplate/
-  * android/
-  * ios/
-  * ...
-  * src/
-    * components/
-      * componentName/
-        * index.js
-        * index.stories.js
-        * styles.js
-    * containers/
-      * containerName/
-        * actions.js
-        * constants.js
-        * index.js
-        * reducer.js
-        * sagas.js
-        * selectors.js
-        * styles.js
-    * forms/
-      * formFields/
-        * formFieldName/
-          * index.js
-          * index.stories.js
-        * constants.js
-        * index.js
-        * styles.js
-      * formName/
-        * index.js
-        * index.stories.js
-        * styles.js
-    * translations/
-      * en.js
-      * zh.js
-    * store/
-    * actions.js
-    * App.js
-    * constants.js
-    * reducer.js
-    * routes.js
-    * sagas.js
-    * selectors.js
-    * translateRoute.js
-  * storybook
-    * ContentView/
-    * FooterView/
-    * HeaderView/
-    * ...
-
+项目介绍
+-------
+* [项目结构](https://github.com/china-english/react-native-boilerplate/blob/master/projectStructure.md)
+* Debugger: [React Native Debugger](https://github.com/jhen0409/react-native-debugger)(工具需要安装)
+* [Quick generation guide for container/component/form/form item template files](https://github.com/china-english/react-native-boilerplate/blob/master/aboutGenerate.md)
+* [storyBook](https://github.com/china-english/react-native-boilerplate/blob/master/storybook.md)
 
 开始使用
 -------
@@ -94,88 +49,4 @@ react-native-boilerplate
 
 4. ```npm start && react-native run-ios or npm start && react-native run-android```
 
-
-debugger 工具
--------
-本项目使用 [React Native Debugger](https://github.com/jhen0409/react-native-debugger) 进行测试。(工具需要安装)
-
-
-
-模版生成器的使用
----------
-### container
-
-  1. ```npm run generate```，然后选择 container 选项；
-
-  2. container 分三类：Component, stateless function, pureComponent；
-
-  3. 输入 container 的名字；
-
-  4. container 是否需要链接 route；
-
-  5. 输入 route 的名字；
-
-  6. 是否需要翻译 container；
-
-  7. 是否需要 app 的 header 部分；
-
-  8. 是否需要 app 的 footer 部分；
-
-  9. 是否需要进行数据交互（action、redux...）；
-
-  10. 是否需要 saga；
-
-  > 当 container 不需要链接 route 的时候，5不会执行  
-  > 当 container 需要链接 route 的时候，会自动在 route 中添加相关 route
-
-### component
-
-  1. ```npm run generate```，然后选择 component 选项；
-
-  2. component 分三类：Component, stateless function, pureComponent；
-
-  3. 输入 component 的名字；
-
-  4. 是否需要翻译 component；
-
-  5. 是否需要链接 storybook；
-
-
-### form
-
-  1. ```npm run generate```，然后选择 form 选项；
-
-  2. form 分三类：Component, stateless function, pureComponent；
-
-  3. 输入 form 的名字；
-
-  4. 是否需要翻译 form；
-
-  5. 是否需要链接 storybook；
-
-
-### formField
-
-  1. ```npm run generate```，然后选择 formField;
-
-  2. 输入 formField 的名字；
-
-  3. 是否需要翻译 formField；
-
-  4. 是否需要链接 storybook；
-
-  > formField 生成时会自动修改相关引入文件，你只需要在 form 文件中修改相应的 formField type 名即可.
-
-
-storybook 的使用
--------
-
-1. ```npm run storybook```
-
-2. ```react-native run-ios or react-native run-android```
-
-3. 打开 http://localhost:7007/ 就可以测试已有的组件了
-
-> 当你运行 storybook 时，你的应用将无法运行(被 storybook 覆盖)，想要返回应用时，需要停止 ```npm run storybook``` 重新 ```npm start``` 随后刷新你的应用即可  
-> 当你使用 native-base 时，存在两个特殊组件（ header 和 container ），已将其单独处理。  
-> 当你使用 ```npm run generate``` 生成新的 storybook 时，请 重新跑一次 ```npm run storybook```
+> 如果你要使用这个项目，可以使用 ```git remote remove origin && git remote add origin git@your_project_url```
