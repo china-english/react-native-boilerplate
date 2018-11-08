@@ -1,4 +1,4 @@
-import { lightBlack } from 'commonColor';
+import * as commonColor from 'commonColor';
 
 export default {
   footerTble: {
@@ -6,6 +6,6 @@ export default {
     alignItems: 'center',
   },
   text: {
-    color: lightBlack,
+    color: commonColor.lightBlack,
   },
 };

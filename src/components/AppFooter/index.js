@@ -1,8 +1,14 @@
 /**
 *
 * AppFooter Stateless Component
+* created by generator
+*
+* source => https://github.com/china-english/react-native-boilerplate
+* author => fei
 *
 */
+
+/* global translate */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -11,8 +17,6 @@ import {
   FooterTab,
   Text,
 } from 'native-base';
-
-import { translate } from 'utils/helpers';
 
 import styles from './styles';
 
