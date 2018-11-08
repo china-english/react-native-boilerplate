@@ -40,7 +40,7 @@ const {{ properCase name }} = (props) => {
   return (
     <Container>
       {{#if wantHeader}}
-      <AppHeader title="{{titleCase name}}" />
+      <AppHeader title="{{camelCase name}}" />
 
       {{/if}}
       <Content
@@ -58,7 +58,7 @@ const {{ properCase name }} = (props) => {
       </Content>
       {{#if wantFooter}}
 
-      <AppFooter pageName="{{properCase name}}" />
+      <AppFooter pageName="{{camelCase name}}" />
       {{/if}}
     </Container>
   );
