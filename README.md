@@ -37,6 +37,7 @@ react-native-boilerplate
 * Debugger: [React Native Debugger](https://github.com/jhen0409/react-native-debugger)(工具需要安装)
 * [Quick generation guide for container/component/form/form item template files](https://github.com/china-english/react-native-boilerplate/blob/master/aboutGenerate.md)
 * [storyBook](https://github.com/china-english/react-native-boilerplate/blob/master/storybook.md)
+* [常见问题及项目更名](https://github.com/china-english/react-native-boilerplate/blob/master/projectRenameGuide.md)
 
 开始使用
 -------
